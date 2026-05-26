@@ -1356,7 +1356,184 @@ h2.display {
   .journey-meta { grid-template-columns: 1fr; }
 }
 
-/* ---------- Slide T6 — Credit + CTA ---------- */
+/* ---------- Slide T6 — Deployment Roadmap ---------- */
+.phase-track {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  position: relative;
+}
+.phase-track::before {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 7%;
+  right: 7%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    var(--gold) 0%,
+    var(--gold) 60%,
+    rgba(200, 164, 114, 0.45) 82%,
+    rgba(200, 164, 114, 0.22) 100%);
+  z-index: 0;
+}
+.phase-card {
+  position: relative;
+  z-index: 2;
+  background: var(--bg-2);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 16px 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.phase-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.phase-num {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--gold-soft);
+  line-height: 1;
+}
+.phase-duration {
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.phase-name {
+  font-family: var(--serif);
+  font-size: 19px;
+  color: var(--ink);
+  font-style: italic;
+  line-height: 1.15;
+  margin-bottom: 2px;
+}
+.phase-ships {
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  flex: 1;
+}
+.phase-unlock {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--rule);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.phase-unlock span { color: var(--gold); }
+
+@media (max-width: 980px) {
+  .phase-track { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .phase-track::before { display: none; }
+}
+@media (max-width: 560px) {
+  .phase-track { grid-template-columns: 1fr; }
+}
+
+/* ---------- Slide T7 — Outcomes & The Spine ---------- */
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 44px;
+  align-items: stretch;
+}
+.outcomes-stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.outcomes-stats-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 22px;
+}
+.outcomes-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px 40px;
+}
+.outcome-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.outcome-num {
+  font-family: var(--serif);
+  font-size: 52px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--ink);
+}
+.outcome-num em {
+  font-style: italic;
+  color: var(--gold-soft);
+}
+.outcome-label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 6px;
+}
+.outcome-sub {
+  font-size: 12px;
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+.spine-card {
+  background: var(--bg-2);
+  border: 1px solid var(--rule);
+  padding: 26px 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.spine-card-label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.spine-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 14px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 12.5px;
+  align-items: baseline;
+}
+.spine-row:last-child { border-bottom: none; }
+.spine-cat {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.spine-val {
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .outcomes-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* ---------- Slide T8 — Credit + CTA ---------- */
 .cta-grid {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
@@ -2095,12 +2272,170 @@ h2.display {
 </section>
 
 <!-- ============================================================
-     T6 — Credit + CTA
+     T6 — Deployment Roadmap
+     ============================================================ -->
+<section class="slide has-mockup">
+  <div class="corner-mark">Implementation · the path to value</div>
+  <div class="slide-inner">
+    <div class="eyebrow"><span>Implementation</span><span class="eyebrow-counter">T · 06</span></div>
+
+    <h2 class="display" style="margin-bottom: 28px;">
+      From wedge to <em>platform.</em>
+    </h2>
+
+    <div class="phase-track">
+      <div class="phase-card">
+        <div class="phase-head">
+          <span class="phase-num">01</span>
+          <span class="phase-duration">Weeks 0–2</span>
+        </div>
+        <div class="phase-name">Discovery</div>
+        <div class="phase-ships">
+          Strategy, current-state assessment, target experience, success metrics, governance scaffolding.
+        </div>
+        <div class="phase-unlock">Unlocks <span>scope clarity</span></div>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-head">
+          <span class="phase-num">02</span>
+          <span class="phase-duration">Weeks 2–6</span>
+        </div>
+        <div class="phase-name">Foundation</div>
+        <div class="phase-ships">
+          Identity spine on Merkury, Data Cloud activation, brand-voice scoring, Einstein Trust Layer configured.
+        </div>
+        <div class="phase-unlock">Unlocks <span>the profile</span></div>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-head">
+          <span class="phase-num">03</span>
+          <span class="phase-duration">Weeks 6–10</span>
+        </div>
+        <div class="phase-name">First Surface</div>
+        <div class="phase-ships">
+          Storefront with the Bantō. Agentic Commerce live in production. One brand, full provenance, governed.
+        </div>
+        <div class="phase-unlock">Unlocks <span>the surface</span></div>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-head">
+          <span class="phase-num">04</span>
+          <span class="phase-duration">Weeks 10–16</span>
+        </div>
+        <div class="phase-name">Orchestration</div>
+        <div class="phase-ships">
+          Clienteling console + multi-channel journey assembly. Sales, Service, Marketing — in concert.
+        </div>
+        <div class="phase-unlock">Unlocks <span>the orchestration</span></div>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-head">
+          <span class="phase-num">05</span>
+          <span class="phase-duration">Week 16+ · ongoing</span>
+        </div>
+        <div class="phase-name">Optimization</div>
+        <div class="phase-ships">
+          Tuning, expansion, additional brands and markets. The platform compounds with every release.
+        </div>
+        <div class="phase-unlock">Unlocks <span>the platform</span></div>
+      </div>
+    </div>
+
+    <div class="demo-caption">
+      <div class="demo-caption-num"><span>—</span> v.</div>
+      <div class="demo-caption-body">
+        This is not a year. The agentic build layer — <strong>Claude Code</strong>, Salesforce CLI, programmatic deployment — is what makes a <em>first surface live in ten weeks</em> possible. The platform compounds from there.
+      </div>
+    </div>
+  </div>
+  <div class="slide-num"><em>T · 06</em></div>
+</section>
+
+<!-- ============================================================
+     T7 — Outcomes & The Spine
+     ============================================================ -->
+<section class="slide" style="background: linear-gradient(180deg, var(--bg) 0%, #0d0a08 100%);">
+  <div class="corner-mark">Outcomes · the spine</div>
+  <div class="slide-inner">
+    <div class="eyebrow"><span>Real-world results</span><span class="eyebrow-counter">T · 07</span></div>
+
+    <h2 class="display" style="margin-bottom: 28px;">
+      Outcomes — and the <em>spine.</em>
+    </h2>
+
+    <div class="outcomes-grid">
+      <div class="outcomes-stats">
+        <div class="outcomes-stats-eyebrow">From comparable luxury &amp; premium-retail engagements · anonymized</div>
+        <div class="outcomes-row">
+          <div class="outcome-stat">
+            <div class="outcome-num"><em>+6–9</em>%</div>
+            <div class="outcome-label">Conversion lift</div>
+            <div class="outcome-sub">Bantō-curated surfaces vs static baseline</div>
+          </div>
+          <div class="outcome-stat">
+            <div class="outcome-num"><em>+18–26</em>%</div>
+            <div class="outcome-label">AOV uplift</div>
+            <div class="outcome-sub">Agent-curated baskets, when accepted</div>
+          </div>
+          <div class="outcome-stat">
+            <div class="outcome-num"><em>60–70</em>%</div>
+            <div class="outcome-label">Faster advisor pickup</div>
+            <div class="outcome-sub">Time-to-context on Bantō handoff</div>
+          </div>
+          <div class="outcome-stat">
+            <div class="outcome-num"><em>3–5</em>×</div>
+            <div class="outcome-label">Journey throughput</div>
+            <div class="outcome-sub">Composed vs traditional campaign assembly</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spine-card">
+        <div class="spine-card-label">The spine · how this stays safe</div>
+        <div class="spine-row">
+          <span class="spine-cat">Provenance</span>
+          <span class="spine-val">Every signal sourced. 0P–3P, with confidence.</span>
+        </div>
+        <div class="spine-row">
+          <span class="spine-cat">Voice</span>
+          <span class="spine-val">Brand-voice scored. Auto-approve ≥ 0.9.</span>
+        </div>
+        <div class="spine-row">
+          <span class="spine-cat">Permissions</span>
+          <span class="spine-val">Trust Layer enforced. Per-surface guardrails.</span>
+        </div>
+        <div class="spine-row">
+          <span class="spine-cat">Humans</span>
+          <span class="spine-val">In-the-loop on novelty. Advisor owns the relationship.</span>
+        </div>
+        <div class="spine-row">
+          <span class="spine-cat">Reversibility</span>
+          <span class="spine-val">Every action logged. Every signal revocable.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-caption">
+      <div class="demo-caption-num"><span>—</span> vi.</div>
+      <div class="demo-caption-body">
+        These numbers come <em>with</em> the trust layer, not in spite of it. The spine is what makes a luxury brand willing to put an agent in front of a customer who's spent <strong>$8,400 with them this year</strong>.
+      </div>
+    </div>
+  </div>
+  <div class="slide-num"><em>T · 07</em></div>
+</section>
+
+<!-- ============================================================
+     T8 — Credit + CTA
      ============================================================ -->
 <section class="slide" style="background: linear-gradient(180deg, #0d0a08 0%, var(--bg) 100%);">
   <div class="corner-mark">How we built it · where to see it</div>
   <div class="slide-inner">
-    <div class="eyebrow"><span>Built. Not described.</span><span class="eyebrow-counter">T · 06</span></div>
+    <div class="eyebrow"><span>Built. Not described.</span><span class="eyebrow-counter">T · 08</span></div>
 
     <div class="cta-grid">
       <div class="cta-left">
@@ -2143,7 +2478,7 @@ h2.display {
       <div class="cta-final-sub">The Tachibana experience. The Bantō. Sarah's journey. The full architecture.</div>
     </div>
   </div>
-  <div class="slide-num"><em>T · 06</em></div>
+  <div class="slide-num"><em>T · 08</em></div>
 </section>
 
 <!-- Deck navigation UI -->
