@@ -1,0 +1,21 @@
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor noise
+.vscode/
+.idea/
+*.swp
+*~
+
+# Local artifacts
+/dist
+/build
+node_modules/
+
+# Large local renders that shouldn't end up in the repo
+*.mov
+*.avi
+*.mkv
+# (MP4s in /videos ARE tracked — they're the demo assets)
