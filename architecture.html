@@ -1,0 +1,1198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
+<title>Tachibana — AI Retail Advisor · architecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter+Tight:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0b0907;
+  --bg-2: #110d09;
+  --bg-3: #181310;
+  --bg-4: #1f1813;
+  --ink: #f4ede1;
+  --ink-2: #ddd1be;
+  --ink-3: #8a7e6c;
+  --ink-4: #5a5145;
+  --rule: rgba(244, 237, 225, 0.10);
+  --rule-strong: rgba(244, 237, 225, 0.22);
+  --rule-gold: rgba(200, 164, 114, 0.30);
+  --gold: #c8a472;
+  --gold-soft: #d9b988;
+  --gold-deep: #a8814d;
+  --copper: #b07c4e;
+  --sumi: #1a1410;
+  --plum: #6b3a3a;
+  --indigo: #2b3a5a;
+  --serif: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  --jp: 'Noto Serif JP', serif;
+  --sans: 'Inter Tight', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.55;
+  background-image:
+    radial-gradient(ellipse at 15% 0%, rgba(200, 164, 114, 0.05) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 100%, rgba(107, 58, 58, 0.04) 0%, transparent 55%);
+  background-attachment: fixed;
+}
+
+/* Film grain */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='1'/></svg>");
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Ribbon ---------- */
+.ribbon {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(11, 9, 7, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.ribbon-inner {
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 14px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.ribbon-mark {
+  font-family: var(--serif);
+  font-size: 20px;
+  letter-spacing: 0.04em;
+}
+.ribbon-mark em { font-style: italic; font-weight: 500; color: var(--gold-soft); }
+.ribbon-meta {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  display: flex;
+  gap: 32px;
+}
+@media (max-width: 760px) {
+  .ribbon-inner { padding: 12px 20px; }
+  .ribbon-meta { display: none; }
+}
+
+/* ---------- Common container ---------- */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+@media (max-width: 760px) {
+  .container { padding: 0 22px; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 130px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-kanji {
+  position: absolute;
+  top: 80px;
+  right: -40px;
+  font-family: var(--jp);
+  font-size: clamp(180px, 22vw, 360px);
+  color: var(--gold);
+  opacity: 0.07;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-inner { position: relative; z-index: 2; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+}
+.eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+}
+.eyebrow-counter {
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+h1.display {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(54px, 7.5vw, 112px);
+  line-height: 0.98;
+  letter-spacing: -0.014em;
+  color: var(--ink);
+  max-width: 18ch;
+  margin-bottom: 32px;
+}
+.display em {
+  font-style: italic;
+  color: var(--gold-soft);
+  font-weight: 500;
+}
+
+.hero-deck {
+  max-width: 64ch;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin-top: 22px;
+}
+.hero-deck strong { color: var(--ink); font-weight: 600; }
+.hero-deck em { font-style: italic; color: var(--gold-soft); }
+
+.kicker {
+  width: 64px;
+  height: 1px;
+  background: var(--gold);
+  margin: 28px 0;
+}
+
+/* Stats strip below hero */
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 36px;
+  margin-top: 70px;
+  padding: 36px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.stats-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.stats-num {
+  font-family: var(--serif);
+  font-size: 56px;
+  line-height: 1;
+  color: var(--ink);
+  font-weight: 500;
+}
+.stats-num em { font-style: italic; color: var(--gold-soft); }
+.stats-label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 6px;
+}
+.stats-sub {
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.45;
+}
+@media (max-width: 900px) {
+  .stats-strip { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .stats-num { font-size: 44px; }
+}
+@media (max-width: 540px) {
+  .stats-strip { grid-template-columns: 1fr; }
+}
+
+/* ---------- Layer sections ---------- */
+.layer {
+  padding: 110px 0;
+  position: relative;
+  border-top: 1px solid var(--rule);
+}
+.layer:first-of-type { border-top: none; }
+
+.layer-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+@media (max-width: 980px) {
+  .layer-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+.layer-marker {
+  position: sticky;
+  top: 110px;
+  align-self: start;
+}
+@media (max-width: 980px) {
+  .layer-marker { position: static; }
+}
+
+.layer-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 96px;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.6;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+.layer-tag {
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.layer-tag::before {
+  content: '';
+  width: 14px;
+  height: 1px;
+  background: var(--gold);
+}
+.layer-name {
+  font-family: var(--serif);
+  font-size: 48px;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 22px;
+}
+.layer-name em { font-style: italic; color: var(--gold-soft); }
+
+.layer-question {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink-2);
+  line-height: 1.4;
+  padding-left: 18px;
+  border-left: 1px solid var(--rule-gold);
+}
+
+.layer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+.layer-deck {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 64ch;
+}
+.layer-deck strong { color: var(--ink); font-weight: 600; }
+.layer-deck em { font-style: italic; color: var(--gold-soft); }
+
+/* Capability cards */
+.capabilities {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+@media (max-width: 760px) {
+  .capabilities { grid-template-columns: 1fr; }
+}
+
+.cap {
+  background: var(--bg-2);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 24px 26px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s, transform 0.25s;
+}
+.cap:hover {
+  border-color: var(--rule-gold);
+  transform: translateY(-2px);
+}
+.cap-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 6px;
+}
+.cap-name {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+.cap-name em { font-style: italic; color: var(--gold-soft); }
+.cap-vendor {
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.cap-vendor.vendor-merkle { color: var(--gold-deep); }
+.cap-role {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.cap-body {
+  font-size: 13.5px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+.cap-body em { font-style: italic; color: var(--gold-soft); }
+.cap-body strong { color: var(--ink); font-weight: 500; }
+
+/* Use case insight callout */
+.insight {
+  margin-top: 8px;
+  padding: 22px 26px;
+  background: linear-gradient(140deg, #1f1813 0%, #14100c 100%);
+  border: 1px solid var(--rule-gold);
+  border-radius: 6px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  align-items: center;
+}
+.insight-label {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--gold);
+  white-space: nowrap;
+}
+.insight-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.insight-text em { font-style: normal; color: var(--gold-soft); font-weight: 500; }
+@media (max-width: 760px) {
+  .insight { grid-template-columns: 1fr; gap: 12px; }
+  .insight-label { font-size: 26px; }
+}
+
+/* ---------- Diagram strip (between layers) ---------- */
+.flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+  gap: 8px;
+}
+.flow-line {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(180deg, transparent 0%, var(--gold) 50%, transparent 100%);
+}
+.flow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(200, 164, 114, 0.5);
+}
+.flow-label {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 8px;
+}
+
+/* ---------- Build layer (distinct treatment) ---------- */
+.build {
+  padding: 110px 0;
+  border-top: 1px solid var(--rule);
+  background: linear-gradient(180deg, var(--bg) 0%, #0d0a08 100%);
+}
+.build-header {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+  margin-bottom: 48px;
+  align-items: end;
+}
+@media (max-width: 980px) {
+  .build-header { grid-template-columns: 1fr; gap: 24px; }
+}
+
+.build-stack {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+@media (max-width: 980px) {
+  .build-stack { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .build-stack { grid-template-columns: 1fr; }
+}
+
+.build-card {
+  background: var(--bg-2);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 22px 22px 26px;
+  position: relative;
+}
+.build-card-tag {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.build-card-name {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.build-card-name em { font-style: italic; color: var(--gold-soft); }
+.build-card-body {
+  font-size: 12.5px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+.build-quote {
+  margin-top: 56px;
+  padding: 32px 36px;
+  background: linear-gradient(140deg, #2a1f17 0%, #14100c 100%);
+  border: 1px solid var(--rule-gold);
+  border-radius: 6px;
+}
+.build-quote-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 26px;
+  color: var(--ink);
+  line-height: 1.3;
+  max-width: 28ch;
+}
+.build-quote-text em { color: var(--gold-soft); }
+.build-quote-attr {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 18px;
+}
+
+/* ---------- Trust layer (footer) ---------- */
+.trust {
+  padding: 100px 0 90px;
+  border-top: 1px solid var(--rule);
+  position: relative;
+  overflow: hidden;
+}
+.trust-kanji-bg {
+  position: absolute;
+  bottom: -60px;
+  left: -40px;
+  font-family: var(--jp);
+  font-size: clamp(140px, 18vw, 280px);
+  color: var(--gold);
+  opacity: 0.06;
+  line-height: 1;
+  pointer-events: none;
+}
+.trust-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+@media (max-width: 980px) {
+  .trust-inner { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.trust-display {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(40px, 5.4vw, 76px);
+  line-height: 1;
+  letter-spacing: -0.012em;
+  margin-bottom: 26px;
+}
+.trust-display em { font-style: italic; color: var(--gold-soft); }
+.trust-deck {
+  font-size: 17px;
+  color: var(--ink-2);
+  line-height: 1.55;
+  max-width: 56ch;
+}
+.trust-deck strong { color: var(--ink); font-weight: 600; }
+
+.trust-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border: 1px solid var(--rule);
+  background: var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.trust-pillar {
+  background: var(--bg-2);
+  padding: 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.trust-pillar-tag {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.trust-pillar-text {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--ink);
+  font-style: italic;
+}
+
+/* ---------- CTA footer ---------- */
+.cta {
+  padding: 80px 0 110px;
+  border-top: 1px solid var(--rule);
+  background: var(--bg);
+}
+.cta-inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+@media (max-width: 980px) {
+  .cta-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+
+.cta-text h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(36px, 4.6vw, 56px);
+  line-height: 1;
+  margin-bottom: 18px;
+}
+.cta-text h2 em { font-style: italic; color: var(--gold-soft); }
+.cta-text p {
+  font-size: 16px;
+  color: var(--ink-2);
+  line-height: 1.55;
+  max-width: 52ch;
+}
+
+.cta-booth {
+  background: linear-gradient(160deg, #2a1f17 0%, #14100c 100%);
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  padding: 36px 36px;
+  text-align: center;
+}
+.cta-booth-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.cta-booth-headline {
+  font-family: var(--serif);
+  font-size: 38px;
+  color: var(--ink);
+  line-height: 1.05;
+  margin-bottom: 8px;
+}
+.cta-booth-headline em { font-style: italic; color: var(--gold-soft); }
+.cta-booth-sub {
+  font-size: 12.5px;
+  color: var(--ink-2);
+  letter-spacing: 0.06em;
+}
+
+/* Bottom signature */
+.signature {
+  margin-top: 90px;
+  padding-top: 26px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.signature em { font-family: var(--serif); font-style: italic; color: var(--gold-soft); text-transform: none; letter-spacing: 0.04em; }
+
+/* Subtle scroll-triggered entrance */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* Section corner marks */
+.corner-mark {
+  position: absolute;
+  top: 40px;
+  right: 48px;
+  font-family: var(--serif);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+}
+.corner-mark span { color: var(--gold); }
+@media (max-width: 760px) {
+  .corner-mark { right: 22px; top: 24px; font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  <div class="ribbon-inner">
+    <div class="ribbon-mark"><em>Tachibana</em> · Architecture</div>
+    <div class="ribbon-meta">
+      <span>Merkle × Salesforce</span>
+      <span>AI Retail Advisor</span>
+      <span>Connections 2026</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="hero-kanji" aria-hidden="true">番頭</div>
+  <div class="container hero-inner">
+    <div class="eyebrow reveal"><span>The architecture</span><span class="eyebrow-counter">A · 00</span></div>
+
+    <h1 class="display reveal">
+      Built on Salesforce.<br>Built <em>differently.</em>
+    </h1>
+    <div class="kicker reveal"></div>
+    <p class="hero-deck reveal">
+      The Tachibana experience runs on the Salesforce platform — <strong>Commerce Cloud, Agentforce, Data Cloud, Marketing Cloud Advanced, Personalization, Loyalty Management, Service Cloud</strong> — composed through Merkle's <em>Headless 360</em> foundation and assembled by an agentic build layer. No middleware. Same trust layer.
+    </p>
+    <p class="hero-deck reveal">
+      What follows is the architecture in three strata: <em>the Surface</em> Sarah touches, <em>the Profile</em> the system holds, and <em>the Orchestration</em> that acts on her behalf — with the Einstein Trust Layer governing every read and every action.
+    </p>
+
+    <div class="stats-strip reveal">
+      <div class="stats-item">
+        <div class="stats-num"><em>3</em></div>
+        <div class="stats-label">Architectural strata</div>
+        <div class="stats-sub">Surface · Profile · Orchestration</div>
+      </div>
+      <div class="stats-item">
+        <div class="stats-num">15+</div>
+        <div class="stats-label">Salesforce capabilities</div>
+        <div class="stats-sub">Native primitives, end to end</div>
+      </div>
+      <div class="stats-item">
+        <div class="stats-num"><em>1</em></div>
+        <div class="stats-label">Trust layer</div>
+        <div class="stats-sub">Einstein · provenance preserved</div>
+      </div>
+      <div class="stats-item">
+        <div class="stats-num">0</div>
+        <div class="stats-label">Middleware boxes</div>
+        <div class="stats-sub">Headless 360 · CLI · agentic build</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LAYER 1 — THE SURFACE
+     ============================================================ -->
+<section class="layer">
+  <div class="corner-mark">Layer · <span>01</span></div>
+  <div class="container">
+    <div class="layer-grid">
+      <div class="layer-marker reveal">
+        <div class="layer-num">01</div>
+        <div class="layer-tag">Layer one</div>
+        <h2 class="layer-name">The <em>Surface.</em></h2>
+        <div class="layer-question">
+          Where Sarah, the Bantō, and her advisor meet — every channel a different surface, every profile the same.
+        </div>
+      </div>
+
+      <div class="layer-content">
+        <p class="layer-deck reveal">
+          The places the experience actually <em>happens.</em> The Tachibana storefront, the Bantō she talks to, the console her advisor opens, the email that lands at 8:14 PM. Each surface is a different render of the same customer — fed by the same profile, governed by the same guardrails.
+        </p>
+
+        <div class="capabilities">
+          <div class="cap reveal">
+            <div class="cap-header">
+              <div class="cap-name"><em>Headless 360</em></div>
+              <div class="cap-vendor vendor-merkle">Merkle</div>
+            </div>
+            <div class="cap-role">The storefront foundation</div>
+            <div class="cap-body">
+              Composable, brand-skinned React build sitting on Salesforce primitives. <strong>Tachibana.com</strong> stood up on it; the chrome, the catalog logic, the agent surface, the recompose behavior — all in one foundation, deployable many times.
+            </div>
+          </div>
+
+          <div class="cap reveal">
+            <div class="cap-header">
+              <div class="cap-name">Agentforce</div>
+              <div class="cap-vendor">Salesforce</div>
+            </div>
+            <div class="cap-role">The Bantō, reasoning</div>
+            <div class="cap-body">
+              Atlas Reasoning Engine grounded in the customer profile. The <em>Bantō</em> as a configured agent: declared preferences honored, surface recomposed on intent, every reply explainable. Hands off to the human advisor with full provenance.
+            </div>
+          </div>
+
+          <div class="cap reveal">
+            <div class="cap-header">
+              <div class="cap-name">B2C Commerce MCP</div>
+              <div class="cap-vendor">Salesforce</div>
+            </div>
+            <div class="cap-role">Commerce, by A2A</div>
+            <div class="cap-body">
+              SCAPI exposed through MCP/A2A endpoints so Agentforce can read product, inventory, and pricing in real time. Same pattern works against B2B/D2C Commerce on Core via the Commerce Merchant Agent Toolkit.
+            </div>
+          </div>
+
+          <div class="cap reveal">
+            <div class="cap-header">
+              <div class="cap-name">Personalization</div>
+              <div class="cap-vendor">Salesforce</div>
+            </div>
+            <div class="cap-role">The page that listens</div>
+            <div class="cap-body">
+              The Data Cloud-native decisioning engine (formerly Marketing Cloud Personalization). Sitemap captures intent in flight. The hero, the recompose tiles, the email subject line — all <em>decisions</em>, not static layouts.
+            </div>
+          </div>
+
+          <div class="cap reveal">
+            <div class="cap-header">
+              <div class="cap-name">Service Cloud<br>+ Sales Cloud</div>
+              <div class="cap-vendor">Salesforce</div>
+            </div>
+            <div class="cap-role">The advisor's console</div>
+            <div class="cap-body">
+              The clienteling surface. Sarah's full record, the Bantō's live handoff transcript, the curated collection ready to send. <em>"Same profile. Different surface."</em>
+            </div>
+          </div>
+
+          <div class="cap reveal">
+            <div class="cap-header">
+              <div class="cap-name">Interactions SDK</div>
+              <div class="cap-vendor">Salesforce</div>
+            </div>
+            <div class="cap-role">The signal pipeline</div>
+            <div class="cap-body">
+              Real-time event capture from every surface — page dwell, search, basket changes — streaming into Data Cloud for the agent to read on the next turn. <strong>No middleware. Native pipe.</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="insight reveal">
+          <div class="insight-label">In Sarah's story —</div>
+          <div class="insight-text">
+            The Bantō greets her by name and sets the page <em>travel-ready</em> before she finishes typing. Her advisor opens the console and reads the same conversation on a different surface.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="flow reveal" aria-hidden="true">
+  <div class="flow-line"></div>
+  <div class="flow-dot"></div>
+  <div class="flow-line"></div>
+  <div class="flow-label">Fed by</div>
+</div>
+
+<!-- ============================================================
+     LAYER 2 — THE PROFILE
+     ============================================================ -->
+<section class="layer">
+  <div class="corner-mark">Layer · <span>02</span></div>
+  <div class="container">
+    <div class="layer-grid">
+      <div class="layer-marker reveal">
+        <div class="layer-num">02</div>
+        <div class="layer-tag">Layer two</div>
+        <h2 class="layer-name">The <em>Profile.</em></h2>
+        <div class="layer-question">
+          What the system knows about Sarah — and how it knows it. One profile. Every signal. Provenance preserved.
+        </div>
+      </div>
+
+      <div class="layer-content">
+        <p class="layer-deck reveal">
+          The unified <em>customer</em> — not a record, not a CDP segment, but a continually-resolving identity with declared, observed, inferred, partner, and appended signals stacked alongside one another. Each signal tagged with provenance and confidence so the agent <em>knows what it knows, and how it knows it.</em>
+        </p>
+
+        <div class="capabilities">
+          <div class="cap reveal">
+            <div class="cap-header">
+              <div class="cap-name">Data Cloud</div>
+              <div class="cap-vendor">Salesforce</div>
+            </div>
+            <div class="cap-role">The agentic data layer</div>
+            <div class="cap-body">
+              The unified profile, zero-copy connectors to source systems, calculated insights, identity resolution. <strong>Not a duplicative CDP</strong> — the layer that makes Agentforce operable across the rest of the stack.
+            </div>
+          </div>
+
+          <div class="cap reveal">
+            <div class="cap-header">
+              <div class="cap-name"><em>Merkury</em></div>
+              <div class="cap-vendor vendor-merkle">dentsu / Merkle</div>
+            </div>
+            <div class="cap-role">The identity graph</div>
+            <div class="cap-body">
+              Cross-channel identity resolution beyond the authenticated edge — connecting Sarah's authenticated, anonymous, and off-domain signals into one continuous identity. 3P enrichment for life-stage, household, and household economics.
+            </div>
+          </div>
+
+          <div class="cap reveal">
+            <div class="cap-header">
+              <div class="cap-name">Identity Resolution</div>
+              <div class="cap-vendor">Salesforce</div>
+            </div>
+            <div class="cap-role">Three identities, one Sarah</div>
+            <div class="cap-body">
+              Email, device, Merkury graph — collapsed into one resolvable customer with no row duplication, no manual reconciliation, no broken handoffs across Commerce, Service, and Marketing.
+            </div>
+          </div>
+
+          <div class="cap reveal">
+            <div class="cap-header">
+              <div class="cap-name">Loyalty Management</div>
+              <div class="cap-vendor">Salesforce</div>
+            </div>
+            <div class="cap-role">Status, tier, history</div>
+            <div class="cap-body">
+              Sarah's Platinum standing, 12-year tenure, gifting history, repair record — all native to the customer object, all available to Agentforce as grounding context. White-glove protocol triggered the moment the agent recognized the event.
+            </div>
+          </div>
+
+          <div class="cap reveal">
+            <div class="cap-header">
+              <div class="cap-name">Calculated Insights</div>
+              <div class="cap-vendor">Salesforce</div>
+            </div>
+            <div class="cap-role">Propensity, lifetime, intent</div>
+            <div class="cap-body">
+              Pre-computed scores running over the unified profile — TTM spend, return propensity, channel preference, life-stage probability. Read by Agentforce on every turn. <strong>Inference at activation speed.</strong>
+            </div>
+          </div>
+
+          <div class="cap reveal">
+            <div class="cap-header">
+              <div class="cap-name">Einstein Trust Layer</div>
+              <div class="cap-vendor">Salesforce</div>
+            </div>
+            <div class="cap-role">The guardrail spine</div>
+            <div class="cap-body">
+              PII masking, prompt grounding, output toxicity scoring, audit trail. Sarah's appended life-stage signal exists in the profile — and is <em>governed out</em> of the Bantō's conversation. The agent knows. It doesn't say.
+            </div>
+          </div>
+        </div>
+
+        <div class="insight reveal">
+          <div class="insight-label">In Sarah's story —</div>
+          <div class="insight-text">
+            The signal stack on T2 — <em>0P → 3P, with confidence scores</em> — is what Data Cloud and Merkury return when Agentforce queries her. The Bantō reads all six layers. It speaks from only the ones it's allowed to.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="flow reveal" aria-hidden="true">
+  <div class="flow-line"></div>
+  <div class="flow-dot"></div>
+  <div class="flow-line"></div>
+  <div class="flow-label">Acted on by</div>
+</div>
+
+<!-- ============================================================
+     LAYER 3 — THE ORCHESTRATION
+     ============================================================ -->
+<section class="layer">
+  <div class="corner-mark">Layer · <span>03</span></div>
+  <div class="container">
+    <div class="layer-grid">
+      <div class="layer-marker reveal">
+        <div class="layer-num">03</div>
+        <div class="layer-tag">Layer three</div>
+        <h2 class="layer-name">The <em>Orchestration.</em></h2>
+        <div class="layer-question">
+          What the system does on her behalf — composed for Sarah, dispatched across channels, governed end-to-end.
+        </div>
+      </div>
+
+      <div class="layer-content">
+        <p class="layer-deck reveal">
+          Not <em>"described a campaign, generated copy."</em> The agent takes one person's full context and orchestrates a multi-step, multi-channel journey around <strong>her</strong> goal — not a segment she happened to land in. Email, SMS, CTV, onsite — all <em>composed</em>, not pre-built.
+        </p>
+
+        <div class="capabilities">
+          <div class="cap reveal">
+            <div class="cap-header">
+              <div class="cap-name">Marketing Cloud<br>Advanced</div>
+              <div class="cap-vendor">Salesforce</div>
+            </div>
+            <div class="cap-role">The journey runtime</div>
+            <div class="cap-body">
+              The dispatch surface — Journey Builder, multi-channel send, real-time triggers, brand-voice scoring. Where the composed journey actually <em>runs</em> against email, SMS, and onsite once the agent has assembled it.
+            </div>
+          </div>
+
+          <div class="cap reveal">
+            <div class="cap-header">
+              <div class="cap-name">Agentforce<br>Orchestration</div>
+              <div class="cap-vendor">Salesforce</div>
+            </div>
+            <div class="cap-role">The composer</div>
+            <div class="cap-body">
+              Reads Sarah's context, decides the beats — <strong>Day 0 email → Day 14 SMS → Day 20 CTV → Day 35 prep</strong> — and writes the journey into Marketing Cloud. Confidence-scored. Auto-approved within governed lanes.
+            </div>
+          </div>
+
+          <div class="cap reveal">
+            <div class="cap-header">
+              <div class="cap-name">Salesforce<br>Personalization</div>
+              <div class="cap-vendor">Salesforce</div>
+            </div>
+            <div class="cap-role">The decisioning brain</div>
+            <div class="cap-body">
+              Real-time decision evaluation across the surface — which hero, which collection, which subject line, for <em>this</em> person, on <em>this</em> session. The recompose is not pre-built; it is decided.
+            </div>
+          </div>
+
+          <div class="cap reveal">
+            <div class="cap-header">
+              <div class="cap-name"><em>Merkury</em> Activation</div>
+              <div class="cap-vendor vendor-merkle">dentsu / Merkle</div>
+            </div>
+            <div class="cap-role">Beyond the authenticated edge</div>
+            <div class="cap-body">
+              CTV, programmatic, social — Merkury-targeted 1:1 placement against the same profile that drives email. The <em>Atelier film</em> reaches Sarah on the screen she happens to be on. <strong>Same customer. Different channel.</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="insight reveal">
+          <div class="insight-label">In Sarah's story —</div>
+          <div class="insight-text">
+            T5's 4-beat journey — <em>"This journey did not exist ninety seconds ago"</em> — is what Agentforce hands to Marketing Cloud Advanced after reading her profile. Composed for Sarah. Only for Sarah.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BUILD LAYER — How it was assembled
+     ============================================================ -->
+<section class="build">
+  <div class="corner-mark">Build · <span>04</span></div>
+  <div class="container">
+    <div class="build-header">
+      <div class="layer-marker reveal">
+        <div class="layer-num">04</div>
+        <div class="layer-tag">The build</div>
+        <h2 class="layer-name">How it was <em>assembled.</em></h2>
+      </div>
+      <div>
+        <p class="layer-deck reveal">
+          The same architecture you've just read could take a quarter. This one took <em>weeks</em> — because the work that used to be the bottleneck (clicks through Setup, manual metadata wrangling, copy-and-paste flow construction) is now the <strong>throughput.</strong>
+        </p>
+      </div>
+    </div>
+
+    <div class="build-stack">
+      <div class="build-card reveal">
+        <div class="build-card-tag">Foundation</div>
+        <div class="build-card-name"><em>Headless 360</em></div>
+        <div class="build-card-body">
+          Merkle's composable Salesforce build. Brand-skinned once, deployable many times. The Tachibana site, the Bantō surface, the clienteling console — all stood up on it.
+        </div>
+      </div>
+      <div class="build-card reveal">
+        <div class="build-card-tag">Build assistant</div>
+        <div class="build-card-name">Claude <em>Code</em></div>
+        <div class="build-card-body">
+          Agentic build in the IDE. Reads the SFDX project, reasons over metadata, generates Apex / LWC / Flows / Personalization snippets. The configuration layer of Salesforce, expressed as text.
+        </div>
+      </div>
+      <div class="build-card reveal">
+        <div class="build-card-tag">Deployment</div>
+        <div class="build-card-name">Salesforce <em>CLI</em></div>
+        <div class="build-card-body">
+          <span style="font-family: var(--mono); font-size: 11px; letter-spacing: 0; color: var(--ink-3);">sf project deploy start</span><br>
+          Programmatic deployment of the full org. Scratch orgs, sandboxes, prod — same CLI, same metadata source format, same audit trail.
+        </div>
+      </div>
+      <div class="build-card reveal">
+        <div class="build-card-tag">Native surface</div>
+        <div class="build-card-name">LWC + <em>Apex</em></div>
+        <div class="build-card-body">
+          For the pieces that live inside Salesforce — the advisor console, the loyalty actions, the trigger flows — native components. <strong>No wrapper. No middleware.</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="build-quote reveal">
+      <div class="build-quote-text">
+        Configuration is the <em>throughput.</em> Not the bottleneck.
+      </div>
+      <div class="build-quote-attr">— Merkle delivery thesis · Connections 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRUST FOOTER
+     ============================================================ -->
+<section class="trust">
+  <div class="trust-kanji-bg" aria-hidden="true">信</div>
+  <div class="container">
+    <div class="trust-inner">
+      <div class="reveal">
+        <div class="eyebrow"><span>The spine</span><span class="eyebrow-counter">A · 05</span></div>
+        <h2 class="trust-display">
+          One trust layer. <em>Every read. Every action.</em>
+        </h2>
+        <p class="trust-deck">
+          The Einstein Trust Layer is not a feature on top of the architecture — it <strong>is</strong> the connective tissue. Every Bantō reply, every clienteling handoff, every composed journey passes through prompt grounding, PII masking, output scoring, and an immutable audit trail. <em>This is why luxury can put it in production.</em>
+        </p>
+      </div>
+
+      <div class="trust-pillars reveal">
+        <div class="trust-pillar">
+          <div class="trust-pillar-tag">01 · Prompt grounding</div>
+          <div class="trust-pillar-text">Every model call grounded in the customer profile.</div>
+        </div>
+        <div class="trust-pillar">
+          <div class="trust-pillar-tag">02 · PII masking</div>
+          <div class="trust-pillar-text">Sensitive fields never leave the org boundary.</div>
+        </div>
+        <div class="trust-pillar">
+          <div class="trust-pillar-tag">03 · Output scoring</div>
+          <div class="trust-pillar-text">Toxicity, brand-voice, and policy on every reply.</div>
+        </div>
+        <div class="trust-pillar">
+          <div class="trust-pillar-tag">04 · Audit trail</div>
+          <div class="trust-pillar-text">Provenance preserved — what the agent knew, said, did.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA
+     ============================================================ -->
+<section class="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-text reveal">
+        <h2>See it <em>live.</em></h2>
+        <p>The Tachibana experience. The Bantō. Sarah's full journey. The architecture you've just read — running, on a luxury storefront, in real time.</p>
+      </div>
+      <div class="cta-booth reveal">
+        <div class="cta-booth-eyebrow">Connections 2026 · in person</div>
+        <div class="cta-booth-headline">Booth <em>270</em> · Merkle</div>
+        <div class="cta-booth-sub">Session 1787 · June 4, 1:00 PM CT · Content Pavilion Stage 4</div>
+      </div>
+    </div>
+
+    <div class="signature">
+      <span>Merkle · Salesforce Connections 2026</span>
+      <em>— composed for Sarah, and only for Sarah.</em>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  // Scroll-triggered reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+  reveals.forEach((el) => observer.observe(el));
+})();
+</script>
+
+</body>
+</html>
