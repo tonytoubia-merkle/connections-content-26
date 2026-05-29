@@ -44,3 +44,13 @@ iframe.demo-frame {
   border: 0;
   display: block;
 }
+
+/* Reveal.js defaults media (img/video/iframe) to max-width/height:95%, which
+   leaves a white gap on the right/bottom inside the frame. Override with a
+   selector specific enough to beat `.reveal section iframe`. */
+.reveal .slides section iframe.demo-frame { max-width: none; max-height: none; }
+
+/* Give demo slides more of the stage than the deck's default 90px/100px padding,
+   so the browser window fills the frame instead of floating in margin.
+   Specific enough to beat the deck's `.reveal .slides > section`. */
+.reveal .slides section[data-demo-scene] { padding: 64px 64px 52px; }

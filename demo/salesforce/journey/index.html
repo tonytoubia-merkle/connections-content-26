@@ -431,6 +431,23 @@ function renderBeat(index, direction) {
   present(journeyActions, index >= 5);
   show(journeyActions, index >= 5);
   show(throughLine, index >= 5);
+
+  // — Auto-scroll so the content for this beat is in view (it lives below the fold) —
+  focusBeat(index);
+}
+
+// Scroll the focal element for the current beat into view inside the iframe.
+function focusBeat(index) {
+  const target = index >= 5 ? throughLine
+               : index >= 4 ? approvalBlock
+               : index >= 3 ? pushBlock
+               : index >= 2 ? emailBlock
+               : null;
+  // Wait for collapse/show transitions to settle before measuring.
+  requestAnimationFrame(() => setTimeout(() => {
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    else window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 80));
 }
 
 startSceneRuntime({ total: 5, renderBeat });
