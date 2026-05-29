@@ -35,6 +35,39 @@ export function bindRevealDemoSlides(Reveal) {
     }
   };
 
+  // Drive the scene forward/back from any input (key, click, scroll). When the
+  // scene is already complete (or at its start), hand off to Reveal for the
+  // next/previous slide so click/scroll can carry the whole talk.
+  const navigate = (dir) => {
+    if (!onDemoSlide) return;
+    if (dir === 'fwd') {
+      if (sceneState && sceneState.complete) Reveal.next();
+      else postToScene('demo:advance');
+    } else {
+      if (sceneState && sceneState.atStart) Reveal.prev();
+      else postToScene('demo:rewind');
+    }
+  };
+
+  // Click + scroll also advance/rewind. Listeners live on the (same-origin)
+  // iframe document, bound once per iframe.
+  const navBound = new WeakSet();
+  const attachNav = (iframe) => {
+    const doc = iframe.contentDocument;
+    if (!doc || navBound.has(iframe)) return;
+    navBound.add(iframe);
+    doc.addEventListener('click', () => navigate('fwd'));
+    let lastWheel = 0;
+    doc.addEventListener('wheel', (e) => {
+      e.preventDefault();                       // scroll drives beats, not the page
+      if (Math.abs(e.deltaY) < 6) return;
+      const now = Date.now();
+      if (now - lastWheel < 380) return;        // one gesture = one beat
+      lastWheel = now;
+      navigate(e.deltaY > 0 ? 'fwd' : 'back');
+    }, { passive: false });
+  };
+
   window.addEventListener('message', (e) => {
     // Only trust state from the iframe of the slide we're currently on.
     if (!currentIframe || e.source !== currentIframe.contentWindow) return;
@@ -62,11 +95,12 @@ export function bindRevealDemoSlides(Reveal) {
     sceneState = null;
     if (currentIframe) {
       // Reset to beat 0 each time we (re-)enter, so the scene is repeatable.
-      const reset = () => postToScene('demo:reset');
-      const loaded = currentIframe.contentDocument
-        && currentIframe.contentDocument.readyState === 'complete';
-      if (loaded) reset();
-      else currentIframe.addEventListener('load', reset, { once: true });
+      const iframe = currentIframe;
+      const onReady = () => { postToScene('demo:reset'); attachNav(iframe); };
+      const loaded = iframe.contentDocument
+        && iframe.contentDocument.readyState === 'complete';
+      if (loaded) onReady();
+      else iframe.addEventListener('load', onReady, { once: true });
     }
   };
 

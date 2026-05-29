@@ -149,6 +149,31 @@
           </div>
         </div>
 
+        <!-- profileSection360: Merkury appended profile — beat >= 2 -->
+        <div id="merkurySection" class="section-card" data-min="2">
+          <div class="section-header">
+            <span class="section-title">Merkury · Appended Profile</span>
+            <span class="badge" style="background:#fff3e0;color:#e65100;border:1px solid #ffcc80;font-size:10px;font-weight:600;padding:2px 8px;border-radius:12px;letter-spacing:.3px;">appended · identity graph</span>
+            <span class="expand-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+            </span>
+          </div>
+          <div class="section-body">
+            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:9px 20px;">
+              <div><div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.6px;">Household</div><div style="font-size:13px;color:#333;">Married · no children at home</div></div>
+              <div><div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.6px;">Affluence band</div><div style="font-size:13px;color:#333;">HNW · top 2% net worth</div></div>
+              <div><div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.6px;">Travel</div><div style="font-size:13px;color:#333;">Frequent international · APAC</div></div>
+              <div><div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.6px;">Category affinities</div><div style="font-size:13px;color:#333;">Heritage maisons · leather · fragrance</div></div>
+              <div><div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.6px;">Reachable on</div><div style="font-size:13px;color:#333;">Email (preferred) · SMS opt-in</div></div>
+              <div><div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.6px;">Identity match</div><div style="font-size:13px;color:#333;">MID resolved · 0.96 confidence</div></div>
+            </div>
+            <div class="prov-row" style="margin-top:10px;">
+              <span class="badge" style="background:#fff3e0;color:#e65100;border:1px solid #ffcc80;">appended · Merkury MID</span>
+              <span class="badge badge-inferred">inferred · modeled attributes</span>
+            </div>
+          </div>
+        </div>
+
         <!-- profileSection360: Consultation Notes — beat >= 4 -->
         <div id="notesSection" class="section-card" data-min="4">
           <div class="section-header">
@@ -255,17 +280,17 @@
             <p class="no-customer-msg">Select a customer to start the co-pilot</p>
           </div>
 
-          <!-- Greeting agent bubble: beat >= 3 -->
+          <!-- Briefing agent bubble (employee-facing): beat >= 3 -->
           <div id="greetingMsg" class="msg-container msg-agent" data-min="3">
             <div class="msg-bubble bubble-agent">
-              <p class="msg-text">Welcome back, Sarah — wonderful to see you at the maison again. Twelve years with Maison Tachibana; thank you. How may I help today?</p>
+              <p class="msg-text">Heads up — <strong>Sarah Chen</strong> just checked in. Platinum, 12 years with the maison; one of our top clients. She likes an unhurried, personal visit and usually shops around an occasion — let her lead. Greet her by name; last visit was the spring fragrance launch. I'll listen in and flag anything worth capturing.</p>
             </div>
           </div>
 
-          <!-- Recompose agent bubble: beat >= 5 -->
+          <!-- Recompose agent bubble (employee-facing): beat >= 5 -->
           <div id="recomposeMsg" class="msg-container msg-agent" data-min="5">
             <div class="msg-bubble bubble-agent">
-              <p class="msg-text">I've logged the Kyoto wedding to Sarah's profile and lined up a few directions.</p>
+              <p class="msg-text">I saw your note — Sarah's attending a wedding in Kyoto this fall. I've captured it on her profile and set a follow-up. Here are a few pieces to put in front of her:</p>
               <div class="capture-notifications">
                 <div class="capture-item">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
@@ -276,8 +301,26 @@
                   Follow-up task created: white-glove check-in before the event
                 </div>
               </div>
+              <!-- Product recommendations -->
+              <div class="copilot-recs" style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">
+                <div class="rec-card" style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5e5e5;border-radius:8px;padding:7px 9px;">
+                  <span style="width:42px;height:42px;border-radius:6px;flex-shrink:0;background:linear-gradient(135deg,#3a2f25,#8a6a3c);"></span>
+                  <span style="flex:1;min-width:0;"><span style="display:block;font-size:12px;font-weight:600;color:#333;">Silk Evening Wrap</span><span style="display:block;font-size:11px;color:#888;">Maison Tachibana</span></span>
+                  <span style="font-size:12px;font-weight:600;color:#1565c0;white-space:nowrap;">$1,280</span>
+                </div>
+                <div class="rec-card" style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5e5e5;border-radius:8px;padding:7px 9px;">
+                  <span style="width:42px;height:42px;border-radius:6px;flex-shrink:0;background:linear-gradient(135deg,#1a1a2e,#3a3a52);"></span>
+                  <span style="flex:1;min-width:0;"><span style="display:block;font-size:12px;font-weight:600;color:#333;">Atelier Leather Clutch</span><span style="display:block;font-size:11px;color:#888;">Maison Tachibana</span></span>
+                  <span style="font-size:12px;font-weight:600;color:#1565c0;white-space:nowrap;">$2,450</span>
+                </div>
+                <div class="rec-card" style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5e5e5;border-radius:8px;padding:7px 9px;">
+                  <span style="width:42px;height:42px;border-radius:6px;flex-shrink:0;background:linear-gradient(135deg,#6b4f2a,#caa46a);"></span>
+                  <span style="flex:1;min-width:0;"><span style="display:block;font-size:12px;font-weight:600;color:#333;">Travel Fragrance Case</span><span style="display:block;font-size:11px;color:#888;">Maison Tachibana</span></span>
+                  <span style="font-size:12px;font-weight:600;color:#1565c0;white-space:nowrap;">$390</span>
+                </div>
+              </div>
               <div class="suggestion-chips">
-                <button class="suggestion-chip" type="button">Show gift edit</button>
+                <button class="suggestion-chip" type="button">Add all to consult</button>
                 <button class="suggestion-chip" type="button">Build travel kit</button>
                 <button class="suggestion-chip" type="button">Schedule follow-up</button>
               </div>
