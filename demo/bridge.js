@@ -57,6 +57,13 @@ export function bindRevealDemoSlides(Reveal) {
     if (!doc || navBound.has(iframe)) return;
     navBound.add(iframe);
     doc.addEventListener('click', () => navigate('fwd'));
+    // Arrow/space/page keys while the IFRAME has focus (e.g. after a click
+    // inside it) never reach the deck's parent-document handler. Catch them
+    // here too so arrows always advance — whether the deck or the iframe is focused.
+    doc.addEventListener('keydown', (e) => {
+      if (FORWARD.has(e.key)) { e.preventDefault(); navigate('fwd'); }
+      else if (BACK.has(e.key)) { e.preventDefault(); navigate('back'); }
+    });
     let lastWheel = 0;
     doc.addEventListener('wheel', (e) => {
       e.preventDefault();                       // scroll drives beats, not the page
