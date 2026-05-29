@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Agentic Marketing — Journey (Maison Tachibana)</title>
+<link rel="stylesheet" href="journey.css" />
+</head>
+<body>
+<div class="stage">
+
+  <!-- ════════════════ Journey Flow Card ════════════════ -->
+  <section class="journey-flow-container">
+
+    <!-- Header -->
+    <div class="journey-header">
+      <div class="header-left">
+        <div class="contact-avatar"><span>SC</span></div>
+        <div class="header-info">
+          <h2 class="contact-name">Sarah Chen</h2>
+          <p class="contact-email">sarah.chen@email.com</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <span class="status-badge status-pending" id="statusBadge">Pending Review</span>
+      </div>
+    </div>
+
+    <!-- Event banner -->
+    <div class="event-banner">
+      <div class="event-icon">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="#f43f5e" aria-hidden="true">
+          <path d="M7 2v2H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm12 6v11H5V8h14zM7 11v2h2v-2H7zm4 0v2h2v-2h-2zm4 0v2h2v-2h-2z"/>
+        </svg>
+      </div>
+      <div class="event-details">
+        <span class="event-type">Wedding — Kyoto, Japan · attending as guest</span>
+        <span class="event-date">this fall</span>
+        <span class="event-countdown">in 128 days</span>
+      </div>
+    </div>
+
+    <!-- Audience callout -->
+    <div class="audience-callout reveal" id="audienceCallout">
+      <span class="audience-pill">
+        <span class="dot"></span>
+        Audience: Sarah Chen (1:1 segment) · Loyalty: Platinum
+      </span>
+    </div>
+
+    <!-- Timeline -->
+    <div class="flow-timeline-section">
+      <h3 class="section-title">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="#706e6b" aria-hidden="true"><path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z"/></svg>
+        Marketing Flow Timeline
+      </h3>
+
+      <div class="flow-timeline" id="timeline">
+        <!-- Step 1 — Email -->
+        <div class="timeline-node-wrapper">
+          <div class="timeline-step" data-step="1" id="step1">
+            <div class="step-number">1</div>
+            <div class="channel-icon channel-email">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 4.236V18h16V8.236l-8 5-8-5zM18.97 6H5.03L12 10.357 18.97 6z"/></svg>
+            </div>
+            <span class="step-channel-label">Email</span>
+            <div class="step-status-indicator">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 — Push -->
+        <div class="timeline-node-wrapper">
+          <div class="timeline-connector">
+            <div class="connector-line"></div>
+            <span class="connector-delay">+3 days</span>
+          </div>
+          <div class="timeline-step" data-step="2" id="step2">
+            <div class="step-number">2</div>
+            <div class="channel-icon channel-push">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2zm6-6V11a6 6 0 0 0-4-5.66V4a2 2 0 0 0-4 0v1.34A6 6 0 0 0 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+            </div>
+            <span class="step-channel-label">Push</span>
+            <div class="step-status-indicator">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 — Media/Ads -->
+        <div class="timeline-node-wrapper">
+          <div class="timeline-connector">
+            <div class="connector-line"></div>
+            <span class="connector-delay">+7 days</span>
+          </div>
+          <div class="timeline-step" data-step="3" id="step3">
+            <div class="step-number">3</div>
+            <div class="channel-icon channel-media">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10v4h4l5 5V5L7 10H3zm13.5 2a4.5 4.5 0 0 0-2.5-4.03v8.05A4.5 4.5 0 0 0 16.5 12zM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06a9 9 0 0 0 0-17.54z"/></svg>
+            </div>
+            <span class="step-channel-label">Media / Ads</span>
+            <div class="step-status-indicator">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 — SMS -->
+        <div class="timeline-node-wrapper">
+          <div class="timeline-connector">
+            <div class="connector-line"></div>
+            <span class="connector-delay">+14 days</span>
+          </div>
+          <div class="timeline-step" data-step="4" id="step4">
+            <div class="step-number">4</div>
+            <div class="channel-icon channel-sms">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2zm3 6v2h2v-2H7zm4 0v2h2v-2h-2zm4 0v2h2v-2h-2z"/></svg>
+            </div>
+            <span class="step-channel-label">SMS clienteling</span>
+            <div class="step-status-indicator">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- End node -->
+        <div class="timeline-node-wrapper">
+          <div class="timeline-connector"><div class="connector-line"></div></div>
+          <div class="timeline-end-node" id="endNode">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1.2 14.2-4-4 1.4-1.4 2.6 2.6 5.6-5.6 1.4 1.4-7 7z"/></svg>
+            <span>Complete</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ready / Send action bar -->
+    <div class="journey-actions reveal" id="journeyActions">
+      <div class="action-info">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 7h2v2h-2V7zm0 4h2v6h-2v-6zm1-9a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/></svg>
+        <span>All steps approved — orchestrated across email, push, paid media, and SMS.</span>
+      </div>
+      <button type="button" class="btn-send" id="sendBtn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+        Send to Marketing Flow
+      </button>
+    </div>
+  </section>
+
+  <!-- ════════════════ Preview area ════════════════ -->
+  <div class="preview-grid">
+
+    <!-- Email preview -->
+    <div class="preview-block reveal" id="emailBlock">
+      <div class="block-title">Step 1 · Email — Customer View</div>
+      <div class="email-preview">
+        <div class="email-header">
+          <div class="email-header-row">
+            <span class="email-from">Maison Tachibana</span>
+            <span class="email-date">Today</span>
+          </div>
+          <div class="email-to">To: Sarah Chen &lt;sarah.chen@email.com&gt;</div>
+          <div class="email-subject"><strong>Sarah — your Kyoto edit, curated.</strong></div>
+        </div>
+
+        <div class="email-body">
+          <div class="hero-image-container">
+            <div class="hero-art"></div>
+            <div class="hero-torii">
+              <svg viewBox="0 0 120 150" aria-hidden="true">
+                <g fill="#1a1413" opacity="0.55">
+                  <rect x="6" y="34" width="108" height="9"/>
+                  <path d="M2 24 L118 24 L110 33 L10 33 Z"/>
+                  <rect x="22" y="43" width="13" height="107"/>
+                  <rect x="85" y="43" width="13" height="107"/>
+                  <rect x="35" y="56" width="50" height="7"/>
+                </g>
+              </svg>
+            </div>
+            <div class="hero-text-overlay">
+              <h1 class="hero-headline">An occasion in Kyoto.</h1>
+              <p class="hero-subheadline">Pieces for the guest list, the gift, and the journey.</p>
+              <a href="#" class="hero-cta">Shop Now</a>
+            </div>
+          </div>
+
+          <div class="email-content-wrapper">
+            <div class="email-content">
+              <p>Dear Sarah,</p>
+              <p>We hear you're traveling to Kyoto this autumn to celebrate a dear friend's wedding. What a moment — the temples in their fall colour, an evening reception, a gift chosen with care.</p>
+              <p>We've curated a small edit for the occasion: refined pieces for the guest, something considered for the couple, and quiet luxuries for the journey there and back.</p>
+            </div>
+
+            <div class="product-section-inline">
+              <div class="product-grid-inline">
+                <div class="product-card-inline">
+                  <div class="product-card-image-inline pc-tote">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="#3a2c20"><path d="M6 7V6a6 6 0 0 1 12 0v1h3v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7h3zm2 0h8V6a4 4 0 0 0-8 0v1z"/></svg>
+                  </div>
+                  <p class="product-card-name-inline">Atelier Leather Tote</p>
+                </div>
+                <div class="product-card-inline">
+                  <div class="product-card-image-inline pc-fragrance">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="#5a2c3c"><path d="M9 2h6v3h-1v2.2A6 6 0 0 1 18 13v6a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3v-6a6 6 0 0 1 4-5.8V5H9V2zm-1 12h8v-1a4 4 0 0 0-8 0v1z"/></svg>
+                  </div>
+                  <p class="product-card-name-inline">Travel Fragrance Case</p>
+                </div>
+                <div class="product-card-inline">
+                  <div class="product-card-image-inline pc-wrap">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="#2f3d4c"><path d="M4 4c4 2 4 14 0 16 4-1 7-1 8 0 1-1 4-1 8 0-4-2-4-14 0-16-4 1-7 1-8 0-1 1-4 1-8 0z"/></svg>
+                  </div>
+                  <p class="product-card-name-inline">Silk Evening Wrap</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="email-signature">
+              <p>With love,</p>
+              <p class="signature-name">The Maison Tachibana Team</p>
+            </div>
+          </div>
+
+          <div class="email-footer">
+            <p class="footer-logo">MAISON TACHIBANA</p>
+            <p class="footer-tagline">The art of the considered gift.</p>
+            <p class="footer-links">
+              <a href="#">Unsubscribe</a> | <a href="#">View in Browser</a> | <a href="#">Privacy Policy</a>
+            </p>
+            <p class="footer-address">Maison Tachibana · Ginza, Tokyo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Push widget -->
+    <div class="preview-block reveal" id="pushBlock">
+      <div class="block-title">Step 2 · Push Notification — Customer View</div>
+      <div class="push-preview">
+        <div class="push-notification">
+          <div class="push-icon"><span class="push-icon-text">信</span></div>
+          <div class="push-content">
+            <div class="push-app-name">Maison Tachibana</div>
+            <div class="push-title">Your Kyoto edit is waiting</div>
+            <div class="push-body">A few quiet luxuries for the journey — chosen for you, Sarah.</div>
+          </div>
+          <div class="push-time">now</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Merkury media panel -->
+    <div class="preview-block reveal" id="mediaBlock">
+      <div class="block-title">Step 3 · Paid Media — Activation</div>
+      <div class="media-preview-frame">
+        <div class="media-preview-header">
+          <span class="media-brand">MERKURY</span>
+          <span class="media-label">Paid Media Activation</span>
+        </div>
+        <div class="media-preview-body">
+          <div class="media-platform-row">
+            <div class="merkury-mark">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 4a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>
+            </div>
+            <div>
+              <p class="media-platform-name">Connected TV + Social</p>
+              <p class="media-format-name">15s video · responsive display</p>
+            </div>
+            <span class="media-reach-tag">1:1 addressable reach</span>
+          </div>
+          <p class="media-brief-label">Creative Brief</p>
+          <pre class="media-brief-text">Reinforce the Kyoto edit with cinematic autumn visuals — temple light, travel, the considered gift. Suppress if Sarah has already purchased. Platinum-tier audience, 1:1 addressable via Merkury identity.</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Approval card / inbox row -->
+    <div class="preview-block reveal" id="approvalBlock">
+      <div class="block-title">Marketer View · Approval Inbox</div>
+      <div class="approval-card">
+        <div class="tier-bar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4zm-1 15-4-4 1.4-1.4L11 13.2l4.6-4.6L17 10l-6 6z"/></svg>
+        </div>
+
+        <div class="approval-head">
+          <div>
+            <p class="approval-contact-name">Sarah Chen</p>
+            <p class="approval-contact-email">sarah.chen@email.com</p>
+          </div>
+          <div class="approval-badges">
+            <span class="badge badge-steps">4 STEPS</span>
+            <span class="badge badge-urgency">This Month</span>
+            <span class="badge badge-confidence">91% AI</span>
+          </div>
+        </div>
+
+        <div class="step-navigation">
+          <div class="step-nav-row">
+            <span class="step-label">Step 1 of 4 · Email</span>
+            <span class="send-timing">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="#706e6b" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 11h-2V6h2v5h4v2h-4z"/></svg>
+              Send +0 days
+            </span>
+          </div>
+          <div class="step-progress-container">
+            <div class="step-progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+
+        <div class="approval-body">
+          <div class="event-context-box">
+            <p class="context-caps">Event Context</p>
+            <p class="context-text">Attending a friend's wedding in Kyoto, Japan this fall as a guest (in 128 days).</p>
+            <p class="context-insight">Platinum loyalty · high gift propensity · responds to editorial tone. Curated 1:1.</p>
+          </div>
+        </div>
+
+        <div class="approval-footer">
+          <button type="button" class="btn btn-decline">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            Decline
+          </button>
+          <div class="footer-right">
+            <button type="button" class="btn btn-neutral" id="approveAllBtn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Approve All Steps
+            </button>
+            <button type="button" class="btn btn-brand">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              Approve
+            </button>
+            <button type="button" class="btn btn-success">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+              Approve &amp; Send
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Closing through-line caption -->
+  <div class="through-line reveal" id="throughLine">
+    One captured event <span class="arrow">→</span> orchestrated across channels.
+  </div>
+
+</div>
+
+<script type="module">
+import { startSceneRuntime } from '../../scene-runtime.js';
+
+const $ = (id) => document.getElementById(id);
+
+const timeline   = $('timeline');
+const steps      = [$('step1'), $('step2'), $('step3'), $('step4')];
+const endNode    = $('endNode');
+const statusBadge = $('statusBadge');
+const audience   = $('audienceCallout');
+const emailBlock = $('emailBlock');
+const pushBlock  = $('pushBlock');
+const mediaBlock = $('mediaBlock');
+const approvalBlock = $('approvalBlock');
+const journeyActions = $('journeyActions');
+const throughLine = $('throughLine');
+const progressBar = $('progressBar');
+
+function show(el, on)   { el.classList.toggle('show', !!on); }
+// preview blocks live in the grid and should not occupy space until shown
+function present(el, on) { el.classList.toggle('collapse', !on); }
+
+/**
+ * renderBeat — cumulative, reversible. index 0..5.
+ *   0: header + event banner; empty (un-assembled) timeline track.
+ *   1: 4 channel nodes assemble L→R w/ connectors + "+N days"; status Pending; audience pill.
+ *   2: step 1 selected; full Maison Tachibana email beside the timeline.
+ *   3: push widget + Merkury media panel appear.
+ *   4: approval card / inbox row, progress 25%, footer buttons.
+ *   5: all nodes green (approved); status Ready to Send; Send button; progress 100%; caption.
+ */
+function renderBeat(index, direction) {
+  const assembled = index >= 1;   // nodes/connectors visible
+  const approved  = index >= 5;   // all nodes green
+
+  // — Timeline node assembly (beat 1+) —
+  // Only animate the stagger when arriving at beat 1 going forward.
+  timeline.classList.toggle('assembling', index === 1 && direction === 'forward');
+  steps.forEach((s) => s.classList.toggle('assembled', assembled));
+  endNode.classList.toggle('assembled', assembled);
+
+  // connectors + delay labels
+  timeline.querySelectorAll('.connector-line').forEach((l) => {
+    l.style.transform = assembled ? 'scaleX(1)' : 'scaleX(0)';
+  });
+  timeline.querySelectorAll('.connector-delay').forEach((d) => {
+    d.style.opacity = assembled ? '1' : '0';
+  });
+
+  // — Audience callout (beat 1+) —
+  show(audience, index >= 1);
+
+  // — Step 1 selected (beat 2..4) but not once approved (beat 5 clears selection) —
+  steps[0].classList.toggle('is-selected', index >= 2 && index < 5);
+
+  // — Approved (green) state (beat 5) —
+  steps.forEach((s) => s.classList.toggle('status-approved', approved));
+
+  // — Status badge —
+  if (approved) {
+    statusBadge.textContent = 'Ready to Send';
+    statusBadge.className = 'status-badge status-ready';
+  } else {
+    statusBadge.textContent = 'Pending Review';
+    statusBadge.className = 'status-badge status-pending';
+  }
+
+  // — Preview blocks (cumulative) —
+  present(emailBlock,    index >= 2);
+  present(pushBlock,     index >= 3);
+  present(mediaBlock,    index >= 3);
+  present(approvalBlock, index >= 4);
+
+  show(emailBlock,    index >= 2);
+  show(pushBlock,     index >= 3);
+  show(mediaBlock,    index >= 3);
+  show(approvalBlock, index >= 4);
+
+  // — Progress bar: 25% at beat 4, 100% at beat 5 —
+  progressBar.style.width = index >= 5 ? '100%' : (index >= 4 ? '25%' : '0%');
+
+  // — Send action bar + through-line caption (beat 5) —
+  present(journeyActions, index >= 5);
+  show(journeyActions, index >= 5);
+  show(throughLine, index >= 5);
+}
+
+startSceneRuntime({ total: 5, renderBeat });
+</script>
+</body>
+</html>
