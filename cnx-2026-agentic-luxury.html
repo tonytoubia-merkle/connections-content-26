@@ -8,6 +8,7 @@
 <!-- Reveal.js core -->
 <link rel="stylesheet" href="vendor/reveal/reveal.css">
 <link rel="stylesheet" href="vendor/reveal/black.css" id="theme">
+<link rel="stylesheet" href="demo/demo-chrome.css">
 
 <style>
 :root {
@@ -662,6 +663,24 @@
       </aside>
     </section>
 
+    <!-- DEMO HARNESS PROOF — stub scene (temporary; replaced by real scenes in later plans) -->
+    <section class="slide--dark slide-vcenter" data-demo-scene="stub">
+      <div class="demo-window">
+        <div class="demo-window__bar">
+          <div class="demo-window__dots">
+            <span class="demo-window__dot demo-window__dot--r"></span>
+            <span class="demo-window__dot demo-window__dot--y"></span>
+            <span class="demo-window__dot demo-window__dot--g"></span>
+          </div>
+          <div class="demo-window__url">tachibana.demo-combobulator.com</div>
+        </div>
+        <div class="demo-window__body">
+          <iframe class="demo-frame" src="demo/stub/index.html" title="Demo stub scene"></iframe>
+        </div>
+      </div>
+      <aside class="notes">Harness proof: arrow-right steps through 3 beats, then advances to the next slide. Arrow-left rewinds, then leaves to the previous slide.</aside>
+    </section>
+
     <!-- ========================================================
          9 · BLOCK 2 OPEN — ARCHITECTURE
          ======================================================== -->
@@ -1017,7 +1036,8 @@
 <!-- Reveal.js core scripts -->
 <script src="vendor/reveal/reveal.js"></script>
 <script src="vendor/reveal/notes.js"></script>
-<script>
+<script type="module">
+  import { bindRevealDemoSlides } from './demo/bridge.js';
   Reveal.initialize({
     width: 1920,
     height: 1080,
@@ -1038,6 +1058,8 @@
       83: () => Reveal.toggleHelp() // 'S' usually opens speaker view; default works
     }
   });
+
+  bindRevealDemoSlides(Reveal);
 
   // Inject logo lockup top-right of every slide (skip cta-slide — it has its own big lockup)
   document.querySelectorAll('.reveal .slides > section').forEach(s => {
