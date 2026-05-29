@@ -54,3 +54,9 @@ iframe.demo-frame {
    so the browser window fills the frame instead of floating in margin.
    Specific enough to beat the deck's `.reveal .slides > section`. */
 .reveal .slides section[data-demo-scene] { padding: 64px 64px 52px; }
+
+/* Keep scrolling INSIDE the embedded scene — never let it chain out and
+   scroll/snap the whole deck. The scene scrolls its own window; the deck
+   slide itself must not scroll. */
+iframe.demo-frame { overscroll-behavior: contain; }
+.reveal .slides section[data-demo-scene] { overflow: hidden; }
