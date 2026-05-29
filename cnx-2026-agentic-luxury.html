@@ -606,10 +606,25 @@
       <!-- 3 mockup cards -->
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:16px">
 
-        <!-- Mode I -->
+        <!-- Mode I — Clienteling (the capture) -->
         <figure style="margin:0;display:flex;flex-direction:column">
           <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px">
             <span style="font-family:var(--font-serif);font-style:italic;font-size:34px;color:var(--sf-gold);line-height:0.9;font-weight:400">I.</span>
+            <div style="flex:1">
+              <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);font-weight:700">Agentic Clienteling</div>
+              <div style="font-family:var(--font-serif);font-style:italic;font-size:22px;color:var(--sf-gold);line-height:1.1">Where the moment is captured.</div>
+            </div>
+          </div>
+          <div style="border:1px solid rgba(255,255,255,0.15);border-radius:8px;overflow:hidden;background:#0d0a08;box-shadow:0 12px 32px rgba(0,0,0,0.4)">
+            <img src="assets/cnx-2026/mockup-clienteling.png" alt="Boutique clienteling console — Bantō captures the Kyoto wedding into the profile" style="display:block;width:100%;height:auto">
+          </div>
+          <figcaption style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.4;margin-top:10px">In the boutique, Sarah mentions Kyoto. The Bantō logs it — <em style="font-family:var(--font-serif)">one profile</em>, born in the store.</figcaption>
+        </figure>
+
+        <!-- Mode II — Commerce (on-site) -->
+        <figure style="margin:0;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px">
+            <span style="font-family:var(--font-serif);font-style:italic;font-size:34px;color:var(--sf-gold);line-height:0.9;font-weight:400">II.</span>
             <div style="flex:1">
               <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);font-weight:700">Agentic Commerce</div>
               <div style="font-family:var(--font-serif);font-style:italic;font-size:22px;color:var(--sf-gold);line-height:1.1">The page is the agent.</div>
@@ -618,25 +633,10 @@
           <div style="border:1px solid rgba(255,255,255,0.15);border-radius:8px;overflow:hidden;background:#0d0a08;box-shadow:0 12px 32px rgba(0,0,0,0.4)">
             <img src="assets/cnx-2026/mockup-commerce.png" alt="Maison Tachibana storefront — Bantō companion" style="display:block;width:100%;height:auto">
           </div>
-          <figcaption style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.4;margin-top:10px">Storefront recomposes around what the agent <em style="font-family:var(--font-serif)">infers</em>, not what Sarah clicks.</figcaption>
+          <figcaption style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.4;margin-top:10px">Online, the storefront already knows — it recomposes around what was captured, and never re-asks.</figcaption>
         </figure>
 
-        <!-- Mode II -->
-        <figure style="margin:0;display:flex;flex-direction:column">
-          <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px">
-            <span style="font-family:var(--font-serif);font-style:italic;font-size:34px;color:var(--sf-gold);line-height:0.9;font-weight:400">II.</span>
-            <div style="flex:1">
-              <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);font-weight:700">Agentic Clienteling</div>
-              <div style="font-family:var(--font-serif);font-style:italic;font-size:22px;color:var(--sf-gold);line-height:1.1">Same profile. Different surface.</div>
-            </div>
-          </div>
-          <div style="border:1px solid rgba(255,255,255,0.15);border-radius:8px;overflow:hidden;background:#0d0a08;box-shadow:0 12px 32px rgba(0,0,0,0.4)">
-            <img src="assets/cnx-2026/mockup-clienteling.png" alt="Advisor console — high-value event detected, Bantō handoff" style="display:block;width:100%;height:auto">
-          </div>
-          <figcaption style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.4;margin-top:10px">Advisor sees what the agent knows. High-value moments surface for white-glove handoff.</figcaption>
-        </figure>
-
-        <!-- Mode III -->
+        <!-- Mode III — Marketing -->
         <figure style="margin:0;display:flex;flex-direction:column">
           <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px">
             <span style="font-family:var(--font-serif);font-style:italic;font-size:34px;color:var(--sf-gold);line-height:0.9;font-weight:400">III.</span>
@@ -659,12 +659,34 @@
       </div>
 
       <aside class="notes">
-        Tony narrates this slide as the front door of his demo (~30-45 sec). Frames Maison Tachibana, Sarah Chen, then walks through the three modes. Each mockup is the actual demo screen audience will see live — Tony advances into them next.
+        Tony narrates this slide as the front door of his demo (~30-45 sec). Frames Maison Tachibana, Sarah Chen, then the causal order: captured in the boutique (Clienteling) → reused on-site (Commerce) → orchestrated across channels (Marketing). Tony advances into the three live (scripted, offline) scenes next — arrow keys step each scene beat-by-beat.
       </aside>
     </section>
 
-    <!-- DEMO HARNESS PROOF — stub scene (temporary; replaced by real scenes in later plans) -->
-    <section class="slide--dark slide-vcenter" data-demo-scene="stub">
+    <!-- ========================================================
+         DEMO SCENE 1 · Agentic Clienteling — the capture (Salesforce)
+         ======================================================== -->
+    <section class="slide--dark slide-vcenter" data-demo-scene="clienteling">
+      <div class="demo-window">
+        <div class="demo-window__bar">
+          <div class="demo-window__dots">
+            <span class="demo-window__dot demo-window__dot--r"></span>
+            <span class="demo-window__dot demo-window__dot--y"></span>
+            <span class="demo-window__dot demo-window__dot--g"></span>
+          </div>
+          <div class="demo-window__url">tachibana.lightning.force.com &nbsp;·&nbsp; Clienteling Console</div>
+        </div>
+        <div class="demo-window__body">
+          <iframe class="demo-frame" src="demo/salesforce/clienteling/index.html" title="Agentic Clienteling — the capture"></iframe>
+        </div>
+      </div>
+      <aside class="notes">Scene 1 — the capture. Step: walk-in (email) → Merkury enrichment → Bantō greets Sarah → logs "wedding in Kyoto this fall, attending as a guest" → profile recomposes + white-glove task. Arrow-right steps each beat; the last advance moves to the on-site scene.</aside>
+    </section>
+
+    <!-- ========================================================
+         DEMO SCENE 2 · Agentic Commerce — the page is the agent (Tachibana)
+         ======================================================== -->
+    <section class="slide--dark slide-vcenter" data-demo-scene="commerce">
       <div class="demo-window">
         <div class="demo-window__bar">
           <div class="demo-window__dots">
@@ -675,10 +697,30 @@
           <div class="demo-window__url">tachibana.demo-combobulator.com</div>
         </div>
         <div class="demo-window__body">
-          <iframe class="demo-frame" src="demo/stub/index.html" title="Demo stub scene"></iframe>
+          <iframe class="demo-frame" src="demo/tachibana/index.html#/advisor" title="Agentic Commerce — Maison Tachibana storefront + Bantō"></iframe>
         </div>
       </div>
-      <aside class="notes">Harness proof: arrow-right steps through 3 beats, then advances to the next slide. Arrow-left rewinds, then leaves to the previous slide.</aside>
+      <aside class="notes">Scene 2 — on-site. The storefront already knows about Kyoto (captured in Scene 1). Arrow-right replays the scripted Bantō turns: welcome → curated pieces → frictionless add-to-bag. Fully offline.</aside>
+    </section>
+
+    <!-- ========================================================
+         DEMO SCENE 3 · Agentic Marketing — the journey composes itself (Salesforce)
+         ======================================================== -->
+    <section class="slide--dark slide-vcenter" data-demo-scene="marketing">
+      <div class="demo-window">
+        <div class="demo-window__bar">
+          <div class="demo-window__dots">
+            <span class="demo-window__dot demo-window__dot--r"></span>
+            <span class="demo-window__dot demo-window__dot--y"></span>
+            <span class="demo-window__dot demo-window__dot--g"></span>
+          </div>
+          <div class="demo-window__url">tachibana.lightning.force.com &nbsp;·&nbsp; Marketing Cloud</div>
+        </div>
+        <div class="demo-window__body">
+          <iframe class="demo-frame" src="demo/salesforce/journey/index.html" title="Agentic Marketing — the journey composes itself"></iframe>
+        </div>
+      </div>
+      <aside class="notes">Scene 3 — the journey. Off the same captured event, the journey assembles itself across channels, composes Sarah's personalized email, and goes to approval. Arrow-right steps each beat; the last advance leaves the demo into the architecture block.</aside>
     </section>
 
     <!-- ========================================================
