@@ -1,0 +1,56 @@
+/* Browser-chrome wrapper for an embedded demo scene inside a Reveal slide. */
+.demo-window {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0d0a08;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.demo-window__bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: #1f2330;
+  flex: 0 0 auto;
+}
+.demo-window__dots { display: flex; gap: 7px; }
+.demo-window__dot { width: 12px; height: 12px; border-radius: 50%; background: #4a5060; }
+.demo-window__dot--r { background: #ff5f57; }
+.demo-window__dot--y { background: #febc2e; }
+.demo-window__dot--g { background: #28c840; }
+.demo-window__url {
+  flex: 1;
+  font-family: var(--font-mono, 'SF Mono', Consolas, monospace);
+  font-size: 14px;
+  color: #c7ccd9;
+  background: #11141d;
+  border-radius: 100px;
+  padding: 7px 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.demo-window__body { flex: 1 1 auto; position: relative; background: #fff; }
+iframe.demo-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Reveal.js defaults media (img/video/iframe) to max-width/height:95%, which
+   leaves a white gap on the right/bottom inside the frame. Override with a
+   selector specific enough to beat `.reveal section iframe`. */
+.reveal .slides section iframe.demo-frame { max-width: none; max-height: none; }
+
+/* Give demo slides more of the stage than the deck's default 90px/100px padding,
+   so the browser window fills the frame instead of floating in margin.
+   Specific enough to beat the deck's `.reveal .slides > section`. */
+.reveal .slides section[data-demo-scene] { padding: 64px 64px 52px; }

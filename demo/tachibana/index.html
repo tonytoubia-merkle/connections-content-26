@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <!-- Fonts are self-hosted via @fontsource (imported in src/main.tsx) so the
+         build makes zero requests to googleapis/gstatic. See offline-demo-build. -->
+    <title>Beauty Advisor</title>
+
+    <!-- Salesforce Interactions SDK for Data Cloud (loaded dynamically by personalization service) -->
+    <!-- SDK URL configured via VITE_SFP_BEACON_URL environment variable -->
+
+    <!--
+      Data Layer — initialized before React mounts.
+      Captures UTM params from the URL immediately and provides a landing zone
+      for the Merkury tag to push resolved identity + appended profile data.
+      The SF Personalization web beacon reads from window.dataLayer for
+      first-page targeting rules (no Data Cloud round-trip needed).
+    -->
+    <script>
+      window.dataLayer = window.dataLayer || {};
+      // Capture UTM params from the current URL before SPA routing strips them
+      (function() {
+        var params = new URLSearchParams(window.location.search);
+        var campaign = params.get('utm_campaign');
+        var source = params.get('utm_source');
+        var medium = params.get('utm_medium');
+        if (campaign || source || medium) {
+          window.dataLayer.utm = {
+            campaign: campaign || '',
+            source: source || '',
+            medium: medium || ''
+          };
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="./assets/index-Cs-pPKNx.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CqeNbe_O.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

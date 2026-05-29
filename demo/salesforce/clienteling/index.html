@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Maison Tachibana · Clienteling</title>
+<link rel="stylesheet" href="clienteling.css" />
+</head>
+<body>
+<div class="console-container">
+
+  <!-- ===================== Header ===================== -->
+  <div class="console-header">
+    <div class="header-left">
+      <span class="brand-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-6 9 6v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <path d="M9 21V12h6v9"/>
+        </svg>
+      </span>
+      <h1 class="console-title">Maison Tachibana · Clienteling</h1>
+    </div>
+
+    <div class="header-center">
+      <!-- active-customer pill: beat >= 2 -->
+      <span id="activeCustomer" class="active-customer" data-min="2">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        Sarah Chen
+      </span>
+    </div>
+
+    <div class="header-right">
+      <div class="search-box">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/>
+        </svg>
+        <span>Search customers…</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== Body ===================== -->
+  <div class="console-body">
+
+    <!-- Left: Appointment sidebar -->
+    <div class="panel panel-left">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">Today's Appointments</h2>
+        <p class="sidebar-sub">Maison Tachibana · Ginza Flagship</p>
+      </div>
+      <div class="appt-list">
+        <div class="appt-card" data-min="0">
+          <div class="ac-time">10:30 AM</div>
+          <div class="ac-name">Mei Watanabe</div>
+          <div class="ac-type">Bespoke Fitting</div>
+          <span class="appt-status status-confirmed">Confirmed</span>
+        </div>
+        <div id="apptSarah" class="appt-card" data-min="0">
+          <div class="ac-time">11:00 AM</div>
+          <div class="ac-name">Sarah Chen</div>
+          <div class="ac-type">Walk-In Consultation</div>
+          <span class="appt-status status-checkedin">Checked In</span>
+        </div>
+        <div class="appt-card" data-min="0">
+          <div class="ac-time">1:15 PM</div>
+          <div class="ac-name">Olivia Laurent</div>
+          <div class="ac-type">Personal Styling</div>
+          <span class="appt-status status-booked">Booked</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center: Customer profile panel -->
+    <div class="panel panel-center">
+
+      <!-- Default panel title: beats 0..1 -->
+      <div id="panelTitleDefault" class="panel-header" data-min="0" data-max="1">
+        <h2 class="panel-title">Customer Profile</h2>
+      </div>
+
+      <!-- Compact header (selected customer): beat >= 2 -->
+      <div id="panelHeaderCompact" class="panel-header-compact" data-min="2">
+        <h3 class="customer-name-compact">Sarah Chen</h3>
+        <span class="identity-badge badge-known">Known</span>
+        <span class="clientelling-tier">Platinum</span>
+        <span class="contact-inline">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>
+          </svg>
+          sarah.chen@email.com
+        </span>
+      </div>
+
+      <!-- Center scroll content -->
+      <div class="profile-content">
+
+        <!-- Walk-in widget: beats 0..1 -->
+        <div id="walkinHost" class="walkin-host" data-min="0" data-max="1">
+          <div class="walkin-container">
+            <h3 class="walkin-title">Walk-In Customer</h3>
+            <label class="field-label-sm" for="walkinEmail">Email</label>
+            <input id="walkinEmail" class="walkin-input" type="email"
+                   placeholder="customer@email.com" value="" readonly />
+            <button id="searchCrmBtn" class="search-crm-btn" type="button">
+              <span id="searchCrmIdle" class="is-flex" style="display:inline-flex;align-items:center;gap:6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/>
+                </svg>
+                Search CRM
+              </span>
+              <span id="searchCrmLoading" style="display:none;align-items:center;gap:8px;">
+                <span class="spinner"></span> Resolving identity…
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- profileSection360: Loyalty — beat >= 2 -->
+        <div id="loyaltySection" class="section-card" data-min="2">
+          <div class="section-header">
+            <span class="section-title">Loyalty</span>
+            <span class="expand-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+            </span>
+          </div>
+          <div class="section-body">
+            <div class="loyalty-grid">
+              <div class="loyalty-stat">
+                <span class="stat-label">Tier</span>
+                <span class="stat-value tier-value">Platinum</span>
+              </div>
+              <div class="loyalty-stat">
+                <span class="stat-label">Points</span>
+                <span class="stat-value">48,200</span>
+              </div>
+              <div class="loyalty-stat">
+                <span class="stat-label">Member Since</span>
+                <span class="stat-value">2012</span>
+              </div>
+            </div>
+            <div class="prov-row">
+              <span class="badge badge-declared">declared · loyalty</span>
+              <span class="badge badge-observed">observed · 12 yr tenure</span>
+              <span class="badge badge-inferred">inferred · high LTV</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- profileSection360: Consultation Notes — beat >= 4 -->
+        <div id="notesSection" class="section-card" data-min="4">
+          <div class="section-header">
+            <span class="section-title">Consultation Notes</span>
+            <span class="section-count">1</span>
+            <span class="expand-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+            </span>
+          </div>
+          <div class="section-body">
+            <div class="note-item">
+              <span class="note-type">Observation</span>
+              <span class="note-text">Sarah mentioned she's got a wedding in Kyoto this fall — she's attending as a guest, not the bride.</span>
+              <span class="note-date">Today</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- profileSection360: Meaningful Events — beat >= 5 -->
+        <div id="eventsSection" class="section-card" data-min="5">
+          <div class="section-header">
+            <span class="section-title">Meaningful Events</span>
+            <span class="section-count">1</span>
+            <span class="expand-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+            </span>
+          </div>
+          <div class="section-body">
+            <div class="event-item">
+              <div class="event-header-row">
+                <span class="event-type">Life Event</span>
+                <span class="badge badge-stated">stated</span>
+              </div>
+              <span class="event-desc">Wedding — Kyoto · this fall</span>
+              <span class="event-note">guest attire, gifting, travel essentials</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- profileSection360: Staff Picks — beat >= 5 -->
+        <div id="staffPicksSection" class="section-card staff-picks" data-min="5">
+          <div class="section-header">
+            <span class="section-title">Staff Picks</span>
+            <span class="staff-label">recomposed</span>
+          </div>
+          <div class="section-body">
+            <div class="rec-group">
+              <span class="rec-label">For the Kyoto wedding</span>
+              <div class="rec-chips">
+                <span class="rec-chip">Guest attire</span>
+                <span class="rec-chip">Gift curation</span>
+                <span class="rec-chip">Travel kit</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Note widget: beat >= 4 -->
+      <div id="quickNoteWidget" class="note-capture-section" data-min="4">
+        <h3 class="capture-title">Quick Note</h3>
+        <div class="capture-form">
+          <div class="type-trigger">
+            Observation
+            <span class="trigger-icon">▲</span>
+          </div>
+          <div class="note-input-row">
+            <textarea class="note-textarea" readonly>Sarah mentioned she's got a wedding in Kyoto this fall — she's attending as a guest, not the bride.</textarea>
+            <button class="add-btn" type="button">Add Note</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right: Agent co-pilot -->
+    <div class="panel panel-right">
+      <div class="copilot-container">
+        <div id="copilotHeader" class="copilot-header">
+          <span class="ein-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a4 4 0 0 1 4 4 4 4 0 0 1 0 8 4 4 0 0 1-8 0 4 4 0 0 1 0-8 4 4 0 0 1 4-4z"/>
+              <circle cx="12" cy="9" r="1.4"/>
+            </svg>
+          </span>
+          <h2 class="copilot-title">AI Co-pilot</h2>
+          <span id="copilotActivePill" class="session-active" data-min="3">Active</span>
+        </div>
+
+        <!-- Quick action chips: beat >= 3 -->
+        <div id="copilotQuickActions" class="quick-actions" data-min="3">
+          <button class="action-chip" type="button">Gift ideas</button>
+          <button class="action-chip" type="button">Travel essentials</button>
+          <button class="action-chip" type="button">Occasion edit</button>
+          <button class="action-chip" type="button">Complementary</button>
+        </div>
+
+        <!-- Message thread -->
+        <div id="copilotThread" class="message-thread">
+
+          <!-- Start prompt: beats 0..2 -->
+          <div id="copilotStartPrompt" class="start-prompt" data-min="0" data-max="2">
+            <p class="no-customer-msg">Select a customer to start the co-pilot</p>
+          </div>
+
+          <!-- Greeting agent bubble: beat >= 3 -->
+          <div id="greetingMsg" class="msg-container msg-agent" data-min="3">
+            <div class="msg-bubble bubble-agent">
+              <p class="msg-text">Welcome back, Sarah — wonderful to see you at the maison again. Twelve years with Maison Tachibana; thank you. How may I help today?</p>
+            </div>
+          </div>
+
+          <!-- Recompose agent bubble: beat >= 5 -->
+          <div id="recomposeMsg" class="msg-container msg-agent" data-min="5">
+            <div class="msg-bubble bubble-agent">
+              <p class="msg-text">I've logged the Kyoto wedding to Sarah's profile and lined up a few directions.</p>
+              <div class="capture-notifications">
+                <div class="capture-item">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                  Life Event written to profile
+                </div>
+                <div class="capture-item">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                  Follow-up task created: white-glove check-in before the event
+                </div>
+              </div>
+              <div class="suggestion-chips">
+                <button class="suggestion-chip" type="button">Show gift edit</button>
+                <button class="suggestion-chip" type="button">Build travel kit</button>
+                <button class="suggestion-chip" type="button">Schedule follow-up</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Co-pilot input: beat >= 3 -->
+        <div id="copilotInput" class="input-area" data-min="3">
+          <div class="chat-input">Ask the co-pilot…</div>
+          <button class="send-btn" type="button" aria-label="Send">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===================== Bottom action bar (beat >= 2) ===================== -->
+  <div id="actionBar" class="action-bar" data-min="2">
+    <button class="abtn" type="button">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+      Lookup Order
+    </button>
+    <button class="abtn" type="button">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      Create Case
+    </button>
+    <button class="abtn" type="button">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7L12 12l8.7-5"/><path d="M12 22V12"/></svg>
+      Check Stock
+    </button>
+    <button class="abtn abtn-brand" type="button">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      Complete Consult
+    </button>
+  </div>
+
+</div>
+
+<script type="module">
+import { startSceneRuntime } from '../../scene-runtime.js';
+
+const $ = (id) => document.getElementById(id);
+
+// Email/loading sub-states inside the walk-in widget.
+const emailEl   = $('walkinEmail');
+const btnIdle   = $('searchCrmIdle');
+const btnLoad   = $('searchCrmLoading');
+const searchBtn = $('searchCrmBtn');
+
+// Elements that stream-fade when first revealed (agent bubbles).
+const STREAM_IDS = ['greetingMsg', 'recomposeMsg'];
+
+/**
+ * Cumulative visibility: every element carrying data-min is shown when
+ * index >= data-min, and (optionally) hidden again when index > data-max.
+ * This makes renderBeat fully reversible for any 0..5 target in any order.
+ */
+function applyVisibility(index) {
+  document.querySelectorAll('[data-min]').forEach((el) => {
+    const min = parseInt(el.getAttribute('data-min'), 10);
+    const maxAttr = el.getAttribute('data-max');
+    const max = maxAttr === null ? Infinity : parseInt(maxAttr, 10);
+    const visible = index >= min && index <= max;
+    el.style.display = visible ? '' : 'none';
+  });
+}
+
+function renderBeat(index, direction) {
+  applyVisibility(index);
+
+  // Beat 3+: co-pilot session becomes active (gradient header).
+  $('copilotHeader').classList.toggle('is-active', index >= 3);
+
+  // Beat 2+: highlight Sarah's appointment in the sidebar (identity resolved).
+  $('apptSarah').classList.toggle('is-active', index >= 2);
+
+  // Beat 1+: email filled and Search CRM in loading/pressed state.
+  // Beat 0: empty email, idle button.
+  if (index >= 1) {
+    emailEl.value = 'sarah.chen@email.com';
+    btnIdle.style.display = 'none';
+    btnLoad.style.display = 'inline-flex';
+    searchBtn.classList.add('is-loading');
+  } else {
+    emailEl.value = '';
+    btnIdle.style.display = 'inline-flex';
+    btnLoad.style.display = 'none';
+    searchBtn.classList.remove('is-loading');
+  }
+
+  // Deterministic "streaming" fade only when advancing onto the beat that
+  // first reveals a given agent bubble (not when rewinding/jumping back).
+  STREAM_IDS.forEach((id) => {
+    const el = $(id);
+    if (!el) return;
+    el.classList.remove('stream-in');
+    const min = parseInt(el.getAttribute('data-min'), 10);
+    if (direction === 'forward' && index === min) {
+      // Re-trigger the CSS animation.
+      void el.offsetWidth;
+      el.classList.add('stream-in');
+    }
+  });
+}
+
+startSceneRuntime({ total: 5, renderBeat });
+</script>
+</body>
+</html>
