@@ -36,6 +36,8 @@ export function bindRevealDemoSlides(Reveal) {
   };
 
   window.addEventListener('message', (e) => {
+    // Only trust state from the iframe of the slide we're currently on.
+    if (!currentIframe || e.source !== currentIframe.contentWindow) return;
     const d = e.data;
     if (d && d.source === 'demo-scene' && d.type === 'demo:state') {
       sceneState = { index: d.index, total: d.total, complete: d.complete, atStart: d.atStart };
@@ -61,8 +63,10 @@ export function bindRevealDemoSlides(Reveal) {
     if (currentIframe) {
       // Reset to beat 0 each time we (re-)enter, so the scene is repeatable.
       const reset = () => postToScene('demo:reset');
-      if (currentIframe.contentWindow) reset();
-      currentIframe.addEventListener('load', reset, { once: true });
+      const loaded = currentIframe.contentDocument
+        && currentIframe.contentDocument.readyState === 'complete';
+      if (loaded) reset();
+      else currentIframe.addEventListener('load', reset, { once: true });
     }
   };
 

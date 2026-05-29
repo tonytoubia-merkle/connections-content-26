@@ -1038,6 +1038,9 @@
 <script src="vendor/reveal/notes.js"></script>
 <script type="module">
   import { bindRevealDemoSlides } from './demo/bridge.js';
+  // `Reveal` is a global set by the classic vendor/reveal/reveal.js script above,
+  // which runs before this deferred module. Fail loudly if that ever changes.
+  if (typeof Reveal === 'undefined') throw new Error('Reveal.js global not found — check script load order');
   Reveal.initialize({
     width: 1920,
     height: 1080,

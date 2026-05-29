@@ -26,7 +26,11 @@ export function startSceneRuntime({ total, renderBeat }) {
       post({ type: 'demo:state', index: st.index, total: st.total, complete: st.complete, atStart: st.atStart });
     },
   });
-  window.addEventListener('message', (e) => handleSceneMessage(player, e.data));
+  // Only accept commands from our direct parent (the deck).
+  window.addEventListener('message', (e) => {
+    if (e.source !== parent) return;
+    handleSceneMessage(player, e.data);
+  });
   // Paint initial state and announce it so the bridge learns `total` immediately.
   const st = player.state();
   renderBeat(st.index, 'reset');
