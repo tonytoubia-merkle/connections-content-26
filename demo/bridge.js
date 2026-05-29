@@ -56,6 +56,18 @@ export function bindRevealDemoSlides(Reveal) {
     const doc = iframe.contentDocument;
     if (!doc || navBound.has(iframe)) return;
     navBound.add(iframe);
+    // The Tachibana React app momentarily scrolls its own page during route/scene
+    // transitions (home → advisor → products → checkout), causing a scroll-up-then-
+    // snap. Its content fits the frame and its inner panels scroll on their own, so
+    // lock the app's PAGE scroll. (Only the Tachibana iframe — the Salesforce scenes
+    // scroll their own document on purpose, so they're left alone.)
+    if ((iframe.getAttribute('src') || '').includes('/tachibana/')) {
+      try {
+        const s = doc.createElement('style');
+        s.textContent = 'html,body{overflow:hidden!important;overscroll-behavior:none;}';
+        doc.head.appendChild(s);
+      } catch (_) { /* cross-origin or not ready — ignore */ }
+    }
     doc.addEventListener('click', () => navigate('fwd'));
     // Arrow/space/page keys while the IFRAME has focus (e.g. after a click
     // inside it) never reach the deck's parent-document handler. Catch them
