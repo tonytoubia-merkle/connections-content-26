@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Demo Stub Scene</title>
+<style>
+  html, body { margin: 0; height: 100%; font-family: system-ui, sans-serif; }
+  body { display: flex; align-items: center; justify-content: center; background: #f7f3ec; }
+  .stage { text-align: center; }
+  .beat { opacity: 0.18; font-size: 42px; margin: 18px 0; transition: opacity .25s ease; }
+  .beat.on { opacity: 1; color: #8a6a3c; }
+  .counter { margin-top: 32px; font: 14px monospace; color: #888; }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="beat" data-beat="1">Beat one — walk-in</div>
+    <div class="beat" data-beat="2">Beat two — enrichment</div>
+    <div class="beat" data-beat="3">Beat three — capture</div>
+    <div class="counter" id="counter">beat 0 / 3</div>
+  </div>
+  <script type="module">
+    import { startSceneRuntime } from '../scene-runtime.js';
+    const beats = [...document.querySelectorAll('.beat')];
+    const counter = document.getElementById('counter');
+    startSceneRuntime({
+      total: beats.length,
+      renderBeat(index) {
+        beats.forEach((el, i) => el.classList.toggle('on', i < index));
+        counter.textContent = `beat ${index} / ${beats.length}`;
+      },
+    });
+  </script>
+</body>
+</html>
