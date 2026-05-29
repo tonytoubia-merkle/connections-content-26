@@ -166,7 +166,7 @@ test('throws on invalid total', () => {
 
 - [ ] **Step 3: Run the test to verify it fails**
 
-Run: `node --test demo/`
+Run: `node --test "demo/*.test.js"`
 Expected: FAIL — cannot find module `./player.js` / `createScenePlayer` is not defined.
 
 - [ ] **Step 4: Implement the player**
@@ -201,7 +201,7 @@ export function createScenePlayer({ total, onChange } = {}) {
 
 - [ ] **Step 5: Run the test to verify it passes**
 
-Run: `node --test demo/`
+Run: `node --test "demo/*.test.js"`
 Expected: PASS — 5 tests passing.
 
 - [ ] **Step 6: Commit**
@@ -267,7 +267,7 @@ test('ignores messages not targeted to demo-scene', () => {
 
 - [ ] **Step 2: Run the test to verify it fails**
 
-Run: `node --test demo/`
+Run: `node --test "demo/*.test.js"`
 Expected: FAIL — `handleSceneMessage` is not exported from `./scene-runtime.js`.
 
 - [ ] **Step 3: Implement the scene runtime**
@@ -313,7 +313,7 @@ export function startSceneRuntime({ total, renderBeat }) {
 
 - [ ] **Step 4: Run the test to verify it passes**
 
-Run: `node --test demo/`
+Run: `node --test "demo/*.test.js"`
 Expected: PASS — all scene-runtime tests pass (player tests still pass too).
 
 - [ ] **Step 5: Commit**
@@ -373,7 +373,7 @@ test('non-navigation keys defer to reveal', () => {
 
 - [ ] **Step 2: Run the test to verify it fails**
 
-Run: `node --test demo/`
+Run: `node --test "demo/*.test.js"`
 Expected: FAIL — `decideKeyAction` is not exported from `./bridge.js`.
 
 - [ ] **Step 3: Implement the bridge**
@@ -455,7 +455,7 @@ export function bindRevealDemoSlides(Reveal) {
 
 - [ ] **Step 4: Run the test to verify it passes**
 
-Run: `node --test demo/`
+Run: `node --test "demo/*.test.js"`
 Expected: PASS — all bridge tests pass (player + scene-runtime still pass).
 
 - [ ] **Step 5: Commit**
@@ -639,7 +639,7 @@ Expected: all four behaviors hold; zero network requests.
 
 - [ ] **Step 5: Run the logic test suite once more**
 
-Run: `node --test demo/`
+Run: `node --test "demo/*.test.js"`
 Expected: PASS — all player/scene-runtime/bridge tests still green.
 
 - [ ] **Step 6: Commit**
@@ -679,7 +679,7 @@ Scenes are pages embedded in deck slides via `<iframe class="demo-frame">` insid
 3. Add a deck `<section>` with a `.demo-window` + `<iframe class="demo-frame" src="demo/<scene>/index.html">`.
 
 ## Tests
-Run `node --test demo/` for the pure logic modules (player, runtime dispatch, bridge decision).
+Run `node --test "demo/*.test.js"` for the pure logic modules (player, runtime dispatch, bridge decision).
 ```
 
 - [ ] **Step 2: Commit**
@@ -693,7 +693,7 @@ git commit -m "Document the in-slide demo harness contract"
 
 ## Verification (whole plan)
 
-- `node --test demo/` → all tests pass.
+- `node --test "demo/*.test.js"` → all tests pass.
 - `grep -n "cdn.jsdelivr\|https://" cnx-2026-agentic-luxury.html` → no external refs.
 - With DevTools **Offline**, the deck loads and the demo slide steps through 3 beats and back with zero network requests.
 
