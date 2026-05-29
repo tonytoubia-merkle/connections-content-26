@@ -1,363 +1,599 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-<title>Tachibana — AI Retail Advisor · Connections 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter+Tight:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500&display=swap" rel="stylesheet">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
+<title>Agentic AI: Redefining the Retail Customer Experience — Salesforce Connections 2026</title>
 <style>
 :root {
-  --bg: #0b0907;
-  --bg-2: #110d09;
-  --bg-3: #181310;
-  --ink: #f4ede1;
-  --ink-2: #ddd1be;
-  --ink-3: #8a7e6c;
-  --rule: rgba(244, 237, 225, 0.12);
-  --rule-strong: rgba(244, 237, 225, 0.22);
-  --gold: #c8a472;
-  --gold-soft: #d9b988;
-  --copper: #b07c4e;
-  --serif: 'Cormorant Garamond', Georgia, serif;
-  --jp: 'Noto Serif JP', serif;
-  --sans: 'Inter Tight', system-ui, sans-serif;
+  --sf-cloud-90: #cfe9fe;
+  --sf-cloud-70: #00b3ff;
+  --sf-electric-50: #066afe;
+  --sf-electric-30: #022ac0;
+  --sf-electric-20: #002775;
+  --sf-gold: #FFB61B;
+  --sf-white: #FFFFFF;
+  --bg-dark-start: #0047D4;
+  --bg-dark-end: #001A70;
+  --lux-cream: #f7f3ec;
+  --lux-ink: #1a1a2e;
+  --lux-bronze: #8a6a3c;
+  --text-heading: var(--sf-electric-20);
+  --text-body: #1a1a2e;
+  --text-muted: #4a5568;
+  --card-bg: var(--sf-white);
+  --card-radius: 16px;
+  --card-shadow: 0 4px 24px rgba(0, 39, 117, 0.08);
+  --font-display: 'Century Gothic', 'Futura', system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', 'Garamond', 'Times New Roman', serif;
+  --font-body: 'Salesforce Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  --section-pad: 110px 0;
+  --content-w: 1200px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--text-body); background: var(--sf-white); line-height: 1.6; overflow-x: hidden; }
+.wrap { max-width: var(--content-w); margin: 0 auto; padding: 0 40px; }
+
+/* NAV */
+.nav-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(0, 26, 112, 0.92); backdrop-filter: blur(12px); padding: 12px 0; }
+.nav-bar__inner { max-width: var(--content-w); margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; }
+.nav-bar__title { color: white; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; opacity: 0.85; }
+.nav-bar__chips { display: flex; gap: 16px; }
+.nav-bar__chip { color: rgba(255,255,255,0.7); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+.nav-bar__chip strong { color: var(--sf-gold); font-weight: 700; }
+
+/* HERO */
+.hero { background: linear-gradient(135deg, var(--bg-dark-start), var(--bg-dark-end)); color: white; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -40%; right: -20%; width: 800px; height: 800px; background: radial-gradient(circle, rgba(255,182,27,0.15) 0%, transparent 70%); border-radius: 50%; }
+.hero::after { content: ''; position: absolute; bottom: -20%; left: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(0,179,255,0.12) 0%, transparent 70%); border-radius: 50%; }
+.hero .wrap { position: relative; z-index: 1; }
+.hero__chip { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--sf-gold); background: rgba(255,182,27,0.12); padding: 8px 16px; border-radius: 100px; margin-bottom: 32px; }
+.hero__title { font-family: var(--font-display); font-size: 80px; font-weight: 700; line-height: 1.05; margin-bottom: 28px; max-width: 950px; letter-spacing: -1px; }
+.hero__title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--sf-gold); }
+.hero__subtitle { font-size: 24px; opacity: 0.85; max-width: 720px; line-height: 1.5; margin-bottom: 56px; }
+.hero__speakers { display: flex; gap: 56px; flex-wrap: wrap; }
+.hero__speaker { font-size: 14px; opacity: 0.7; }
+.hero__speaker strong { display: block; color: white; opacity: 1; font-size: 17px; margin-bottom: 4px; font-family: var(--font-display); letter-spacing: 0.5px; }
+.hero__scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,0.5); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
+.hero__scroll::after { content: ''; width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+/* SECTION SHELL */
+.section { padding: var(--section-pad); }
+.section--light { background: var(--sf-white); }
+.section--cream { background: var(--lux-cream); }
+.section--tinted { background: var(--sf-cloud-90); }
+.section--dark { background: linear-gradient(135deg, var(--bg-dark-start), var(--bg-dark-end)); color: white; }
+.section--charcoal { background: #1a1a2e; color: white; }
+.section--ink { background: #0a0a14; color: white; }
+.section__label { font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--sf-electric-50); margin-bottom: 16px; }
+.section--dark .section__label, .section--charcoal .section__label, .section--ink .section__label { color: var(--sf-gold); }
+.section--cream .section__label { color: var(--lux-bronze); }
+.section__title { font-family: var(--font-display); font-size: 52px; font-weight: 700; line-height: 1.1; color: var(--text-heading); margin-bottom: 22px; max-width: 920px; letter-spacing: -0.5px; }
+.section__title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--lux-bronze); }
+.section--dark .section__title, .section--charcoal .section__title, .section--ink .section__title { color: white; }
+.section--dark .section__title em, .section--charcoal .section__title em, .section--ink .section__title em { color: var(--sf-gold); }
+.section__subtitle { font-size: 21px; color: var(--text-muted); max-width: 800px; line-height: 1.55; margin-bottom: 56px; }
+.section--dark .section__subtitle, .section--charcoal .section__subtitle, .section--ink .section__subtitle { color: rgba(255,255,255,0.78); }
+
+/* STAT GRID */
+.stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.stat-grid--2 { grid-template-columns: repeat(2, 1fr); }
+.stat-grid--4 { grid-template-columns: repeat(4, 1fr); }
+.stat-card { background: var(--card-bg); border-radius: var(--card-radius); padding: 44px 32px; box-shadow: var(--card-shadow); text-align: center; transition: transform 0.2s; position: relative; overflow: hidden; }
+.stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--sf-electric-50); }
+.stat-card--gold::before { background: var(--sf-gold); }
+.stat-card--bronze::before { background: var(--lux-bronze); }
+.stat-card:hover { transform: translateY(-4px); }
+.stat-card__number { font-family: var(--font-display); font-size: 60px; font-weight: 700; color: var(--sf-electric-50); line-height: 1; margin-bottom: 14px; letter-spacing: -1px; }
+.stat-card--gold .stat-card__number { color: var(--sf-gold); }
+.stat-card--bronze .stat-card__number { color: var(--lux-bronze); }
+.stat-card__label { font-size: 15px; color: var(--text-muted); line-height: 1.5; }
+.stat-card__source { font-size: 11px; color: var(--text-muted); margin-top: 18px; opacity: 0.7; font-style: italic; }
+.source { font-size: 12px; color: var(--text-muted); margin-top: 48px; padding-top: 24px; border-top: 1px solid #e2e8f0; line-height: 1.6; }
+.section--dark .source, .section--charcoal .source, .section--ink .source { color: rgba(255,255,255,0.4); border-top-color: rgba(255,255,255,0.15); }
+.section--cream .source { border-top-color: #d9d2c3; }
+
+/* HEADLINE STAT */
+.headline-stat { padding: 80px 0; text-align: center; }
+.headline-stat__big { font-family: var(--font-display); font-size: 220px; font-weight: 700; line-height: 1; color: var(--lux-bronze); margin-bottom: 28px; letter-spacing: -6px; }
+.headline-stat__caption { font-family: var(--font-serif); font-style: italic; font-size: 36px; max-width: 820px; margin: 0 auto 20px; line-height: 1.3; }
+.headline-stat__caption strong { font-family: var(--font-body); font-style: normal; font-weight: 700; color: var(--lux-bronze); }
+.headline-stat__source { font-size: 13px; opacity: 0.6; letter-spacing: 1px; text-transform: uppercase; }
+
+/* QUOTE BLOCK */
+.quote-block { padding: 60px 0; text-align: center; }
+.quote-block__text { font-family: var(--font-serif); font-style: italic; font-size: 48px; font-weight: 400; line-height: 1.3; max-width: 980px; margin: 0 auto 32px; color: white; }
+.quote-block__text::before { content: '\201C'; color: var(--sf-gold); font-size: 1.2em; line-height: 1; }
+.quote-block__text::after { content: '\201D'; color: var(--sf-gold); font-size: 1.2em; line-height: 1; }
+.quote-block__attr { font-size: 16px; opacity: 0.7; letter-spacing: 1px; }
+.quote-block__attr strong { color: var(--sf-gold); opacity: 1; font-style: normal; font-family: var(--font-body); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; font-size: 13px; display: block; margin-bottom: 8px; }
+
+/* CUSTOMER CARDS */
+.cust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.cust-card { background: white; border-radius: var(--card-radius); padding: 36px 32px; box-shadow: var(--card-shadow); transition: transform 0.2s; border-top: 4px solid var(--lux-bronze); }
+.cust-card:hover { transform: translateY(-4px); }
+.cust-card__brand { font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px; }
+.cust-card__tag { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--lux-bronze); margin-bottom: 22px; }
+.cust-card__metrics { list-style: none; display: flex; flex-direction: column; gap: 11px; padding-top: 20px; border-top: 1px solid #e2e8f0; margin-bottom: 16px; }
+.cust-card__metrics li { font-size: 14px; color: var(--text-body); display: flex; align-items: baseline; gap: 8px; }
+.cust-card__metrics li::before { content: '\2192'; color: var(--sf-gold); font-weight: 700; }
+.cust-card__metrics strong { color: var(--sf-electric-50); font-weight: 700; }
+.cust-card__quote { font-family: var(--font-serif); font-style: italic; font-size: 14px; color: var(--text-muted); line-height: 1.5; margin-top: 12px; padding-top: 14px; border-top: 1px solid #e2e8f0; }
+
+/* TWO COLUMN */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.two-col__heading { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--text-heading); margin-bottom: 20px; line-height: 1.2; }
+.section--dark .two-col__heading, .section--charcoal .two-col__heading, .section--ink .two-col__heading { color: white; }
+.two-col__body { font-size: 16px; line-height: 1.7; color: var(--text-body); }
+.section--dark .two-col__body, .section--charcoal .two-col__body, .section--ink .two-col__body { color: rgba(255,255,255,0.85); }
+.two-col__body p { margin-bottom: 16px; }
+.two-col__body strong { color: var(--sf-electric-30); }
+.section--dark .two-col__body strong, .section--charcoal .two-col__body strong, .section--ink .two-col__body strong { color: var(--sf-gold); }
+.two-col__body em { font-family: var(--font-serif); font-style: italic; font-size: 1.1em; }
+
+/* FORCE GRID — three forces */
+.force-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+.force { padding: 0 4px; }
+.force__num { font-family: var(--font-display); font-size: 64px; font-weight: 700; color: var(--sf-gold); line-height: 1; margin-bottom: 16px; letter-spacing: -2px; opacity: 0.5; }
+.force__title { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text-heading); margin-bottom: 14px; line-height: 1.2; }
+.section--dark .force__title, .section--ink .force__title { color: white; }
+.force__body { font-size: 16px; line-height: 1.6; color: var(--text-muted); }
+.section--dark .force__body, .section--ink .force__body { color: rgba(255,255,255,0.75); }
+.force__body strong { color: var(--sf-electric-30); }
+.section--dark .force__body strong, .section--ink .force__body strong { color: var(--sf-gold); }
+
+/* TRUST STACK */
+.stack { display: flex; flex-direction: column; gap: 14px; max-width: 880px; margin: 0 auto; }
+.stack__layer { background: rgba(255,255,255,0.05); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 26px 32px; position: relative; overflow: hidden; }
+.stack__layer::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--sf-gold); }
+.stack__layer-num { font-family: var(--font-mono); font-size: 12px; color: var(--sf-gold); letter-spacing: 1px; margin-bottom: 6px; }
+.stack__layer-title { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: white; margin-bottom: 8px; }
+.stack__layer-body { font-size: 15px; color: rgba(255,255,255,0.78); line-height: 1.5; }
+.stack__layer-body strong { color: white; }
+.stack__layer-body em { font-family: var(--font-serif); font-style: italic; color: var(--sf-gold); font-size: 1.05em; }
+
+/* HANDOFF SLIDE */
+.handoff { padding: 100px 0; text-align: center; }
+.handoff__quote { font-family: var(--font-serif); font-style: italic; font-size: 36px; line-height: 1.4; color: rgba(255,255,255,0.92); max-width: 950px; margin: 0 auto 40px; }
+.handoff__quote strong { font-family: var(--font-body); font-style: normal; color: var(--sf-gold); font-weight: 400; }
+.handoff__line { font-size: 14px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+
+/* TWO-PANEL CALLOUT (Prada) */
+.callout { background: rgba(192,57,43,0.18); border-left: 4px solid #ff8e7a; border-radius: 12px; padding: 32px; margin: 0 0 56px; }
+.callout__label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #ff8e7a; margin-bottom: 12px; }
+.callout__title { font-family: var(--font-display); font-size: 24px; font-weight: 700; color: white; line-height: 1.25; }
+.callout__title em { font-family: var(--font-serif); font-style: italic; color: var(--sf-gold); }
+
+/* CTA */
+.cta { background: linear-gradient(135deg, var(--bg-dark-start), var(--bg-dark-end)); color: white; padding: 120px 0; text-align: center; position: relative; overflow: hidden; }
+.cta::before { content: ''; position: absolute; top: -30%; left: 50%; transform: translateX(-50%); width: 900px; height: 900px; background: radial-gradient(circle, rgba(255,182,27,0.12) 0%, transparent 70%); border-radius: 50%; }
+.cta .wrap { position: relative; z-index: 1; }
+.cta__title { font-family: var(--font-display); font-size: 64px; font-weight: 700; line-height: 1.05; max-width: 980px; margin: 0 auto 28px; letter-spacing: -1px; }
+.cta__title em { font-family: var(--font-serif); font-style: italic; color: var(--sf-gold); font-weight: 400; }
+.cta__sub { font-size: 22px; opacity: 0.8; max-width: 740px; margin: 0 auto 56px; line-height: 1.5; }
+.cta__line { font-family: var(--font-serif); font-style: italic; font-size: 28px; color: var(--sf-gold); max-width: 900px; margin: 0 auto; line-height: 1.4; }
+.cta__partners { margin-top: 80px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.6; }
+.cta__partners strong { color: var(--sf-gold); display: block; opacity: 1; font-weight: 700; font-size: 16px; margin-bottom: 6px; letter-spacing: 1px; text-transform: none; font-family: var(--font-display); }
+
+/* PRINT */
+@media print {
+  .nav-bar, .hero__scroll { display: none; }
+  .section, .hero, .cta { page-break-after: always; padding: 60px 40px; }
+  body { font-size: 14px; }
+  .hero__title { font-size: 56px; }
+  .section__title { font-size: 40px; }
+  .headline-stat__big { font-size: 140px; }
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-html, body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--sans);
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  min-height: 100vh;
-}
-
-body {
-  background-image:
-    radial-gradient(ellipse at 20% 0%, rgba(200, 164, 114, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 100%, rgba(107, 58, 58, 0.04) 0%, transparent 50%);
-  background-attachment: fixed;
-  display: flex;
-  flex-direction: column;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.035;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='1'/></svg>");
-}
-
-.ribbon {
-  border-bottom: 1px solid var(--rule);
-}
-.ribbon-inner {
-  max-width: 1320px;
-  margin: 0 auto;
-  padding: 16px 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-.ribbon-mark {
-  font-family: var(--serif);
-  font-size: 20px;
-  letter-spacing: 0.04em;
-}
-.ribbon-mark em { font-style: italic; font-weight: 500; color: var(--gold-soft); }
-.ribbon-meta {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  display: flex;
-  gap: 28px;
-}
-@media (max-width: 760px) {
-  .ribbon-inner { padding: 14px 22px; }
-  .ribbon-meta { display: none; }
-}
-
-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 80px 48px;
-  position: relative;
-  z-index: 2;
-}
-
-.hero {
-  max-width: 1100px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 72px;
-  align-items: center;
-}
 @media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; gap: 48px; }
-  main { padding: 60px 22px; }
+  .hero__title { font-size: 48px; }
+  .section__title { font-size: 34px; }
+  .stat-grid, .stat-grid--4 { grid-template-columns: 1fr 1fr; }
+  .force-grid, .two-col, .cust-grid { grid-template-columns: 1fr; gap: 28px; }
+  .headline-stat__big { font-size: 120px; }
+  .quote-block__text, .handoff__quote { font-size: 26px; }
+  .cta__title { font-size: 40px; }
 }
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 28px;
-}
-.eyebrow::before {
-  content: '';
-  width: 28px;
-  height: 1px;
-  background: var(--gold);
-}
-
-h1 {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: clamp(40px, 5.4vw, 72px);
-  line-height: 1.04;
-  letter-spacing: -0.012em;
-  margin-bottom: 24px;
-}
-h1 em { font-style: italic; color: var(--gold-soft); }
-
-.deck-copy {
-  max-width: 48ch;
-  color: var(--ink-2);
-  font-size: 16px;
-  line-height: 1.55;
-}
-.deck-copy strong { color: var(--ink); font-weight: 600; }
-.deck-copy em { font-style: italic; color: var(--gold-soft); }
-
-.kicker-line {
-  width: 64px;
-  height: 1px;
-  background: var(--gold);
-  margin: 22px 0;
-}
-
-.kanji-stack {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-}
-.kanji-stack-big {
-  font-family: var(--jp);
-  font-size: clamp(120px, 14vw, 200px);
-  font-weight: 400;
-  color: var(--gold);
-  opacity: 0.18;
-  line-height: 1;
-}
-.kanji-stack-meta {
-  font-size: 11px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-
-.choose-row {
-  margin-top: 56px;
-  width: 100%;
-  max-width: 1200px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  position: relative;
-  z-index: 2;
-}
-@media (max-width: 980px) {
-  .choose-row { grid-template-columns: 1fr; gap: 16px; margin-top: 36px; }
-}
-
-.choice {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  background: var(--bg-2);
-  border: 1px solid var(--rule);
-  border-radius: 8px;
-  padding: 28px 30px;
-  position: relative;
-  overflow: hidden;
-  transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
-}
-.choice::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.choice:hover {
-  border-color: var(--gold);
-  background: linear-gradient(160deg, #1a1410 0%, #0d0805 100%);
-  transform: translateY(-2px);
-}
-.choice:hover::before { opacity: 1; }
-
-.choice-num {
-  position: absolute;
-  top: 22px;
-  right: 28px;
-  font-family: var(--serif);
-  font-size: 36px;
-  font-style: italic;
-  color: var(--gold);
-  opacity: 0.4;
-  line-height: 1;
-}
-.choice-label {
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 10px;
-}
-.choice-title {
-  font-family: var(--serif);
-  font-size: 26px;
-  color: var(--ink);
-  line-height: 1.15;
-  margin-bottom: 10px;
-}
-.choice-title em { font-style: italic; color: var(--gold-soft); }
-.choice-body {
-  font-size: 13px;
-  color: var(--ink-2);
-  line-height: 1.55;
-  margin-bottom: 18px;
-}
-.choice-arrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-top: 12px;
-  padding-top: 14px;
-  border-top: 1px solid var(--rule);
-}
-.choice-arrow svg {
-  width: 14px;
-  height: 14px;
-  transition: transform 0.3s ease;
-}
-.choice:hover .choice-arrow svg { transform: translateX(4px); }
-
-footer {
-  padding: 32px 48px;
-  border-top: 1px solid var(--rule);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-footer em { font-style: italic; color: var(--ink-2); text-transform: none; letter-spacing: 0; font-size: 13px; font-family: var(--serif); }
 </style>
 </head>
 <body>
 
-<div class="ribbon">
-  <div class="ribbon-inner">
-    <div class="ribbon-mark"><em>Tachibana</em> · AI Retail Advisor</div>
-    <div class="ribbon-meta">
-      <span>Merkle × Salesforce</span>
-      <span>Connections 2026 · Session 1787</span>
+<nav class="nav-bar">
+  <div class="nav-bar__inner">
+    <span class="nav-bar__title">Salesforce Connections 2026 · Session 1787</span>
+    <div class="nav-bar__chips">
+      <span class="nav-bar__chip"><strong>Jun 4</strong> · 1:00 PM CT</span>
+      <span class="nav-bar__chip">Content Pavilion · Stage 4</span>
     </div>
   </div>
-</div>
+</nav>
 
-<main>
-  <div class="hero">
-    <div>
-      <div class="eyebrow"><span>Tony Toubia · Merkle</span></div>
-      <h1>What if the boutique advisor was <em>online?</em></h1>
-      <div class="kicker-line"></div>
-      <p class="deck-copy">
-        <strong>Maison Tachibana</strong> — a Kyoto-founded luxury house, built end-to-end on the Salesforce platform. One customer. Three modes — <em>Agentic Commerce</em>, <em>Agentic Clienteling</em>, <em>Agentic Marketing</em>. On one platform, in concert.
-      </p>
-    </div>
-    <div class="kanji-stack">
-      <div class="kanji-stack-big">番頭</div>
-      <div class="kanji-stack-meta">Bantō · the house's voice</div>
+<!-- =========================================================================
+     TITLE
+     ========================================================================= -->
+<section class="hero">
+  <div class="wrap">
+    <span class="hero__chip">Salesforce Connections · Session 1787</span>
+    <h1 class="hero__title">Agentic AI: Redefining the Retail <em>Customer Experience.</em></h1>
+    <p class="hero__subtitle">How leading retailers can deploy AI Retail Advisor — an agentic AI solution that autonomously engages shoppers, driving conversion and 1:1 experiences at scale.</p>
+    <div class="hero__speakers">
+      <div class="hero__speaker"><strong>Chris Serger</strong>VP, Solutions Engineering · Salesforce</div>
+      <div class="hero__speaker"><strong>Tony Toubia</strong>VP, Global Salesforce Solutions · Merkle / Dentsu</div>
     </div>
   </div>
+  <div class="hero__scroll">Scroll</div>
+</section>
 
-  <div class="choose-row">
-    <a class="choice" href="mockup.html">
-      <div class="choice-num">v1</div>
-      <div class="choice-label">Mockup edition</div>
-      <div class="choice-title">Editorial <em>mockups.</em></div>
-      <div class="choice-body">
-        T3, T4, T5 show fully designed static mockups of the Tachibana storefront, the clienteling console, and the agentic journey timeline. No dependencies, no network needed once loaded.
-      </div>
-      <span class="choice-arrow">
-        Open mockup edition
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </span>
-    </a>
 
-    <a class="choice" href="video.html">
-      <div class="choice-num">v2</div>
-      <div class="choice-label">Video edition</div>
-      <div class="choice-title">Embedded <em>demo videos.</em></div>
-      <div class="choice-body">
-        Same deck, with T3, T4, T5 replaced by 16:9 video stages. Drop MP4s into the <code style="font-family: 'SF Mono', Menlo, monospace; font-size: 12px;">/videos</code> folder. Until then, elegant placeholders hold the space.
-      </div>
-      <span class="choice-arrow">
-        Open video edition
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </span>
-    </a>
+<!-- =========================================================================
+     OPENING — THE NUMBER
+     ========================================================================= -->
+<section class="section section--cream">
+  <div class="wrap" style="text-align:center">
+    <div class="section__label">The Luxury AI Opportunity</div>
+    <h2 class="section__title" style="margin:0 auto 20px;text-align:center">The number that changes the conversation.</h2>
+    <p class="section__subtitle" style="margin:0 auto 24px;text-align:center">Luxury just lost more than 20% of its entire customer base. The aspirational shopper is sitting out. The math has changed.</p>
 
-    <a class="choice" href="architecture.html">
-      <div class="choice-num">A</div>
-      <div class="choice-label">Deep dive</div>
-      <div class="choice-title">The <em>architecture.</em></div>
-      <div class="choice-body">
-        Companion piece for Q&amp;A and technical follow-ups. Walks through the Surface, the Profile, the Orchestration, and how it was assembled — Headless 360, Claude Code, and the spine that holds it together.
+    <div class="headline-stat">
+      <div class="headline-stat__big">70M</div>
+      <div class="headline-stat__caption">luxury customers <strong>lost</strong> in two years.</div>
+      <div class="headline-stat__source">Bain &amp; Altagamma · Apr 2026</div>
+    </div>
+
+    <div class="stat-grid" style="margin-top:40px">
+      <div class="stat-card stat-card--bronze">
+        <div class="stat-card__number">&lt;1%</div>
+        <div class="stat-card__label">of customers now drive <strong>21%</strong> of luxury revenue</div>
+        <div class="stat-card__source">BCG True-Luxury Global Consumer Insights</div>
       </div>
-      <span class="choice-arrow">
-        Open architecture
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </span>
-    </a>
+      <div class="stat-card stat-card--bronze">
+        <div class="stat-card__number">37%</div>
+        <div class="stat-card__label">of market value comes from the <strong>top 0.1%</strong></div>
+        <div class="stat-card__source">Altagamma True-Luxury 2025</div>
+      </div>
+      <div class="stat-card stat-card--bronze">
+        <div class="stat-card__number">35%</div>
+        <div class="stat-card__label">of aspirational consumers <strong>paused or reduced</strong> luxury spending</div>
+        <div class="stat-card__source">BCG / Altagamma 2025</div>
+      </div>
+    </div>
   </div>
-</main>
+</section>
 
-<footer>
-  <em>Press F for fullscreen · ← / → to navigate inside either edition.</em>
-</footer>
+
+<!-- =========================================================================
+     WHY NOW — 3 FORCES
+     ========================================================================= -->
+<section class="section section--light">
+  <div class="wrap">
+    <div class="section__label">Why now</div>
+    <h2 class="section__title">Three forces, <em>converging.</em></h2>
+    <p class="section__subtitle">The shopper has already changed how they buy. The platform stack has matured. And Salesforce is putting real chips down.</p>
+
+    <div class="stat-grid stat-grid--2" style="margin-bottom:48px">
+      <div class="stat-card stat-card--gold">
+        <div class="stat-card__number">20%</div>
+        <div class="stat-card__label">of all retail sales over the 2025 holidays were <strong>AI + agent driven</strong> — fueling $262B in revenue</div>
+        <div class="stat-card__source">Salesforce, Jan 2026</div>
+      </div>
+      <div class="stat-card stat-card--gold">
+        <div class="stat-card__number">+693%</div>
+        <div class="stat-card__label">YoY surge in <strong>GenAI traffic</strong> to retail sites over the holiday season</div>
+        <div class="stat-card__source">Adobe Digital Economy Index 2026</div>
+      </div>
+    </div>
+
+    <div class="force-grid">
+      <div class="force">
+        <div class="force__num">01</div>
+        <div class="force__title">Customer behavior flipped.</div>
+        <div class="force__body">Conversational shopping is now the <strong>default expectation</strong>, not the novelty. The agent economy is the post-recap actual — not a projection.</div>
+      </div>
+      <div class="force">
+        <div class="force__num">02</div>
+        <div class="force__title">The platform stack matured.</div>
+        <div class="force__body">Reasoning engines. Grounding to authoritative product and customer data. Brand-voice control. What was a demo eighteen months ago is in <strong>production today.</strong></div>
+      </div>
+      <div class="force">
+        <div class="force__num">03</div>
+        <div class="force__title">Salesforce put real chips down.</div>
+        <div class="force__body">In March we acquired <strong>Cimulate</strong> — an LLM-native discovery and agentic commerce engine, purpose-built for retail. Now part of Agentforce Commerce.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     RUFUS RETIRED
+     ========================================================================= -->
+<section class="section section--ink">
+  <div class="wrap">
+    <div class="section__label">Today's headline</div>
+    <h2 class="section__title">Bolt-on retail chatbots have <em>structural limits.</em></h2>
+    <p class="section__subtitle">This morning, Amazon retired its Rufus chatbot and folded it into a new offering called Alexa for Shopping. Daniel Rausch — Amazon's top Alexa executive — gave the cleanest argument we've heard for why bolt-on retail bots keep stumbling.</p>
+
+    <div class="quote-block">
+      <p class="quote-block__text">Shopping is not something you do as a side quest.</p>
+      <p class="quote-block__attr"><strong>Daniel Rausch</strong>VP, Alexa · Amazon · May 13, 2026</p>
+    </div>
+
+    <p style="text-align:center;font-size:20px;color:rgba(255,255,255,0.85);max-width:820px;margin:0 auto;line-height:1.5">The agent has to live <em style="font-family:var(--font-serif);color:var(--sf-gold)">where the brand lives</em>. Voiced like the brand. Accountable to the brand.</p>
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     CUCINELLI / CHALHOUB / ZEGNA — LUXURY PROOF
+     ========================================================================= -->
+<section class="section section--cream">
+  <div class="wrap">
+    <div class="section__label">The bar is higher in luxury</div>
+    <h2 class="section__title">The brands shipping <em>prove it works.</em></h2>
+    <p class="section__subtitle">If the most humanist brand in luxury can ship agentic AI on its terms, the "AI dilutes luxury" objection collapses on contact. Three brands. Three different stacks. One pattern.</p>
+
+    <div class="cust-grid">
+      <div class="cust-card">
+        <div class="cust-card__brand">Brunello Cucinelli</div>
+        <div class="cust-card__tag">Italian humanist luxury · "Callimacus"</div>
+        <ul class="cust-card__metrics">
+          <li><strong>10K+</strong> daily queries</li>
+          <li><strong>70%</strong> of boutique visitors browse it before walking in</li>
+          <li>Multi-agent · launched Jan 21, 2026</li>
+        </ul>
+        <p class="cust-card__quote">"AI must remain profoundly human. A handmaid of humanity." — B. Cucinelli</p>
+      </div>
+      <div class="cust-card">
+        <div class="cust-card__brand">Chalhoub · "Layla"</div>
+        <div class="cust-card__tag">Middle-East luxury</div>
+        <ul class="cust-card__metrics">
+          <li><strong>2.2x</strong> session time</li>
+          <li><strong>2.6x</strong> conversion</li>
+          <li><strong>27%</strong> product exploration lift</li>
+        </ul>
+        <p class="cust-card__quote">Concrete consumer-side luxury AI lift. Public, on-the-record.</p>
+      </div>
+      <div class="cust-card">
+        <div class="cust-card__brand">Ermenegildo Zegna</div>
+        <div class="cust-card__tag">"ZEGNA X 360"</div>
+        <ul class="cust-card__metrics">
+          <li><strong>45%</strong> of boutique revenue routes through connected commerce</li>
+          <li>Cross-channel clienteling backbone</li>
+          <li>"Operating model works at scale" proof</li>
+        </ul>
+        <p class="cust-card__quote">"The idea that we should be waiting for the customer is completely obsolete." — E. Zegna</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     HANDOFF TO TONY
+     ========================================================================= -->
+<section class="section section--dark">
+  <div class="wrap">
+    <div class="handoff" style="padding:60px 0">
+      <h2 class="section__title" style="margin:0 auto 32px;text-align:center;color:white;max-width:900px">What does this look like, actually <em>running</em> on a luxury storefront?</h2>
+      <p class="handoff__quote">Merkle has built AI Retail Advisor on the Salesforce platform — Commerce Cloud, Agentforce, the trust layer.<br><strong>The experience you're about to see is what the boutique advisor — online — actually feels like.</strong></p>
+      <p class="handoff__line">— Over to Tony.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     BLOCK 2 OPEN — ARCHITECTURE
+     ========================================================================= -->
+<section class="section section--charcoal">
+  <div class="wrap">
+    <div class="section__label">Architecture &amp; Governance</div>
+    <h2 class="section__title">What you just saw runs in the browser. The part that decides whether a luxury brand can put it in <em>production</em> lives underneath.</h2>
+    <p class="section__subtitle">Four pieces. The commerce platform. The agent. The unified profile that grounds it. And the trust layer that governs it.</p>
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     COMMERCE CLOUD FOUNDATION
+     ========================================================================= -->
+<section class="section section--light">
+  <div class="wrap">
+    <div class="section__label">The foundation</div>
+    <h2 class="section__title">The agent doesn't sit <em>next to</em> the storefront. It sits <em>inside</em> it.</h2>
+
+    <div class="two-col" style="margin-top:32px">
+      <div>
+        <h3 class="two-col__heading">Commerce Cloud is the conviction.</h3>
+        <div class="two-col__body">
+          <p>Catalog. Pricing. Inventory. Promotions. Orders. Payments. Everything the agent needs to <strong>actually transact</strong> — native, not integrated.</p>
+          <p>Most "AI commerce agents" sit on top of the storefront and pray. Ours runs inside it.</p>
+          <p style="font-family:var(--font-serif);font-style:italic;font-size:19px;color:var(--text-muted);border-left:3px solid var(--sf-gold);padding-left:18px;margin-top:28px">The agent is the conversation. Commerce Cloud is the conviction that the conversation actually closes.</p>
+        </div>
+      </div>
+      <div>
+        <h3 class="two-col__heading">What we just shipped.</h3>
+        <div class="two-col__body">
+          <p><strong>Cimulate.</strong> Acquired in March. LLM-native search, synthetic shopper-journey data, no-results-page elimination. Already running at <em>West Marine</em> as a copilot called <em>Skipper</em>.</p>
+          <p><strong>Storefront Next.</strong> Composable React storefront. <em>66% faster page loads, 98% more stability.</em> Skinning a luxury site is now a sprint, not a quarter.</p>
+          <p><strong>Pre-built standard agents.</strong> Personal Shopper, Commerce Agent, Service Agent — production-ready. AI Retail Advisor extends them with luxury-specific journeys: clienteling handoff, brand-voice scoring, white-glove logistics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     PANDORA HERO
+     ========================================================================= -->
+<section class="section section--cream">
+  <div class="wrap">
+    <div class="section__label">The named luxury proof</div>
+    <h2 class="section__title">Pandora. <em>Two agents.</em> One platform.</h2>
+    <p class="section__subtitle">Branded jewelry. Accessible-luxury tier. Running on Commerce Cloud + Agentforce. The metrics are public.</p>
+
+    <div class="stat-grid stat-grid--4" style="margin-top:32px">
+      <div class="stat-card stat-card--gold">
+        <div class="stat-card__number">40K</div>
+        <div class="stat-card__label">conversations / month<br>handled by <strong>Gemma + Clara</strong></div>
+      </div>
+      <div class="stat-card stat-card--gold">
+        <div class="stat-card__number">60%</div>
+        <div class="stat-card__label">autonomous deflection rate</div>
+      </div>
+      <div class="stat-card stat-card--gold">
+        <div class="stat-card__number">+10pt</div>
+        <div class="stat-card__label">NPS lift attributable to AI</div>
+      </div>
+      <div class="stat-card stat-card--gold">
+        <div class="stat-card__number">22%</div>
+        <div class="stat-card__label">of <strong>total Pandora sales</strong> via Commerce Cloud</div>
+      </div>
+    </div>
+
+    <div class="quote-block" style="padding:56px 0 0;color:var(--text-body)">
+      <p class="quote-block__text" style="color:var(--lux-ink);font-size:36px">That richness of conversation is the heart of the Pandora experience.</p>
+      <p class="quote-block__attr" style="color:var(--text-muted)"><strong style="color:var(--lux-bronze)">Walmsley</strong>Pandora · 2025</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     WILLIAMS-SONOMA / PORTFOLIO
+     ========================================================================= -->
+<section class="section section--light">
+  <div class="wrap">
+    <div class="section__label">The portfolio analog</div>
+    <h2 class="section__title">Williams-Sonoma proves the <em>portfolio</em> model.</h2>
+    <p class="section__subtitle">Pottery Barn. West Elm. Williams Sonoma. Three brands. One Agentforce 360. Every brand gets its own voiced agent — on the same governed platform.</p>
+
+    <div class="two-col">
+      <div>
+        <div class="force-grid" style="grid-template-columns:1fr;gap:22px;margin:0">
+          <div class="force">
+            <div class="force__num">01</div>
+            <div class="force__title">Agentforce 360 deployed across all three brands.</div>
+          </div>
+          <div class="force">
+            <div class="force__num">02</div>
+            <div class="force__title">"Olive" — the sous-chef agent — voiced specifically for the Williams Sonoma brand.</div>
+          </div>
+          <div class="force">
+            <div class="force__num">03</div>
+            <div class="force__title">Targeting <strong style="color:var(--sf-electric-50)">60%+ chat autonomy</strong> across the portfolio.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 class="two-col__heading">Why this maps to luxury portfolios.</h3>
+        <div class="two-col__body">
+          <p>A luxury group operates 10–30 brands across categories. Each has its own voice. Its own clienteling protocols. Its own customer.</p>
+          <p>The agentic question isn't <em>"which brand goes first?"</em> It's <em>"can we run brand-specific agents on a shared substrate, with shared governance, that the holding company can audit?"</em></p>
+          <p><strong>Williams-Sonoma is doing it now. The pattern is real.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     DATA CLOUD — SUBSTRATE
+     ========================================================================= -->
+<section class="section section--tinted">
+  <div class="wrap">
+    <div class="section__label">The substrate</div>
+    <h2 class="section__title">One customer profile. Any surface. <em>Instantly.</em></h2>
+    <p class="section__subtitle">The agent only works if it has the right context. Data Cloud unifies the customer across store, ecom, clienteling, service, loyalty, repair, regional preference — without ripping out your existing warehouse.</p>
+
+    <div class="two-col">
+      <div>
+        <h3 class="two-col__heading">What it does.</h3>
+        <div class="two-col__body">
+          <p><strong>Zero-copy federation.</strong> Snowflake stays Snowflake. Databricks stays Databricks. The agent gets one customer view; your IT team doesn't have a migration project.</p>
+          <p>Customer history, advisor relationship, regional preference, service notes — unified into a single profile the agent can ground every answer in.</p>
+        </div>
+      </div>
+      <div>
+        <h3 class="two-col__heading">Why luxury cares.</h3>
+        <div class="two-col__body">
+          <p>The boutique advisor on the iPad and the agent on the .com need to read from the <strong>same profile</strong>.</p>
+          <p>Same purchase history. Same advisor relationship. Same regional preference. Same service note.</p>
+          <p style="font-family:var(--font-serif);font-style:italic;font-size:19px;color:var(--lux-bronze);border-left:3px solid var(--lux-bronze);padding-left:18px;margin-top:24px">Same trusted customer context. Any surface. Instantly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     TRUST LAYER
+     ========================================================================= -->
+<section class="section section--dark">
+  <div class="wrap">
+    <div class="section__label">The luxury differentiator</div>
+    <h2 class="section__title">Governance is the <em>whole game</em> in luxury.</h2>
+    <p class="section__subtitle">Every interaction reflects on a brand that's spent decades — sometimes centuries — building equity. The brand can't be talked over by a model that hallucinated a material, mispriced a piece, or said something off-tone.</p>
+
+    <div class="callout">
+      <div class="callout__label">The risk is real, recent, and brand-fatal</div>
+      <h3 class="callout__title">Three weeks ago, Prada's SS26 launch took backlash specifically over AI-driven imagery that <em>felt off</em>.</h3>
+    </div>
+
+    <h3 style="font-family:var(--font-display);font-size:26px;font-weight:700;color:white;margin:0 0 32px;text-align:center">Four things the Einstein Trust Layer does that other platforms don't.</h3>
+
+    <div class="stack">
+      <div class="stack__layer">
+        <div class="stack__layer-num">01</div>
+        <div class="stack__layer-title">Action attribution.</div>
+        <div class="stack__layer-body">Every agent action ties to <strong>the human user who deployed it</strong>. Not a separate system identity. When compliance asks <em>"who did this,"</em> the answer is a name on your team.</div>
+      </div>
+      <div class="stack__layer">
+        <div class="stack__layer-num">02</div>
+        <div class="stack__layer-title">Dynamic grounding with sharing rules.</div>
+        <div class="stack__layer-body">Agents see only what the user is authorized to see. Your CRM permission model extends to AI. <strong>No leakage</strong> across regions, brands, or VIP segments.</div>
+      </div>
+      <div class="stack__layer">
+        <div class="stack__layer-num">03</div>
+        <div class="stack__layer-title">Brand-voice control + toxicity + prompt-injection defense.</div>
+        <div class="stack__layer-body">Pre-screened content libraries for high-stakes responses. Real-time toxicity detection. Prompt-injection defense before the LLM call.</div>
+      </div>
+      <div class="stack__layer">
+        <div class="stack__layer-num">04</div>
+        <div class="stack__layer-title">Zero data retention with LLM partners.</div>
+        <div class="stack__layer-body">Your customer data <strong>does not train a third-party model</strong>. Ever.</div>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:16px;color:rgba(255,255,255,0.7);margin-top:40px;line-height:1.6;max-width:760px;margin-left:auto;margin-right:auto">And critically — <strong style="color:var(--sf-gold)">guardrails are configurable by business users, not engineers.</strong> Your brand and compliance teams shape agent behavior in natural language. No IT tickets.</p>
+  </div>
+</section>
+
+
+<!-- =========================================================================
+     CTA / CLOSING
+     ========================================================================= -->
+<section class="cta">
+  <div class="wrap">
+    <h2 class="cta__title">The brand that <em>shows up</em> the way the boutique advisor would.</h2>
+    <p class="cta__sub">That's what AI Retail Advisor delivers — on a platform purpose-built for the trust luxury demands.</p>
+    <p class="cta__line">"Other platforms govern AI as a separate system bolted on. Salesforce governs agents as <em style="font-style:italic">extensions of your existing users</em> — same permissions, same audit trails, same security boundaries your compliance team already trusts."</p>
+
+    <div class="cta__partners">
+      <div><strong>Salesforce</strong>Commerce Cloud · Agentforce · Data Cloud</div>
+      <div><strong>Merkle</strong>AI Retail Advisor · Strategy + Implementation</div>
+    </div>
+  </div>
+</section>
 
 </body>
 </html>

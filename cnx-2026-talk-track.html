@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talk Track — CNX 2026 Session 1787</title>
+<style>
+:root {
+  --sf-cloud-90: #cfe9fe;
+  --sf-electric-50: #066afe;
+  --sf-electric-30: #022ac0;
+  --sf-electric-20: #002775;
+  --sf-gold: #FFB61B;
+  --lux-cream: #f7f3ec;
+  --lux-ink: #1a1a2e;
+  --lux-bronze: #8a6a3c;
+  --bg: #0a0a14;
+  --bg-card: #14142a;
+  --bg-card-hi: #1a1a3a;
+  --text: #e8eaf2;
+  --text-muted: #8a90a8;
+  --border: rgba(255,255,255,0.08);
+  --accent: var(--sf-gold);
+  --font-display: 'Century Gothic', 'Futura', system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', 'Garamond', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, Roboto, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', Consolas, monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; padding-bottom: 80px; }
+
+/* TOP BAR */
+.bar { position: sticky; top: 0; z-index: 50; background: rgba(10,10,20,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); padding: 14px 0; }
+.bar__inner { max-width: 1240px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.bar__title { font-family: var(--font-display); font-size: 15px; font-weight: 700; letter-spacing: 0.5px; color: white; }
+.bar__title span { color: var(--accent); }
+.bar__meta { display: flex; gap: 18px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); }
+.bar__meta strong { color: var(--accent); display: block; font-size: 13px; letter-spacing: 0.5px; text-transform: none; margin-top: 2px; }
+.bar__link { font-size: 12px; color: var(--sf-cloud-90); text-decoration: none; padding: 8px 16px; border: 1px solid rgba(207,233,254,0.3); border-radius: 100px; transition: 0.18s; letter-spacing: 0.5px; }
+.bar__link:hover { background: rgba(207,233,254,0.1); border-color: var(--sf-cloud-90); }
+
+/* TIMELINE NAV */
+.tl-nav { background: var(--bg-card); border-bottom: 1px solid var(--border); padding: 16px 0; position: sticky; top: 60px; z-index: 49; }
+.tl-nav__inner { max-width: 1240px; margin: 0 auto; padding: 0 32px; display: flex; gap: 8px; overflow-x: auto; flex-wrap: nowrap; }
+.tl-pill { flex-shrink: 0; font-size: 11px; padding: 7px 14px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--text-muted); text-decoration: none; border-radius: 100px; letter-spacing: 0.5px; transition: 0.18s; white-space: nowrap; }
+.tl-pill:hover { color: var(--accent); border-color: rgba(255,182,27,0.4); background: rgba(255,182,27,0.08); }
+.tl-pill--chris { color: var(--sf-cloud-90); border-color: rgba(207,233,254,0.25); }
+.tl-pill--tony { color: var(--text-muted); }
+.tl-pill__time { font-family: var(--font-mono); font-size: 10px; opacity: 0.6; margin-right: 6px; }
+
+/* MAIN GRID */
+.wrap { max-width: 1240px; margin: 0 auto; padding: 32px; display: grid; grid-template-columns: 1fr; gap: 24px; }
+
+.block { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 32px 40px; }
+.block--chris { border-left: 3px solid var(--accent); }
+.block--tony { border-left: 3px solid rgba(207,233,254,0.45); background: rgba(20,20,42,0.5); }
+.block--break { background: linear-gradient(135deg, rgba(255,182,27,0.06), rgba(0,179,255,0.04)); border: 1px solid rgba(255,182,27,0.18); }
+.block--joint { border-left: 3px solid var(--lux-bronze); }
+
+.block__head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 8px; padding-bottom: 18px; border-bottom: 1px solid var(--border); }
+.block__owner { font-size: 11px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); }
+.block--tony .block__owner { color: var(--sf-cloud-90); }
+.block--break .block__owner { color: var(--accent); }
+.block--joint .block__owner { color: var(--lux-bronze); }
+.block__title { font-family: var(--font-display); font-size: 30px; font-weight: 700; line-height: 1.15; color: white; letter-spacing: -0.3px; margin-top: 6px; }
+.block__time { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); letter-spacing: 1px; white-space: nowrap; }
+.block__time strong { color: var(--accent); font-size: 14px; }
+.block__words { font-size: 11px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+/* CUE — slide direction with prominent slide number */
+.cue { display: flex; align-items: stretch; gap: 0; margin: 28px 0 18px; background: linear-gradient(90deg, rgba(255,182,27,0.18), rgba(255,182,27,0.04)); border: 2px solid rgba(255,182,27,0.5); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 20px rgba(255,182,27,0.08); }
+.cue__num { flex-shrink: 0; min-width: 110px; background: var(--accent); color: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 8px; font-family: var(--font-display); font-weight: 700; }
+.cue__num-lbl { font-family: var(--font-mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.75; margin-bottom: 2px; }
+.cue__num-val { font-size: 36px; line-height: 1; letter-spacing: -1px; }
+.cue__num-of { font-size: 11px; opacity: 0.65; margin-top: 2px; font-family: var(--font-mono); }
+.cue__body { flex: 1; display: flex; align-items: center; padding: 14px 22px; gap: 14px; }
+.cue__action { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); opacity: 0.8; flex-shrink: 0; }
+.cue__title { font-family: var(--font-display); font-size: 19px; font-weight: 700; color: white; line-height: 1.2; }
+.cue__title em { font-family: var(--font-serif); font-style: italic; color: var(--accent); font-weight: 400; }
+
+.cue--beat { background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.18); border-radius: 8px; padding: 10px 16px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); display: flex; align-items: center; gap: 10px; }
+.cue--beat::before { content: '⏸'; font-size: 11px; }
+
+.cue--demo { background: linear-gradient(90deg, rgba(207,233,254,0.16), rgba(207,233,254,0.04)); border: 2px solid rgba(207,233,254,0.45); }
+.cue--demo .cue__num { background: var(--sf-cloud-90); color: #002775; }
+
+/* SCRIPT — actual spoken text */
+.script { font-size: 19px; line-height: 1.7; color: var(--text); margin: 14px 0; padding: 0 4px; }
+.script p { margin-bottom: 16px; }
+.script strong { color: white; }
+.script em { font-family: var(--font-serif); font-style: italic; font-size: 1.05em; color: var(--accent); }
+.script .quote { font-family: var(--font-serif); font-style: italic; font-size: 26px; line-height: 1.4; color: var(--accent); padding: 20px 28px; border-left: 3px solid var(--accent); margin: 20px 0; }
+
+.tony-note { padding: 28px; text-align: center; }
+.tony-note__chip { font-size: 11px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--sf-cloud-90); margin-bottom: 14px; }
+.tony-note__title { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: white; margin-bottom: 12px; line-height: 1.2; }
+.tony-note__sub { font-size: 16px; color: var(--text-muted); max-width: 680px; margin: 0 auto; line-height: 1.55; }
+
+/* QA */
+.qa { margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--border); }
+.qa__head { font-size: 12px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+.qa-item { margin-bottom: 22px; padding: 18px 22px; background: rgba(255,255,255,0.025); border-radius: 8px; border: 1px solid var(--border); }
+.qa-item__q { font-size: 15px; font-weight: 700; color: white; margin-bottom: 10px; }
+.qa-item__q::before { content: 'Q · '; color: var(--accent); font-family: var(--font-mono); font-weight: 400; }
+.qa-item__a { font-size: 15px; color: var(--text); line-height: 1.6; }
+.qa-item__a::before { content: 'A · '; color: var(--sf-cloud-90); font-family: var(--font-mono); font-weight: 400; }
+
+/* FLOAT BUTTON — open page in new tab */
+.fab { position: fixed; bottom: 28px; right: 28px; padding: 14px 22px; background: var(--accent); color: var(--bg); text-decoration: none; font-weight: 700; font-size: 13px; letter-spacing: 0.5px; border-radius: 100px; box-shadow: 0 8px 28px rgba(255,182,27,0.35); transition: 0.18s; z-index: 100; }
+.fab:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(255,182,27,0.5); }
+
+/* PRINT */
+@media print {
+  .bar, .tl-nav, .fab { display: none; }
+  body { background: white; color: black; padding: 0; }
+  .block { background: white; border: 1px solid #ccc; page-break-inside: avoid; margin-bottom: 16px; }
+  .block__title, .script strong, .qa-item__q { color: black; }
+  .script { color: #222; }
+  .cue { background: #fff8e0; color: #8a6a3c; }
+}
+
+@media (max-width: 760px) {
+  .wrap { padding: 20px; }
+  .block { padding: 22px 24px; }
+  .block__title { font-size: 24px; }
+  .script { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar__inner">
+    <div class="bar__title">Talk Track · <span>Session 1787</span></div>
+    <div class="bar__meta">
+      <div>Date<strong>Jun 4</strong></div>
+      <div>Slot<strong>1:00–1:40 PM CT</strong></div>
+      <div>Stage<strong>Content Pavilion 4</strong></div>
+    </div>
+    <a class="bar__link" href="cnx-2026-agentic-luxury.html" target="_blank">Open Presentation ↗</a>
+  </div>
+</div>
+
+<nav class="tl-nav">
+  <div class="tl-nav__inner">
+    <a class="tl-pill" href="#open"><span class="tl-pill__time">0:00</span>Open</a>
+    <a class="tl-pill tl-pill--chris" href="#block1"><span class="tl-pill__time">2:00</span>Block 1 · Chris</a>
+    <a class="tl-pill tl-pill--tony" href="#demo"><span class="tl-pill__time">7:00</span>Demo · Tony</a>
+    <a class="tl-pill tl-pill--chris" href="#block2"><span class="tl-pill__time">22:00</span>Block 2 · Chris</a>
+    <a class="tl-pill" href="#impl"><span class="tl-pill__time">28:00</span>Implementation</a>
+    <a class="tl-pill" href="#qa"><span class="tl-pill__time">34:00</span>Q&amp;A</a>
+    <a class="tl-pill" href="#cta"><span class="tl-pill__time">38:00</span>Close</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ============= OPEN ============= -->
+  <section class="block block--joint" id="open">
+    <div class="block__head">
+      <div>
+        <div class="block__owner">Welcome &amp; Intro · Both</div>
+        <h2 class="block__title">Brief intros, partnership land.</h2>
+      </div>
+      <div class="block__time"><strong>0:00–2:00</strong><br>2 min</div>
+    </div>
+    <div class="script">
+      <p>Open conversational. Chris hello → Tony hello → Salesforce + Merkle partnership setup. Lock who-does-what for the audience: Chris frames the strategic luxury opportunity, Tony shows the AI Retail Advisor in action, Chris closes with the architecture &amp; governance story. Keep it loose — talking points, not script.</p>
+    </div>
+  </section>
+
+  <!-- ============= BLOCK 1 ============= -->
+  <section class="block block--chris" id="block1">
+    <div class="block__head">
+      <div>
+        <div class="block__owner">The Luxury AI Opportunity · Chris</div>
+        <h2 class="block__title">The math has changed.</h2>
+        <div class="block__words">~750 words · 145 wpm · ~5:10</div>
+      </div>
+      <div class="block__time"><strong>2:00–7:00</strong><br>5 min</div>
+    </div>
+
+    <div class="cue"><div class="cue__num"><div class="cue__num-lbl">Slide</div><div class="cue__num-val">1</div><div class="cue__num-of">of 16</div></div><div class="cue__body"><div class="cue__action">Open on</div><div class="cue__title">Hero · Welcome &amp; intros</div></div></div>
+    <div class="script">
+      <p>Good afternoon. I'm Chris Serger, <strong>VP of Solutions Engineering</strong> for Salesforce's digital portfolio — <em>Commerce Cloud, Marketing Cloud, Revenue Cloud</em> — across retail, consumer goods, manufacturing, automotive and energy.</p>
+      <p>My team's job is to <strong>connect the technical dots</strong> of the ever-growing and ever-evolving Salesforce platform — and align them to our customers' business challenges and goals. Today we're going to do exactly that around one of the harder questions in our industry right now — <strong>agentic AI in luxury.</strong></p>
+    </div>
+
+    <div class="cue"><div class="cue__num"><div class="cue__num-lbl">Slide</div><div class="cue__num-val">2</div><div class="cue__num-of">of 16</div></div><div class="cue__body"><div class="cue__action">Advance to</div><div class="cue__title">The number — <em>70M</em> luxury customers lost</div></div></div>
+    <div class="script">
+      <p>This is the number that changes the conversation.</p>
+      <p><strong>70 million.</strong> That's how many luxury customers have walked away from the category in the last 2 years. <strong>Bain and Altagamma</strong> flagged it last month. The active luxury client base went from 400M at its peak in 2022 to 330M today — back to 2013 levels.</p>
+    </div>
+
+    <div class="cue"><div class="cue__num"><div class="cue__num-lbl">Slide</div><div class="cue__num-val">3</div><div class="cue__num-of">of 16</div></div><div class="cue__body"><div class="cue__action">Advance to</div><div class="cue__title">The math has changed — <em>top 2%</em> drives 45-47%</div></div></div>
+    <div class="script">
+      <p>And while that contraction was happening at the front door, something else was happening inside the store. The top 2% — what Bain calls the Very Important Customers — now drives <strong>45 to 47%</strong> of all luxury purchases. Half the category, from a sliver of the base.</p>
+      <p>And the customers who walked? Aspirational and younger shoppers. <strong>Gen Z is sitting out at twice the rate of millennials</strong> at the same age. Price escalation, fading brand advocacy. The base aged up while the door narrowed.</p>
+    </div>
+    <div class="cue cue--beat">Beat</div>
+    <div class="script">
+      <p>The math has changed. The question is no longer "how do we acquire more shoppers." It is <em>"how do we make every interaction count, at the scale only software can deliver."</em></p>
+      <p>That is what agentic AI is actually for.</p>
+      <p><strong>White-glove concierge — at software scale.</strong> Autonomously engaging every shopper as an individual, at the moment of intent.</p>
+    </div>
+
+    <div class="cue"><div class="cue__num"><div class="cue__num-lbl">Slide</div><div class="cue__num-val">4</div><div class="cue__num-of">of 16</div></div><div class="cue__body"><div class="cue__action">Advance to</div><div class="cue__title">Why now — <em>3 forces converging</em></div></div></div>
+    <div class="script">
+      <p>Three forces are converging at the same time, and they are why this session is happening this week and not a year from now.</p>
+      <p><strong>Customer behavior flipped.</strong> 20% of all retail sales over the 2025 holidays were AI- and agent-driven. $262 billion in revenue. Not a projection — the post-recap actual from January.</p>
+      <p>GenAI traffic to retail sites was up 693% year-over-year over the holidays. Your customer is already shopping by conversation. The only question is whether they are doing it on your storefront — or somebody else's.</p>
+      <p><strong>The platform stack matured.</strong> Reasoning engines. Grounding to authoritative product and customer data. Brand-voice control. What was a demo 18 months ago is in production today. Tony is going to show you one of those productions in about 4 minutes.</p>
+      <p><strong>And Salesforce put real chips down.</strong> Four big bets shipped in the last 90 days, all pointed at this moment.</p>
+      <p><strong>Headless 360</strong> — GA at TDX in April. Your team can now build customer experiences directly against your Salesforce data — catalog, customer profile, orders, Agentforce — without rebuilding the storefront, and with the audit trail and permission model already wired in.</p>
+      <p>Then a wave of commerce innovations — <strong>Storefront Next</strong>, <strong>Cimulate</strong>, agentic discovery — that we'll come back to in more depth after the demo, because they're what make the architecture you're about to see actually deployable.</p>
+      <p>And <strong>Agentforce</strong> keeps maturing. We'll show you exactly what that means in a live luxury context in about 4 minutes.</p>
+    </div>
+
+    <div class="cue"><div class="cue__num"><div class="cue__num-lbl">Slide</div><div class="cue__num-val">5</div><div class="cue__num-of">of 16</div></div><div class="cue__body"><div class="cue__action">Advance to</div><div class="cue__title">Rufus retired — <em>Andy Jassy</em> quote</div></div></div>
+    <div class="script">
+      <p>I want to mark one more thing before we get to the demo, because it happened earlier this month.</p>
+      <p>Amazon retired Rufus. Folded it into Alexa for Shopping. Andy Jassy, Amazon's CEO — his reason was the cleanest argument I have heard for where the agent has to live.</p>
+    </div>
+    <div class="cue cue--beat">Quote beat — let it breathe</div>
+    <div class="script">
+      <p class="quote">"Shopping is not something you do as a side quest."</p>
+      <p>In luxury, that line lands twice as hard. Your customer does not toggle between an AI tab and your brand. <strong>The agent has to live where the brand lives. Voiced like the brand. Accountable to the brand.</strong></p>
+    </div>
+
+    <div class="cue"><div class="cue__num"><div class="cue__num-lbl">Slide</div><div class="cue__num-val">6</div><div class="cue__num-of">of 16</div></div><div class="cue__body"><div class="cue__action">Advance to</div><div class="cue__title">Brands shipping — <em>Cucinelli · Chalhoub · Zegna</em></div></div></div>
+    <div class="script">
+      <p>The brands actually shipping prove it works.</p>
+      <p><strong>Brunello Cucinelli</strong> — Executive Chairman and Creative Director — launched <strong>Callimacus</strong> this January. <strong>4 named agents.</strong> <strong>10K-12K daily queries</strong> across IT, US, UK. 70% of boutique visitors browse it before they walk in. His framing — <em>"AI must remain profoundly human. A handmaid of humanity."</em></p>
+      <p>The humanist luxury thesis and agentic AI are not in tension. Provided 3 things hold. <strong>Brand voice every time.</strong> <strong>Authoritative product context</strong> — agent cannot make it up. <strong>Connected to clienteling</strong> — agent knows what the human advisor knows.</p>
+      <p><strong>Chalhoub</strong> built <strong>Layla</strong> in-house on first-party data. 20K products, three languages. Per <em>Glossy</em>: <strong>2.2x longer sessions, 2.6x conversion, 27% more products / session.</strong> Jeremy Denisty, Director of AI — <em>"conversational commerce is the future of commerce."</em></p>
+      <p><strong>Zegna</strong> — <strong>ZEGNA X 360</strong>, live since 2023. Style consultant, 360° configurator, custom-tailored. <strong>~45% of boutique revenue</strong> routes through it. Edoardo Zegna, Co-CEO of Zegna — <em>"the idea that we should be waiting for the customer is completely obsolete."</em></p>
+      <p><em>3 brands. 3 different stacks. 1 pattern.</em></p>
+    </div>
+
+    <div class="script">
+      <p>So what does this look like, actually running on a luxury storefront?</p>
+      <p>Tony is about to walk us through it. Merkle has built AI Retail Advisor on the Salesforce platform — Commerce Cloud, Agentforce, the trust layer.</p>
+      <p><strong>Tony, over to you.</strong></p>
+    </div>
+  </section>
+
+  <!-- ============= DEMO ============= -->
+  <section class="block block--break" id="demo">
+    <div class="block__head">
+      <div>
+        <div class="block__owner">Live Demo · Tony</div>
+        <h2 class="block__title">AI Retail Advisor — luxury shopper journey.</h2>
+      </div>
+      <div class="block__time"><strong>7:00–22:00</strong><br>15 min</div>
+    </div>
+    <div class="cue cue--demo"><div class="cue__num"><div class="cue__num-lbl">Slide</div><div class="cue__num-val">7</div><div class="cue__num-of">of 16</div></div><div class="cue__body"><div class="cue__action">Cut to Tony</div><div class="cue__title">Handoff slide — <em>The boutique advisor, online</em></div></div></div>
+    <div class="cue cue--demo"><div class="cue__num"><div class="cue__num-lbl">Slide</div><div class="cue__num-val">8</div><div class="cue__num-of">of 16</div></div><div class="cue__body"><div class="cue__action">Tony advances to</div><div class="cue__title">Demo roadmap — <em>3 modes, one customer</em></div></div></div>
+    <div class="tony-note">
+      <div class="tony-note__chip">Tony drives</div>
+      <div class="tony-note__title">7:00–15:00 — Frame the demo + What is AI Retail Advisor?</div>
+      <p class="tony-note__sub">Tony narrates the Demo Roadmap slide — Maison Tachibana, the Bantō, Sarah Chen, the 3 modes (Agentic Commerce → Clienteling → Marketing), unified profile. Then advances into solution overview, autonomous engagement model.</p>
+    </div>
+    <div class="tony-note" style="border-top:1px solid var(--border);margin-top:8px;padding-top:32px">
+      <div class="tony-note__chip">Tony drives</div>
+      <div class="tony-note__title">15:00–22:00 — Live Demo</div>
+      <p class="tony-note__sub"><strong>Maison Tachibana</strong> — Kyoto luxury house. Conversational agent: <strong>"the Bantō"</strong>. Customer: <strong>Sarah Chen</strong>, Platinum 12-yr loyal, destination Kyoto wedding 42 days out. Three modes one platform: <em>Agentic Commerce → Agentic Clienteling → Agentic Marketing</em>. Built on Commerce Cloud + Agentforce + Data Cloud + Marketing Cloud Advanced + Personalization + Loyalty + Merkury identity graph. "The page is the agent." "The journey composes itself."</p>
+    </div>
+  </section>
+
+  <!-- ============= BLOCK 2 ============= -->
+  <section class="block block--chris" id="block2">
+    <div class="block__head">
+      <div>
+        <div class="block__owner">Architecture &amp; Governance · Chris</div>
+        <h2 class="block__title">The part that decides whether luxury can put it in production.</h2>
+        <div class="block__words">~870 words · 145 wpm · ~6:00</div>
+      </div>
+      <div class="block__time"><strong>22:00–28:00</strong><br>6 min</div>
+    </div>
+
+    <div class="cue"><div class="cue__num"><div class="cue__num-lbl">Slide</div><div class="cue__num-val">9</div><div class="cue__num-of">of 16</div></div><div class="cue__body"><div class="cue__action">Advance to</div><div class="cue__title">Architecture — <em>3 layers</em> (post-demo)</div></div></div>
+    <div class="script">
+      <p>Thanks Tony. What you just saw runs in the browser. The part that decides whether a luxury brand can put it in production lives underneath.</p>
+      <p>Three layers.</p>
+      <p><strong>One — what your customer sees.</strong> The storefront, the AI advisor, the clienteling app, the email tomorrow. The surfaces.</p>
+      <p><strong>Two — the brain.</strong> <strong>Commerce Cloud</strong> and <strong>Marketing Cloud</strong> as the apps that actually run the business. <strong>Agentforce</strong> acting on top of them. And all of it grounded in <strong>Data Cloud</strong> — one unified shopper profile, federated to wherever your data lives today.</p>
+      <p><strong>Three — the guardrails.</strong> The Trust Layer. Brand voice, audit trail, zero data retention, compliance. <em>The rail that makes the agent safe to put in front of a luxury customer.</em></p>
+      <p>Today we focus on Commerce Cloud — that's the app at the center of the conversation Tony just walked through. Marketing Cloud is in the same journey. Let me take it from the top.</p>
+    </div>
+
+    <div class="cue"><div class="cue__num"><div class="cue__num-lbl">Slide</div><div class="cue__num-val">10</div><div class="cue__num-of">of 16</div></div><div class="cue__body"><div class="cue__action">Advance to</div><div class="cue__title">Commerce Cloud — <em>where the conversation closes</em></div></div></div>
+    <div class="script">
+      <p>Start with Commerce Cloud — the app at the center of what Tony just walked through. The agent doesn't sit next to the storefront. <em>It sits inside it.</em></p>
+      <p>That's the architectural difference. Catalog, pricing, inventory, promotions, orders, payments — every piece the agent needs to actually transact lives natively in Commerce Cloud. Most "AI commerce agents" sit on top of the storefront and pray. Ours runs inside it.</p>
+      <p>This is where the commerce innovations I teed up earlier actually land. Three of them matter for what you just saw —</p>
+      <p><strong>Storefront Next</strong> — GA at this conference. Composable, agentic-first storefront. <strong>Under 30 minutes</strong> to stand one up. <strong>66% faster product pages</strong> than Google's Core Web Vitals benchmark — directly moves conversion and SEO. Replatforming a luxury site is now a sprint, not a multi-quarter program.</p>
+      <p><strong>Cimulate</strong> — we closed this acquisition in Q1, now coming into Commerce Cloud as our LLM-native discovery layer. When a shopper types <em>"a navy blazer for a Kyoto wedding,"</em> the site understands intent and responds with the right product, not a dead-end search.</p>
+      <p><strong>Out-of-the-box agentic shopping and merchandising</strong> — production-ready on Commerce Cloud. AI Retail Advisor extends those with the luxury-specific layer Tony just walked through.</p>
+      <p style="font-style:italic;color:#0047D4">No middleware. Native pipe. Commerce-as-platform, not commerce-as-bolt-on.</p>
+    </div>
+
+    <div class="cue"><div class="cue__num"><div class="cue__num-lbl">Slide</div><div class="cue__num-val">11</div><div class="cue__num-of">of 16</div></div><div class="cue__body"><div class="cue__action">Advance to</div><div class="cue__title">Pandora — <em>Clara + Gemma</em></div></div></div>
+    <div class="script">
+      <p>Pandora — accessible luxury at 100-country scale. World's largest jewelry brand. <strong>Over 100 countries.</strong> <strong>3 pieces of jewelry sold every second.</strong></p>
+      <p>David Walmsley, Pandora's Chief Digital and Technology Officer, set the challenge — <em>could we build the best online sales associate, on Agentforce?</em></p>
+      <p>Clara and Gemma are the answer. <strong>2 agents, 2 specific jobs</strong>, running on Commerce Cloud, Agentforce, Data Cloud.</p>
+      <p><strong>Clara</strong> — service agent. <strong>60% case deflection at scale.</strong> <strong>Gemma</strong> — selling agent. Mirrors the magic of the physical store. Recommends jewelry by occasion — birthdays, anniversaries, milestones. <em>Staging the moment, not answering questions.</em></p>
+      <p><strong>+10pt NPS. 22% of Pandora sales</strong> now runs through Commerce Cloud.</p>
+      <p>Walmsley — <em>"this is the internet again. This is electricity. It's that level of change."</em></p>
+    </div>
+
+    <div class="cue"><div class="cue__num"><div class="cue__num-lbl">Slide</div><div class="cue__num-val">12</div><div class="cue__num-of">of 16</div></div><div class="cue__body"><div class="cue__action">Advance to</div><div class="cue__title">Williams-Sonoma — <em>Olive</em> · 60 days</div></div></div>
+    <div class="script">
+      <p><strong>Olive isn't luxury</strong> — and I'll say that on the record. Williams-Sonoma is mid-market home. But the architecture scales <strong>1:1 to your category.</strong></p>
+      <p><strong>60 days</strong> kickoff to live. <strong>10K conversations</strong> a day. <strong>65% autonomous resolution.</strong> <strong>25% MoM</strong> growth.</p>
+      <p>Olive plans the occasion end-to-end. Grounded in the catalog. <em>Not improvised. Not hallucinated.</em> Warm handoff to a human when needed.</p>
+      <p>Replace <em>"plan my dinner party"</em> with <em>"plan my anniversary trip."</em> Same architectural pattern. The agent surfaces the right product. <strong>Data Cloud</strong> grounds the relationship. The human closes.</p>
+    </div>
+
+    <div class="cue"><div class="cue__num"><div class="cue__num-lbl">Slide</div><div class="cue__num-val">13</div><div class="cue__num-of">of 16</div></div><div class="cue__body"><div class="cue__action">Advance to</div><div class="cue__title">Trust Layer — <em>governance is the whole game</em> (Perplexity ruling)</div></div></div>
+    <div class="script">
+      <p>And now the part that for luxury, in my opinion, is the whole game.</p>
+      <p><em>Governance.</em></p>
+      <p>Six weeks ago, a federal court ordered Perplexity's shopping agent to stop transacting on Amazon — the agent was disguising itself as a human shopper to make purchases. First major agentic-commerce ruling. The legal question the court answered: <em>when an AI agent acts, who owns the action?</em></p>
+      <p>That is the new exposure. In luxury, the price of an ungoverned agent is not a refund — it's a one-of-one client, a flagship's reputation, a brand book you've spent decades protecting. Brands have to govern the brand <em>and</em> the AI powering the brand.</p>
+      <p style="font-style:italic;color:#0047D4">Tony's spec captures it in six words — <strong>the agent knows, it doesn't say.</strong> That is the difference between a brand that put AI in production safely, and one in court.</p>
+    </div>
+
+    <div class="cue"><div class="cue__num"><div class="cue__num-lbl">Slide</div><div class="cue__num-val">14</div><div class="cue__num-of">of 16</div></div><div class="cue__body"><div class="cue__action">Advance to</div><div class="cue__title">Trust Layer — <em>4 things</em> stack</div></div></div>
+    <div class="script">
+      <p>4 things the Salesforce Trust Layer does that other platforms don't.</p>
+    </div>
+    <div class="cue cue--beat">Point to stack items · don't read · summarize</div>
+    <div class="script">
+      <p><strong>One. Action attribution.</strong> Every agent action ties to the human user who deployed it. When compliance asks "who did this," the answer is a name on your team.</p>
+      <p><strong>Two. Dynamic grounding with sharing rules.</strong> Agents only see what the user is authorized to see. The CRM permission model extends to AI. No leakage across regions, brands, or VIP segments.</p>
+      <p><strong>Three. Brand-voice control, toxicity detection, and prompt-injection defense</strong> — before the LLM call.</p>
+      <p><strong>Four. Zero data retention with LLM partners.</strong> Your customer data does not train a third-party model. Ever.</p>
+      <p>And critically — <strong>guardrails are configurable by business users, not engineers.</strong> Your brand team and your compliance team shape agent behavior in natural language. No IT tickets.</p>
+      <p><em>The audit trails, the trust handshakes, the brand-voice scoring — none of it is something you bolt on later. That is the rail that makes the agent safe to put in front of a luxury customer.</em></p>
+    </div>
+  </section>
+
+  <!-- ============= IMPLEMENTATION ============= -->
+  <section class="block block--joint" id="impl">
+    <div class="block__head">
+      <div>
+        <div class="block__owner">Implementation &amp; Getting Started · Both</div>
+        <h2 class="block__title">An activation. Not a rip-and-replace.</h2>
+        <div class="block__words">Chris ~30-45 sec · Tony covers most of segment</div>
+      </div>
+      <div class="block__time"><strong>28:00–34:00</strong><br>6 min</div>
+    </div>
+    <div class="cue"><div class="cue__num"><div class="cue__num-lbl">Slide</div><div class="cue__num-val">15</div><div class="cue__num-of">of 16</div></div><div class="cue__body"><div class="cue__action">Advance to</div><div class="cue__title">Two moves to make Monday</div></div></div>
+    <div class="script">
+      <p>One last frame. <em>This is an activation. Not a rip-and-replace.</em> Two moves to make Monday.</p>
+      <p><strong>One — audit your luxury journey.</strong> Pick the moments that break today. Anniversary gift. Made-to-measure handoff. Clienteling memory. Post-purchase concierge. Name the gap before you name the platform.</p>
+      <p><strong>Two — stand up <em>one</em> agent against <em>one</em> moment.</strong> Not seven agents. Not a multi-quarter program. One occasion-based agent, governed by your brand voice, grounded in your catalog, handed off cleanly to a human. <strong>Olive shipped in 60 days. Clara in six weeks.</strong> The agent layer is the activation.</p>
+    </div>
+    <div class="tony-note" style="border-top:1px solid var(--border);margin-top:24px;padding-top:24px">
+      <div class="tony-note__chip">Tony covers</div>
+      <div class="tony-note__title">Deployment roadmap · governance · real-world results</div>
+      <p class="tony-note__sub">Merkle methodology, responsible-AI framework, end-to-end (strategy → implementation → ongoing optimization).</p>
+    </div>
+  </section>
+
+  <!-- ============= Q&A ============= -->
+  <section class="block" id="qa">
+    <div class="block__head">
+      <div>
+        <div class="block__owner">Q&amp;A · Both</div>
+        <h2 class="block__title">Open floor.</h2>
+      </div>
+      <div class="block__time"><strong>34:00–38:00</strong><br>4 min</div>
+    </div>
+    <div class="script">
+      <p><strong>Routing:</strong> Tony takes product specifics, AI Retail Advisor architecture, implementation timeline, deployment scope, pricing. Chris takes platform/governance, competitive (don't name), strategic posture, why-Salesforce, multi-brand portfolios, hallucination/risk.</p>
+    </div>
+
+    <div class="qa">
+      <div class="qa__head">High-confidence backstops</div>
+
+      <div class="qa-item">
+        <div class="qa-item__q">Is this realistic? Would real luxury shoppers actually plan with an agent?</div>
+        <div class="qa-item__a">You just saw it — the customer planning a wedding 42 days out, the agent surfacing the right piece at the right moment. And Williams-Sonoma's Olive runs the same occasion-based pattern in production today — 10,000 conversations a day, built in 60 days, 65% autonomous resolution. The pattern is real. Luxury context is the vocabulary.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-item__q">How long to deploy?</div>
+        <div class="qa-item__a">Tony will speak to AI Retail Advisor specifics. Platform-side: Olive went live in 60 days at Williams-Sonoma. Storefront Next is a sprint, not a quarter. Implementation is configuration plus brand-voice tuning, not rebuild.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-item__q">How does this work alongside our human clienteling team?</div>
+        <div class="qa-item__a">Augments, doesn't replace. The agent handles discovery, comparison, gift logic, post-purchase. The advisor gets the customer pre-warmed — full context, summarized intent, the open question that needs a human. Best practice: design the warm handoff first, the agent in isolation second.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-item__q">How do we keep the agent on-brand?</div>
+        <div class="qa-item__a">2 layers. Template-bound execution — for high-stakes responses, the agent only selects from pre-approved content libraries. Brand-voice plus toxicity scoring before any response goes to the customer. Brand and legal configure this in natural language. No engineering tickets.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-item__q">What about hallucination on materials, provenance, pricing?</div>
+        <div class="qa-item__a">That is exactly what grounding solves. The agent answers from your authoritative product catalog, your inventory system, your knowledge base. If the data is not there, the agent escalates rather than guesses.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-item__q">Privacy — GDPR, CCPA, EU AI Act?</div>
+        <div class="qa-item__a">Built in. Trust layer masks PII before LLM calls, unmasks on return. Zero data retention with LLM partners. Article 50 transparency wired into the customer-facing flow. Brands configure, not architect.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-item__q">What if the agent makes a mistake on a high-value customer?</div>
+        <div class="qa-item__a">2 answers. Guardrails plus circuit breakers — high-blast-radius actions require human approval. Audit trail — every agent action attributed to a human user. The model is not perfect. The governance is.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-item__q">Can our existing data warehouse stay in place?</div>
+        <div class="qa-item__a">Yes. Zero-copy federation. Snowflake, Databricks, BigQuery — data stays where it lives. Data Cloud queries it in place. No migration project.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-item__q">How does this compare to Sierra / Adobe / Shopify Sidekick / a standalone agent vendor?</div>
+        <div class="qa-item__a">(don't name competitors directly) The architectural choice is whether your agent is an extension of the systems your customer, product, and order data already live in — or a separate system you have to integrate, govern, and trust independently. Salesforce treats agents as users. They inherit the permissions, the data, the audit trails. At luxury scale, that difference is the whole game.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-item__q">We use commercetools / Shopify Plus / a custom storefront — does this still work?</div>
+        <div class="qa-item__a">Defer to Tony — Merkle has done these integrations. Honest answer: deepest integration is Salesforce-on-Salesforce, where the trust-layer story is strongest. The agent layer is reachable from non-SF storefronts via APIs and the MCP layer. You don't have to migrate to start.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-item__q">Multi-brand luxury house — LVMH, Kering, Chalhoub. How does ONE trust layer span dozens of maisons with different brand voices?</div>
+        <div class="qa-item__a">Same trust layer, brand-voice profiles per maison. Sharing rules carve the data. Brand-voice scoring carves the language. Each maison owns its content library, its tone scoring threshold, its compliance reviewer. One platform, n brand consciences.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-item__q">We run Adobe Commerce + AEM + Marketo. Why bother switching?</div>
+        <div class="qa-item__a">Agentforce + Trust Layer can sit alongside non-SF stacks via MCP — that's the wedge. Deepest integration is still SF-on-SF, where the trust-layer story is strongest. We don't push migration off the stage. We push the conversation toward whichever system carries the most governance risk. Room 270 to map your stack.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-item__q">What's your named luxury proof on Salesforce today?</div>
+        <div class="qa-item__a">Honest answer: Pandora is the <em>named</em> brand shipping at scale on Salesforce — accessible luxury, 100-country footprint, agentic in production. Cucinelli, Chalhoub, Zegna prove the <em>pattern</em> at the luxury tier — agentic AI with brand voice intact. The luxury-tier SF proof is the one Tony just walked us through. We are at the front edge of the wave, not the back.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-item__q">We tried Einstein and it didn't deliver. Why is Agentforce different?</div>
+        <div class="qa-item__a">Fair. Einstein was prediction grafted onto CRM. Agentforce is agent-native — purpose-built reasoning, MCP tool-calling, action and audit baked in not bolted on. The platform was rebuilt underneath. Happy to show the architecture diff at Room 270.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= CTA ============= -->
+  <section class="block block--joint" id="cta">
+    <div class="block__head">
+      <div>
+        <div class="block__owner">Wrap-up &amp; CTA · Both</div>
+        <h2 class="block__title">The brand that shows up the way the boutique advisor would.</h2>
+        <div class="block__words">Chris ~30-45 sec</div>
+      </div>
+      <div class="block__time"><strong>38:00–40:00</strong><br>2 min</div>
+    </div>
+    <div class="cue"><div class="cue__num"><div class="cue__num-lbl">Slide</div><div class="cue__num-val">16</div><div class="cue__num-of">of 16</div></div><div class="cue__body"><div class="cue__action">Advance to</div><div class="cue__title">Close — <em>Room 270</em></div></div></div>
+    <div class="script">
+      <p>One line. Other platforms add an AI system you have to govern alongside everything else. Salesforce makes the agent another user — same permissions, same audit trail, same compliance boundary you already trust.</p>
+      <p><em>If your boutique advisor is the bar, that's the only architecture that clears it.</em></p>
+      <p><strong>Two asks before you leave.</strong></p>
+      <p><strong>One</strong> — find us at <strong>Room 270</strong>. Tony and I will scope your stack in 20.</p>
+      <p><strong>Two</strong> — bring one luxury moment that breaks today. Anniversary gift. Made-to-measure handoff. Post-purchase concierge. We'll show you what it looks like on the platform you already own.</p>
+      <p>Questions now. Tony takes product, implementation, timeline. I'll take platform, governance, strategy.</p>
+    </div>
+  </section>
+
+</div>
+
+<a class="fab" href="cnx-2026-agentic-luxury.html" target="_blank">Open Presentation ↗</a>
+
+</body>
+</html>
