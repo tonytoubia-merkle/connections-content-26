@@ -58,10 +58,11 @@
           <div class="ac-type">Bespoke Fitting</div>
           <span class="appt-status status-confirmed">Confirmed</span>
         </div>
-        <div id="apptSarah" class="appt-card" data-min="0">
-          <div class="ac-time">11:00 AM</div>
+        <!-- Sarah only appears once her email is entered and Merkury recognizes her (beat >= 2) -->
+        <div id="apptSarah" class="appt-card" data-min="2">
+          <div class="ac-time">Now</div>
           <div class="ac-name">Sarah Chen</div>
-          <div class="ac-type">Walk-In Consultation</div>
+          <div class="ac-type">Walk-In · unscheduled</div>
           <span class="appt-status status-checkedin">Checked In</span>
         </div>
         <div class="appt-card" data-min="0">
@@ -84,8 +85,8 @@
       <!-- Compact header (selected customer): beat >= 2 -->
       <div id="panelHeaderCompact" class="panel-header-compact" data-min="2">
         <h3 class="customer-name-compact">Sarah Chen</h3>
-        <span class="identity-badge badge-known">Known</span>
-        <span class="clientelling-tier">Platinum</span>
+        <span class="identity-badge" style="background:#fff3e0;color:#e65100;border:1px solid #ffcc80;">Recognized · Merkury 3P</span>
+        <span id="clientTier" class="clientelling-tier" style="background:#f5f5f5;color:#888;">No CRM record</span>
         <span class="contact-inline">
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>
@@ -112,48 +113,17 @@
                 Search CRM
               </span>
               <span id="searchCrmLoading" style="display:none;align-items:center;gap:8px;">
-                <span class="spinner"></span> Resolving identity…
+                <span class="spinner"></span> No CRM record — recognizing via Merkury…
               </span>
             </button>
           </div>
         </div>
 
-        <!-- profileSection360: Loyalty — beat >= 2 -->
-        <div id="loyaltySection" class="section-card" data-min="2">
-          <div class="section-header">
-            <span class="section-title">Loyalty</span>
-            <span class="expand-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
-            </span>
-          </div>
-          <div class="section-body">
-            <div class="loyalty-grid">
-              <div class="loyalty-stat">
-                <span class="stat-label">Tier</span>
-                <span class="stat-value tier-value">Platinum</span>
-              </div>
-              <div class="loyalty-stat">
-                <span class="stat-label">Points</span>
-                <span class="stat-value">48,200</span>
-              </div>
-              <div class="loyalty-stat">
-                <span class="stat-label">Member Since</span>
-                <span class="stat-value">2012</span>
-              </div>
-            </div>
-            <div class="prov-row">
-              <span class="badge badge-declared">declared · loyalty</span>
-              <span class="badge badge-observed">observed · 12 yr tenure</span>
-              <span class="badge badge-inferred">inferred · high LTV</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- profileSection360: Merkury appended profile — beat >= 2 -->
+        <!-- profileSection360: Merkury 3rd-party match (primary recognition; she's not in CRM) — beat >= 2 -->
         <div id="merkurySection" class="section-card" data-min="2">
           <div class="section-header">
-            <span class="section-title">Merkury · Appended Profile</span>
-            <span class="badge" style="background:#fff3e0;color:#e65100;border:1px solid #ffcc80;font-size:10px;font-weight:600;padding:2px 8px;border-radius:12px;letter-spacing:.3px;">appended · identity graph</span>
+            <span class="section-title">Merkury · 3rd-Party Match</span>
+            <span class="badge" style="background:#fff3e0;color:#e65100;border:1px solid #ffcc80;font-size:10px;font-weight:600;padding:2px 8px;border-radius:12px;letter-spacing:.3px;">3rd-party · identity graph</span>
             <span class="expand-icon">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
             </span>
@@ -163,12 +133,11 @@
               <div><div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.6px;">Household</div><div style="font-size:13px;color:#333;">Married · no children at home</div></div>
               <div><div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.6px;">Affluence band</div><div style="font-size:13px;color:#333;">HNW · top 2% net worth</div></div>
               <div><div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.6px;">Travel</div><div style="font-size:13px;color:#333;">Frequent international · APAC</div></div>
-              <div><div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.6px;">Category affinities</div><div style="font-size:13px;color:#333;">Heritage maisons · leather · fragrance</div></div>
-              <div><div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.6px;">Reachable on</div><div style="font-size:13px;color:#333;">Email (preferred) · SMS opt-in</div></div>
+              <div><div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.6px;">Interests</div><div style="font-size:13px;color:#333;">Luxury goods · antiquities · fragrance · fine art</div></div>
               <div><div style="font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.6px;">Identity match</div><div style="font-size:13px;color:#333;">MID resolved · 0.96 confidence</div></div>
             </div>
             <div class="prov-row" style="margin-top:10px;">
-              <span class="badge" style="background:#fff3e0;color:#e65100;border:1px solid #ffcc80;">appended · Merkury MID</span>
+              <span class="badge" style="background:#fff3e0;color:#e65100;border:1px solid #ffcc80;">3rd-party · Merkury MID</span>
               <span class="badge badge-inferred">inferred · modeled attributes</span>
             </div>
           </div>
@@ -231,6 +200,24 @@
           </div>
         </div>
 
+        <!-- profileSection360: Recent Orders — appears with the first purchase (beat >= 6) -->
+        <div id="ordersSection" class="section-card" data-min="6">
+          <div class="section-header">
+            <span class="section-title">Recent Orders</span>
+            <span class="section-count">1</span>
+            <span class="expand-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+            </span>
+          </div>
+          <div class="section-body">
+            <div class="note-item">
+              <span class="note-type" style="background:#e0f2f1;color:#00695c;">Order</span>
+              <span class="note-text">Kinari Wrap · $2,800</span>
+              <span class="note-date">Today · first purchase</span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Quick Note widget: beat >= 4 -->
@@ -242,7 +229,7 @@
             <span class="trigger-icon">▲</span>
           </div>
           <div class="note-input-row">
-            <textarea class="note-textarea" readonly>Sarah mentioned she's got a wedding in Kyoto this fall — she's attending as a guest, not the bride.</textarea>
+            <textarea id="noteTextarea" class="note-textarea" placeholder="Capture a consultation note…" readonly></textarea>
             <button class="add-btn" type="button">Add Note</button>
           </div>
         </div>
@@ -283,14 +270,14 @@
           <!-- Briefing agent bubble (employee-facing): beat >= 3 -->
           <div id="greetingMsg" class="msg-container msg-agent" data-min="3">
             <div class="msg-bubble bubble-agent">
-              <p class="msg-text">Heads up — <strong>Sarah Chen</strong> just checked in. Platinum, 12 years with the maison; one of our top clients. She likes an unhurried, personal visit and usually shops around an occasion — let her lead. Greet her by name; last visit was the spring fragrance launch. I'll listen in and flag anything worth capturing.</p>
+              <p class="msg-text">Heads up — a walk-in just checked in. She's <strong>not in our CRM</strong> — but this is <strong>Sarah Chen</strong>: high-net-worth, a frequent international traveler, with an eye for luxury, antiquities and fragrance. Treat it as a high-potential first visit; greet her warmly, let her lead, and I'll flag anything worth capturing.</p>
             </div>
           </div>
 
           <!-- Recompose agent bubble (employee-facing): beat >= 5 -->
           <div id="recomposeMsg" class="msg-container msg-agent" data-min="5">
             <div class="msg-bubble bubble-agent">
-              <p class="msg-text">I saw your note — Sarah's attending a wedding in Kyoto this fall. I've captured it on her profile and set a follow-up. Here are a few pieces to put in front of her:</p>
+              <p class="msg-text">I saw your note — Sarah's attending a wedding in Kyoto this fall. I've captured it and set a follow-up. Here are a few pieces to put in front of her:</p>
               <div class="capture-notifications">
                 <div class="capture-item">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
@@ -305,24 +292,45 @@
               <div class="copilot-recs" style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">
                 <div class="rec-card" style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5e5e5;border-radius:8px;padding:7px 9px;">
                   <span style="width:42px;height:42px;border-radius:6px;flex-shrink:0;background:linear-gradient(135deg,#3a2f25,#8a6a3c);"></span>
-                  <span style="flex:1;min-width:0;"><span style="display:block;font-size:12px;font-weight:600;color:#333;">Silk Evening Wrap</span><span style="display:block;font-size:11px;color:#888;">Maison Tachibana</span></span>
-                  <span style="font-size:12px;font-weight:600;color:#1565c0;white-space:nowrap;">$1,280</span>
-                </div>
-                <div class="rec-card" style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5e5e5;border-radius:8px;padding:7px 9px;">
-                  <span style="width:42px;height:42px;border-radius:6px;flex-shrink:0;background:linear-gradient(135deg,#1a1a2e,#3a3a52);"></span>
-                  <span style="flex:1;min-width:0;"><span style="display:block;font-size:12px;font-weight:600;color:#333;">Atelier Leather Clutch</span><span style="display:block;font-size:11px;color:#888;">Maison Tachibana</span></span>
-                  <span style="font-size:12px;font-weight:600;color:#1565c0;white-space:nowrap;">$2,450</span>
+                  <span style="flex:1;min-width:0;"><span style="display:block;font-size:12px;font-weight:600;color:#333;">Hana Minaudière</span><span style="display:block;font-size:11px;color:#888;">Maison Tachibana · evening</span></span>
+                  <span style="font-size:12px;font-weight:600;color:#1565c0;white-space:nowrap;">$3,600</span>
                 </div>
                 <div class="rec-card" style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5e5e5;border-radius:8px;padding:7px 9px;">
                   <span style="width:42px;height:42px;border-radius:6px;flex-shrink:0;background:linear-gradient(135deg,#6b4f2a,#caa46a);"></span>
-                  <span style="flex:1;min-width:0;"><span style="display:block;font-size:12px;font-weight:600;color:#333;">Travel Fragrance Case</span><span style="display:block;font-size:11px;color:#888;">Maison Tachibana</span></span>
-                  <span style="font-size:12px;font-weight:600;color:#1565c0;white-space:nowrap;">$390</span>
+                  <span style="flex:1;min-width:0;"><span style="display:block;font-size:12px;font-weight:600;color:#333;">Kinari Wrap</span><span style="display:block;font-size:11px;color:#888;">Maison Tachibana · silk</span></span>
+                  <span style="font-size:12px;font-weight:600;color:#1565c0;white-space:nowrap;">$2,800</span>
+                </div>
+                <div class="rec-card" style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5e5e5;border-radius:8px;padding:7px 9px;">
+                  <span style="width:42px;height:42px;border-radius:6px;flex-shrink:0;background:linear-gradient(135deg,#2a3326,#5a6b4a);"></span>
+                  <span style="flex:1;min-width:0;"><span style="display:block;font-size:12px;font-weight:600;color:#333;">Tachibana Voyage</span><span style="display:block;font-size:11px;color:#888;">Maison Tachibana · travel</span></span>
+                  <span style="font-size:12px;font-weight:600;color:#1565c0;white-space:nowrap;">$7,200</span>
                 </div>
               </div>
               <div class="suggestion-chips">
                 <button class="suggestion-chip" type="button">Add all to consult</button>
                 <button class="suggestion-chip" type="button">Build travel kit</button>
                 <button class="suggestion-chip" type="button">Schedule follow-up</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Purchase agent bubble (separate step, after the recommendation): beat >= 6 -->
+          <div id="purchaseMsg" class="msg-container msg-agent" data-min="6">
+            <div class="msg-bubble bubble-agent">
+              <p class="msg-text">She's taking the <strong>Kinari Wrap</strong> — her first with the maison. I've started her client profile and captured her contact consent.</p>
+              <div class="capture-notifications">
+                <div class="capture-item">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                  First purchase — Kinari Wrap · $2,800
+                </div>
+                <div class="capture-item">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                  CRM client profile created
+                </div>
+                <div class="capture-item">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                  Email + SMS consent captured — opted in with the advisor
+                </div>
               </div>
             </div>
           </div>
@@ -374,7 +382,45 @@ const btnLoad   = $('searchCrmLoading');
 const searchBtn = $('searchCrmBtn');
 
 // Elements that stream-fade when first revealed (agent bubbles).
-const STREAM_IDS = ['greetingMsg', 'recomposeMsg'];
+const STREAM_IDS = ['greetingMsg', 'recomposeMsg', 'purchaseMsg'];
+
+// ── Animated note capture (beat 4): type into the Quick Note, "submit",
+//    then the note appears on the profile and the input clears. ──────────
+const NOTE_TEXT = "Sarah mentioned she's got a wedding in Kyoto this fall — she's attending as a guest, not the bride.";
+let captureTimers = [];
+function clearCaptureTimers() { captureTimers.forEach(clearTimeout); captureTimers = []; }
+function playCapture(direction) {
+  const ta = document.getElementById('noteTextarea');
+  const notes = document.getElementById('notesSection');
+  if (!ta || !notes) return;
+  if (direction === 'forward') {
+    notes.style.display = 'none';            // hide the captured note until "submitted"
+    ta.value = '';
+    let i = 0;
+    const step = () => {
+      ta.value = NOTE_TEXT.slice(0, i);
+      ta.scrollTop = ta.scrollHeight;
+      if (i < NOTE_TEXT.length) { i += 1; captureTimers.push(setTimeout(step, 16)); }
+      else {
+        captureTimers.push(setTimeout(() => {
+          const btn = document.querySelector('#quickNoteWidget .add-btn');
+          if (btn) { btn.style.transform = 'scale(0.96)'; captureTimers.push(setTimeout(() => { btn.style.transform = ''; }, 180)); }
+          ta.value = '';                       // input clears on submit
+          notes.style.opacity = '0';
+          notes.style.display = '';            // note appears on the profile…
+          requestAnimationFrame(() => { notes.style.transition = 'opacity .3s ease'; notes.style.opacity = '1'; });
+          scrollWithin(profileScroll, notes);
+        }, 420));
+      }
+    };
+    captureTimers.push(setTimeout(step, 250));
+  } else {
+    // jump/reverse onto beat 4 — show the end state, no animation.
+    ta.value = '';
+    notes.style.display = '';
+    notes.style.opacity = '1';
+  }
+}
 
 /**
  * Cumulative visibility: every element carrying data-min is shown when
@@ -399,6 +445,10 @@ function renderBeat(index, direction) {
 
   // Beat 2+: highlight Sarah's appointment in the sidebar (identity resolved).
   $('apptSarah').classList.toggle('is-active', index >= 2);
+
+  // Beat 6+: first purchase makes her a CRM client (was "No CRM record").
+  const tierPill = $('clientTier');
+  if (tierPill) tierPill.textContent = index >= 6 ? 'New client · today' : 'No CRM record';
 
   // Beat 1+: email filled and Search CRM in loading/pressed state.
   // Beat 0: empty email, idle button.
@@ -427,9 +477,47 @@ function renderBeat(index, direction) {
       el.classList.add('stream-in');
     }
   });
+
+  // Beat 4: animate the note capture (type → submit → lands on profile + clears).
+  // Any other beat: cancel a running animation and keep the input clear.
+  clearCaptureTimers();
+  if (index === 4) {
+    playCapture(direction);
+  } else {
+    const ta = $('noteTextarea');
+    if (ta) ta.value = '';
+  }
+
+  focusBeat(index);
 }
 
-startSceneRuntime({ total: 5, renderBeat });
+// Bring the beat's newest content into view — confined to the inner panels
+// (center profile + co-pilot thread). Never uses scrollIntoView, so it can't
+// scroll the deck behind the iframe.
+const profileScroll = document.querySelector('.profile-content');
+function scrollWithin(container, target) {
+  if (!container || !target) return;
+  const top = container.scrollTop + (target.getBoundingClientRect().top - container.getBoundingClientRect().top) - 8;
+  container.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+}
+function focusBeat(index) {
+  requestAnimationFrame(() => setTimeout(() => {
+    // Beat 4's center scroll is handled by playCapture (after the note submits).
+    if (index !== 4) {
+      const centerTarget = index >= 6 ? $('ordersSection')
+                         : index >= 5 ? $('staffPicksSection')
+                         : index >= 2 ? $('merkurySection')
+                         : null;
+      if (centerTarget) scrollWithin(profileScroll, centerTarget);
+      else if (profileScroll) profileScroll.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    // Co-pilot thread: keep the latest message in view.
+    const thread = $('copilotThread');
+    if (index >= 3 && thread) thread.scrollTo({ top: thread.scrollHeight, behavior: 'smooth' });
+  }, 90));
+}
+
+startSceneRuntime({ total: 6, renderBeat });
 </script>
 </body>
 </html>

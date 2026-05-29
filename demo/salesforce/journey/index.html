@@ -5,8 +5,73 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Agentic Marketing — Journey (Maison Tachibana)</title>
 <link rel="stylesheet" href="journey.css" />
+<style>
+  /* ── Salesforce Lightning app frame ───────────────────────────── */
+  .sfx-global{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:16px;height:50px;padding:0 16px;background:#fff;border-bottom:1px solid #e5e5e5;font-family:'Salesforce Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;}
+  .sfx-search{flex:1;max-width:660px;margin:0 auto;display:flex;align-items:center;gap:8px;background:#f3f3f3;border:1px solid #dddbda;border-radius:6px;padding:6px 12px;color:#706e6b;font-size:13px;}
+  .sfx-gicons{display:flex;align-items:center;gap:15px;color:#706e6b;flex-shrink:0;}
+  .sfx-gicons svg{width:18px;height:18px;display:block;}
+  .sfx-avatar{width:26px;height:26px;border-radius:50%;background:#16325c;flex-shrink:0;}
+  .sfx-appnav{position:sticky;top:50px;z-index:59;display:flex;align-items:center;height:50px;padding:0 16px;background:#fff;border-bottom:1px solid #e5e5e5;font-family:'Salesforce Sans',system-ui,sans-serif;}
+  .sfx-waffle{display:grid;grid-template-columns:repeat(3,3px);grid-auto-rows:3px;gap:2px;margin-right:14px;flex-shrink:0;}
+  .sfx-waffle i{width:3px;height:3px;background:#747474;border-radius:1px;}
+  .sfx-appname{font-size:18px;font-weight:700;color:#080707;margin-right:30px;flex-shrink:0;}
+  .sfx-tabs{display:flex;align-items:stretch;gap:22px;flex:1;overflow:hidden;}
+  .sfx-tabs a{font-size:13px;color:#080707;text-decoration:none;white-space:nowrap;display:flex;align-items:center;border-bottom:3px solid transparent;}
+  .sfx-tabs a.active{color:#0176d3;border-bottom-color:#0176d3;font-weight:600;}
+  .sfx-edit{color:#0176d3;flex-shrink:0;margin-left:14px;}
+  .sfx-pagehead{display:flex;align-items:center;gap:12px;padding:14px 22px;background:#f3f3f3;border-bottom:1px solid #e5e5e5;}
+  .sfx-pageicon{width:40px;height:40px;border-radius:8px;background:#6a7bc8;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;}
+  .sfx-pagehead h1{font-size:20px;font-weight:600;color:#080707;margin:0;font-family:'Salesforce Sans',system-ui,sans-serif;}
+</style>
 </head>
 <body>
+
+<!-- ════════════════ Salesforce Lightning app frame ════════════════ -->
+<div class="sfx-global">
+  <span class="sfx-logo" aria-hidden="true">
+    <svg width="32" height="22" viewBox="0 0 32 22"><path d="M13 4.5a5 5 0 0 1 8.4 1.2A4.3 4.3 0 0 1 27 9.8a4.2 4.2 0 0 1-1 8.2H8.5A5.5 5.5 0 0 1 7.7 7a5 5 0 0 1 5.3-2.5z" fill="#00A1E0"/></svg>
+  </span>
+  <span class="sfx-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#706e6b" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+    Search...
+  </span>
+  <span class="sfx-gicons">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 17.3l-5.4 3 1-6-4.4-4.3 6-.9L12 3l2.8 6.1 6 .9-4.4 4.3 1 6z"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 18a4 4 0 0 1-.4-8A5 5 0 0 1 16 8.5 3.5 3.5 0 0 1 17 17H7z"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 0 1 4.5 1.5c0 1.7-2 2-2 3.5"/><circle cx="12" cy="17.5" r=".6" fill="currentColor"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.4-2.3 1a7 7 0 0 0-1.7-1l-.3-2.5h-4l-.3 2.5a7 7 0 0 0-1.7 1l-2.3-1-2 3.4 2 1.5a7 7 0 0 0 0 2l-2 1.5 2 3.4 2.3-1a7 7 0 0 0 1.7 1l.3 2.5h4l.3-2.5a7 7 0 0 0 1.7-1l2.3 1 2-3.4-2-1.5c.1-.3.1-.7.1-1z"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+    <span class="sfx-avatar"></span>
+  </span>
+</div>
+
+<div class="sfx-appnav">
+  <span class="sfx-waffle" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+  <span class="sfx-appname">Marketing</span>
+  <nav class="sfx-tabs">
+    <a href="#">Home</a>
+    <a href="#">Marketing Workbench</a>
+    <a href="#" class="active">Personalized Marketing Advisor</a>
+    <a href="#">Portfolio Administration</a>
+    <a href="#">Clientelling Home</a>
+    <a href="#">Campaign Planner</a>
+    <a href="#">Campaigns ▾</a>
+    <a href="#">More ▾</a>
+  </nav>
+  <span class="sfx-edit" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+  </span>
+</div>
+
+<div class="sfx-pagehead">
+  <span class="sfx-pageicon" aria-hidden="true">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2.2" fill="#6a7bc8"/><circle cx="8" cy="17" r="2.2" fill="#6a7bc8"/></svg>
+  </span>
+  <h1>Personalized Marketing Advisor</h1>
+</div>
+
 <div class="stage">
 
   <!-- ════════════════ Journey Flow Card ════════════════ -->
@@ -44,7 +109,7 @@
     <div class="audience-callout reveal" id="audienceCallout">
       <span class="audience-pill">
         <span class="dot"></span>
-        Audience: Sarah Chen (1:1 segment) · Loyalty: Platinum
+        Audience: Sarah Chen (1:1 segment) · Maison Circle · white-glove
       </span>
     </div>
 
@@ -436,7 +501,10 @@ function renderBeat(index, direction) {
   focusBeat(index);
 }
 
-// Scroll the focal element for the current beat into view inside the iframe.
+// Scroll the focal element for the current beat into view — confined to THIS
+// iframe's own window. (Avoid Element.scrollIntoView: it also scrolls ancestor
+// scroll containers across the frame boundary, which made the deck shift and
+// snap back.)
 function focusBeat(index) {
   const target = index >= 5 ? throughLine
                : index >= 4 ? approvalBlock
@@ -445,8 +513,14 @@ function focusBeat(index) {
                : null;
   // Wait for collapse/show transitions to settle before measuring.
   requestAnimationFrame(() => setTimeout(() => {
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    else window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (target) {
+      // Offset clears the sticky Salesforce app chrome (~100px) so the beat's
+      // content lands below it, not hidden behind it.
+      const top = target.getBoundingClientRect().top + window.scrollY - 112;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }, 80));
 }
 
