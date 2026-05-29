@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<title>Tony — Speaker Reference · CNX 2026 Session 1787</title>
+<style>
+  :root{
+    --bg:#0a0a14; --panel:rgba(20,20,42,0.55); --panel-2:rgba(255,255,255,0.04);
+    --border:rgba(255,255,255,0.12); --gold:#FFB61B; --cloud:#cfe9fe;
+    --text:#eef1f8; --muted:#9aa3bd; --green:#28c840;
+    --font-display:'Century Gothic','Futura',system-ui,sans-serif;
+    --font-serif:'Cormorant Garamond','Garamond','Times New Roman',serif;
+    --font-body:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    --font-mono:'SF Mono','Fira Code','Consolas',monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--font-body);background:radial-gradient(ellipse at top,#10122b 0%,var(--bg) 70%);color:var(--text);line-height:1.6;padding-bottom:120px;}
+
+  /* ---- sticky header + nav ---- */
+  header{position:sticky;top:0;z-index:50;background:rgba(8,8,18,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+  .head-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 28px;flex-wrap:wrap;}
+  .head-title{display:flex;align-items:baseline;gap:14px;}
+  .head-title b{font-family:var(--font-display);font-size:20px;font-weight:700;letter-spacing:-0.3px;}
+  .head-title span{font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
+  .head-meta{font-family:var(--font-mono);font-size:12px;color:var(--muted);}
+  .head-meta b{color:var(--gold);}
+  nav{display:flex;gap:8px;padding:0 20px 12px;flex-wrap:wrap;}
+  nav a{font-size:12px;font-weight:600;letter-spacing:0.4px;color:var(--muted);text-decoration:none;
+        padding:6px 13px;border:1px solid var(--border);border-radius:100px;transition:.15s;white-space:nowrap;}
+  nav a:hover{color:var(--text);border-color:rgba(255,182,27,0.4);}
+  nav a.active{color:#1a1a2e;background:var(--gold);border-color:var(--gold);}
+
+  /* ---- layout ---- */
+  main{max-width:960px;margin:0 auto;padding:36px 28px 0;}
+  .seg{scroll-margin-top:120px;margin-bottom:40px;border:1px solid var(--border);border-radius:16px;
+       background:var(--panel);overflow:hidden;}
+  .seg__head{display:flex;align-items:center;gap:16px;padding:18px 24px;border-bottom:1px solid var(--border);
+             background:linear-gradient(135deg,rgba(255,182,27,0.06),transparent);}
+  .seg__chip{flex-shrink:0;width:54px;height:54px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+             font-family:var(--font-serif);font-size:30px;font-style:italic;color:var(--gold);
+             background:rgba(255,182,27,0.1);border:1px solid rgba(255,182,27,0.35);}
+  .seg__chip.sf{color:var(--cloud);background:rgba(207,233,254,0.08);border-color:rgba(207,233,254,0.3);}
+  .seg__h{flex:1;}
+  .seg__kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+  .seg__title{font-family:var(--font-display);font-size:24px;font-weight:700;line-height:1.15;margin-top:2px;}
+  .seg__title em{font-family:var(--font-serif);font-style:italic;color:var(--gold);font-weight:400;}
+  .seg__time{flex-shrink:0;text-align:right;font-family:var(--font-mono);font-size:12px;color:var(--muted);}
+  .seg__time b{display:block;color:var(--text);font-size:15px;}
+  .seg__body{padding:22px 24px;}
+
+  .onscreen{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);margin-bottom:18px;
+            padding:8px 12px;background:var(--panel-2);border-radius:8px;border:1px solid var(--border);}
+  .onscreen b{color:var(--cloud);font-family:var(--font-mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;}
+
+  .say-label{font-family:var(--font-mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+  .say{font-size:20px;line-height:1.62;color:var(--text);}
+  .say p{margin-bottom:14px;}
+  .say p:last-child{margin-bottom:0;}
+  .say strong{color:var(--gold);font-weight:700;}
+  .say em{font-family:var(--font-serif);font-style:italic;color:var(--cloud);font-size:1.08em;}
+
+  /* demo step list */
+  .steps{margin-top:20px;border-top:1px dashed var(--border);padding-top:16px;}
+  .steps-label{font-family:var(--font-mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+  .step{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+  .step:last-child{border-bottom:0;}
+  .step__key{flex-shrink:0;font-family:var(--font-mono);font-size:11px;color:var(--gold);
+             border:1px solid rgba(255,182,27,0.4);border-radius:6px;padding:3px 8px;height:fit-content;white-space:nowrap;}
+  .step__what{flex:1;font-size:15px;}
+  .step__what b{color:var(--cloud);}
+  .step__what span{display:block;color:var(--muted);font-size:13.5px;font-style:italic;margin-top:2px;}
+
+  .pull{margin:18px 0 4px;padding:14px 18px;border-left:3px solid var(--gold);background:rgba(255,182,27,0.06);
+        border-radius:0 8px 8px 0;font-family:var(--font-serif);font-style:italic;font-size:19px;color:#fff;}
+
+  .ref{font-size:14.5px;color:var(--muted);line-height:1.7;}
+  .ref strong{color:var(--text);}
+  .ref em{font-family:var(--font-serif);font-style:italic;color:var(--cloud);}
+
+  .note{font-size:13px;color:var(--muted);margin-top:10px;}
+  .tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;
+       color:var(--green);border:1px solid rgba(40,200,64,0.4);border-radius:5px;padding:1px 7px;margin-right:6px;}
+
+  footer{max-width:960px;margin:0 auto;padding:8px 28px;color:var(--muted);font-size:12px;text-align:center;}
+
+  @media print{
+    body{background:#fff;color:#111;}
+    header{position:static;}nav{display:none;}
+    .seg{break-inside:avoid;border-color:#ccc;background:#fff;}
+    .say{color:#111;}.say strong{color:#000;}.seg__title,.head-title b{color:#000;}
+    .seg__chip{color:#8a6a3c;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="head-row">
+    <div class="head-title">
+      <b>Tony · Speaker Reference</b>
+      <span>CNX 2026 · Session 1787 · the demo</span>
+    </div>
+    <div class="head-meta">Your block: <b>7:00 → 22:00</b> &nbsp;·&nbsp; ~15 min &nbsp;·&nbsp; arrow-keys step each scene</div>
+  </div>
+  <nav id="nav">
+    <a href="#handoff">Handoff</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#scene1">① Clienteling — capture</a>
+    <a href="#scene2">② Commerce — on-site</a>
+    <a href="#scene3">③ Marketing — journey</a>
+    <a href="#handback">Hand back</a>
+    <a href="#wrap">Your wrap (~28m)</a>
+    <a href="#cheatsheet">Cheat sheet</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HANDOFF -->
+  <section class="seg" id="handoff">
+    <div class="seg__head">
+      <div class="seg__chip">↳</div>
+      <div class="seg__h">
+        <div class="seg__kicker">Chris hands to you · slide 7</div>
+        <div class="seg__title">The boutique advisor, <em>online</em></div>
+      </div>
+      <div class="seg__time"><b>7:00</b>cut to Tony</div>
+    </div>
+    <div class="seg__body">
+      <div class="onscreen"><b>On screen</b> Handoff slide — boutique photo, your name</div>
+      <div class="say-label">Say</div>
+      <div class="say">
+        <p>Thanks, Chris. So that's the case. Let me just show you what it looks like — running on a real luxury storefront, today.</p>
+      </div>
+      <p class="note">Keep it short — you're moving, not landing. Advance straight to the roadmap.</p>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="seg" id="roadmap">
+    <div class="seg__head">
+      <div class="seg__chip">◇</div>
+      <div class="seg__h">
+        <div class="seg__kicker">Frame the demo · slide 8</div>
+        <div class="seg__title">One customer. <em>Three surfaces.</em></div>
+      </div>
+      <div class="seg__time"><b>7:30</b>~1 min</div>
+    </div>
+    <div class="seg__body">
+      <div class="onscreen"><b>On screen</b> Roadmap — Clienteling → Commerce → Marketing, Sarah Chen card</div>
+      <div class="say-label">Say</div>
+      <div class="say">
+        <p>This is <strong>Maison Tachibana</strong> — a Kyoto house we built this on. Our customer is <strong>Sarah Chen</strong>: twelve years with the maison, top tier. And the agent — we call it the <strong>Bantō</strong>, after the keeper of an old Japanese merchant house.</p>
+        <p>Here's the one thing to watch. A single moment gets captured in the boutique — and then it follows Sarah everywhere. Onto the website. Into her inbox.</p>
+      </div>
+      <div class="pull">One customer, one profile, three surfaces. Let's start where it actually starts — in the store.</div>
+    </div>
+  </section>
+
+  <!-- SCENE 1 -->
+  <section class="seg" id="scene1">
+    <div class="seg__head">
+      <div class="seg__chip sf">I</div>
+      <div class="seg__h">
+        <div class="seg__kicker">Scene 1 · Agentic Clienteling · Salesforce console</div>
+        <div class="seg__title">The capture — <em>in the boutique</em></div>
+      </div>
+      <div class="seg__time"><b>8:30</b>~3 min</div>
+    </div>
+    <div class="seg__body">
+      <div class="onscreen"><b>On screen</b> Clienteling console — walk-in, profile, co-pilot</div>
+      <div class="say-label">Say</div>
+      <div class="say">
+        <p>Sarah walks in. The advisor has the Bantō open on a tablet, and all they've got is her email — that's it. Watch: that's enough. <strong>Merkury</strong> matches her, and the screen fills in — Platinum, twelve years, what she's bought, how she likes to hear from us. Nobody looked anything up. The agent did.</p>
+        <p>They get to talking, and Sarah mentions she's going to a wedding in Kyoto this fall — she's a <em>guest</em>, by the way, not the bride. Now watch the right move: the Bantō logs that as a <strong>life event</strong>, straight into her profile. Not a sticky note that dies in someone's memory — structured data. And it opens a task to check in before she travels.</p>
+      </div>
+      <div class="pull">That little moment, in the store, is the whole demo. Hold onto it.</div>
+      <div class="steps">
+        <div class="steps-label">Step it · arrow-right ▸</div>
+        <div class="step"><div class="step__key">▸ 1</div><div class="step__what"><b>Walk-in</b> — just her email, "Search CRM"<span>"all they've got is her email — that's it."</span></div></div>
+        <div class="step"><div class="step__key">▸ 2</div><div class="step__what"><b>Merkury enrich</b> — profile fills: Platinum, 12 yrs, history, provenance badges<span>"nobody looked anything up. The agent did."</span></div></div>
+        <div class="step"><div class="step__key">▸ 3</div><div class="step__what"><b>Bantō greets</b> — co-pilot goes active, greets her by name<span>let it land — this is the personal open</span></div></div>
+        <div class="step"><div class="step__key">▸ 4</div><div class="step__what"><b>The capture</b> — note logged: "wedding in Kyoto… guest, not the bride"<span>⏸ PAUSE HERE — this is the hinge of the whole story</span></div></div>
+        <div class="step"><div class="step__key">▸ 5</div><div class="step__what"><b>Recompose</b> — Life Event card + inferred needs + white-glove task<span>"structured data… and a task to check in before she travels."</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 2 -->
+  <section class="seg" id="scene2">
+    <div class="seg__head">
+      <div class="seg__chip">II</div>
+      <div class="seg__h">
+        <div class="seg__kicker">Scene 2 · Agentic Commerce · Tachibana storefront</div>
+        <div class="seg__title">The page <em>is</em> the agent</div>
+      </div>
+      <div class="seg__time"><b>11:30</b>~3 min</div>
+    </div>
+    <div class="seg__body">
+      <div class="onscreen"><b>On screen</b> tachibana.demo-combobulator.com — storefront + Bantō</div>
+      <div class="say-label">Say</div>
+      <div class="say">
+        <p>Couple of weeks later, Sarah's at home and she opens the site. Now — she never told the website about Kyoto. She told a <em>person</em>, in a store. But the page already knows. It opens composed around the trip: "Welcome back, Sarah — Kyoto's about six weeks out, I've pulled a few pieces."</p>
+        <p>No banner, no quiz, no "tell us your preferences." <strong>The page is the agent.</strong> She asks for something for the rehearsal dinner — it brings up a few pieces and tells her why each one. She adds one to her bag, and there's no checkout form, because it already knows her.</p>
+      </div>
+      <div class="pull">That's the moment from the store, reused — without making her repeat herself.</div>
+      <div class="steps">
+        <div class="steps-label">Step it · arrow-right ▸ &nbsp;(welcome shows on arrival)</div>
+        <div class="step"><div class="step__key">on enter</div><div class="step__what"><b>Welcome</b> — "Welcome back, Sarah. Kyoto's about six weeks out…"<span>the page opens already composed around the trip</span></div></div>
+        <div class="step"><div class="step__key">▸ 1</div><div class="step__what"><b>Recommends</b> — rehearsal-dinner pieces, each with a reason<span>"it tells her why each one."</span></div></div>
+        <div class="step"><div class="step__key">▸ 2</div><div class="step__what"><b>Add to bag → checkout</b> — no forms, profile already known<span>"there's no checkout form, because it already knows her."</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCENE 3 -->
+  <section class="seg" id="scene3">
+    <div class="seg__head">
+      <div class="seg__chip sf">III</div>
+      <div class="seg__h">
+        <div class="seg__kicker">Scene 3 · Agentic Marketing · Salesforce + the email</div>
+        <div class="seg__title">The journey <em>composes itself</em></div>
+      </div>
+      <div class="seg__time"><b>14:30</b>~3 min</div>
+    </div>
+    <div class="seg__body">
+      <div class="onscreen"><b>On screen</b> Marketing Cloud — journey canvas, the composed email, approval</div>
+      <div class="say-label">Say</div>
+      <div class="say">
+        <p>Third surface. Off that same wedding event, the journey builds itself. The agent lays out the sequence — an email now, a reminder as the date gets closer, a nudge while she's actually traveling — across email, push, even paid media. Then it writes the email. For Sarah. The Kyoto edit, in the maison's voice, with the pieces she was just looking at.</p>
+        <p>And here's the part luxury actually cares about — it doesn't hit send. It drops into a marketer's queue for a <strong>human to approve.</strong></p>
+      </div>
+      <div class="pull">One captured moment, three surfaces, one profile underneath all of it. That's AI Retail Advisor.</div>
+      <div class="steps">
+        <div class="steps-label">Step it · arrow-right ▸ &nbsp;(scrolls as it builds)</div>
+        <div class="step"><div class="step__key">▸ 1</div><div class="step__what"><b>Journey assembles</b> — 4 channels appear; audience = Sarah, 1:1<span>"the journey builds itself."</span></div></div>
+        <div class="step"><div class="step__key">▸ 2</div><div class="step__what"><b>Email composes</b> — the Kyoto edit, brand voice, her pieces<span>"it writes the email. For Sarah."</span></div></div>
+        <div class="step"><div class="step__key">▸ 3</div><div class="step__what"><b>Push + media</b> — same story, other channels</div></div>
+        <div class="step"><div class="step__key">▸ 4</div><div class="step__what"><b>Approval</b> — lands in a marketer's queue, progress 25%<span>⏸ PAUSE — "it doesn't hit send."</span></div></div>
+        <div class="step"><div class="step__key">▸ 5</div><div class="step__what"><b>Approve all → send</b> — steps go green, "Send to Marketing Flow"<span>close on: one event, three surfaces, one profile.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HAND BACK -->
+  <section class="seg" id="handback">
+    <div class="seg__head">
+      <div class="seg__chip">↰</div>
+      <div class="seg__h">
+        <div class="seg__kicker">Hand to Chris · ~17:30</div>
+        <div class="seg__title">Over to the <em>architecture</em></div>
+      </div>
+      <div class="seg__time"><b>17:30</b>one line</div>
+    </div>
+    <div class="seg__body">
+      <div class="say-label">Say</div>
+      <div class="say"><p>Chris — what makes this safe to put in production?</p></div>
+      <p class="note">That's the cue into Chris's Block 2 (architecture &amp; trust layer). Step off the demo; the next arrow leaves the last scene into the architecture slide.</p>
+    </div>
+  </section>
+
+  <!-- WRAP -->
+  <section class="seg" id="wrap">
+    <div class="seg__head">
+      <div class="seg__chip">✦</div>
+      <div class="seg__h">
+        <div class="seg__kicker">Implementation &amp; getting started · you cover most of it</div>
+        <div class="seg__title">An activation, <em>not a rip-and-replace</em></div>
+      </div>
+      <div class="seg__time"><b>~28:00</b>~5 min</div>
+    </div>
+    <div class="seg__body">
+      <div class="onscreen"><b>On screen</b> Two moves to make Monday → Deployment roadmap</div>
+      <div class="say-label">Hit these — in your own words</div>
+      <div class="say">
+        <p><span class="tag">audit</span><strong>Audit your luxury journey first.</strong> Pick the moments that break today — the anniversary gift, the made-to-measure handoff, clienteling memory, post-purchase concierge. Name the gap before you name the platform.</p>
+        <p><span class="tag">activate</span>This is an <em>activation on top of what you already run</em> — not a replatform. Merkle's methodology: strategy → implementation → ongoing optimization, with a responsible-AI framework wrapped around it.</p>
+        <p><span class="tag">proof</span>Real-world results — point back to the journey they just watched: captured once, reused everywhere, and nothing ships to a customer without a human in the loop.</p>
+      </div>
+      <p class="note">Chris takes ~30–45 sec on the architecture/governance close; you carry the rest of this segment.</p>
+    </div>
+  </section>
+
+  <!-- CHEAT SHEET -->
+  <section class="seg" id="cheatsheet">
+    <div class="seg__head">
+      <div class="seg__chip">★</div>
+      <div class="seg__h">
+        <div class="seg__kicker">Glance-and-go</div>
+        <div class="seg__title">Cheat sheet</div>
+      </div>
+      <div class="seg__time"><b>—</b>don't recite</div>
+    </div>
+    <div class="seg__body">
+      <p class="ref" style="margin-bottom:14px"><strong>Cast.</strong> Maison Tachibana (Kyoto house) · agent = <em>the Bantō</em> · customer = <strong>Sarah Chen</strong>, Platinum, 12 yrs, attending a Kyoto wedding (~6 weeks out, a guest — not the bride).</p>
+      <p class="ref" style="margin-bottom:14px"><strong>Flow.</strong> <em>Clienteling capture</em> (store) → <em>Commerce</em> (on-site) → <em>Marketing</em> (journey). One profile underneath.</p>
+      <p class="ref" style="margin-bottom:14px"><strong>Under the hood.</strong> Commerce Cloud + Agentforce + Data Cloud + Marketing Cloud Advanced + Personalization + Loyalty + Merkury identity graph.</p>
+      <p class="ref" style="margin-bottom:14px"><strong>Touchstones.</strong> <em>"The page is the agent." "The journey composes itself." "The agent knows, it doesn't say."</em></p>
+      <p class="ref"><strong>Demo mechanics.</strong> Each scene is scripted &amp; offline — <strong>arrow-right</strong> steps a beat; it auto-advances to the next slide when the scene is done; arrow-left rewinds. Pause on the <em>capture</em> (Scene 1·4) and the <em>approval</em> (Scene 3·4).</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>Tony speaker reference · regenerate from <code>cnx-2026-talk-track.html</code> · press <b>P</b> to print/PDF</footer>
+
+<script>
+  // Scrollspy: highlight the nav pill for the section in view.
+  const links = [...document.querySelectorAll('#nav a')];
+  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const a = map.get(e.target.id);
+        if (a) a.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+  document.querySelectorAll('.seg').forEach(s => obs.observe(s));
+
+  // Press P to print (presenter can save a PDF backup).
+  document.addEventListener('keydown', (e) => {
+    if ((e.key === 'p' || e.key === 'P') && !e.metaKey && !e.ctrlKey) { e.preventDefault(); window.print(); }
+  });
+</script>
+</body>
+</html>
