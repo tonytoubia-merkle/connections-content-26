@@ -44,7 +44,7 @@
     <div class="audience-callout reveal" id="audienceCallout">
       <span class="audience-pill">
         <span class="dot"></span>
-        Audience: Sarah Chen (1:1 segment) · Loyalty: Platinum
+        Audience: Sarah Chen (1:1 segment) · Maison Circle · white-glove
       </span>
     </div>
 
@@ -436,7 +436,10 @@ function renderBeat(index, direction) {
   focusBeat(index);
 }
 
-// Scroll the focal element for the current beat into view inside the iframe.
+// Scroll the focal element for the current beat into view — confined to THIS
+// iframe's own window. (Avoid Element.scrollIntoView: it also scrolls ancestor
+// scroll containers across the frame boundary, which made the deck shift and
+// snap back.)
 function focusBeat(index) {
   const target = index >= 5 ? throughLine
                : index >= 4 ? approvalBlock
@@ -445,8 +448,12 @@ function focusBeat(index) {
                : null;
   // Wait for collapse/show transitions to settle before measuring.
   requestAnimationFrame(() => setTimeout(() => {
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    else window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (target) {
+      const top = target.getBoundingClientRect().top + window.scrollY - 14;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }, 80));
 }
 
