@@ -301,17 +301,16 @@ html, body {
 .hero-image-container {
   width: 100%; position: relative; overflow: hidden;
   height: 240px;
-  background:
-    radial-gradient(circle at 30% 20%, rgba(255,255,255,.18), transparent 55%),
-    linear-gradient(135deg, #2a2320 0%, #4a3b34 45%, #6b4f43 100%);
+  background: #2a2320 url('email-hero.jpg') center 35% / cover no-repeat;
 }
 .hero-art {
   position: absolute; inset: 0;
-  background:
-    linear-gradient(115deg, transparent 40%, rgba(0,0,0,.25) 100%),
-    repeating-linear-gradient(60deg, rgba(255,255,255,.03) 0 18px, transparent 18px 40px);
+  /* gentle darken so the white headline/CTA stay legible over the photo */
+  background: linear-gradient(180deg, rgba(0,0,0,.30) 0%, rgba(0,0,0,.10) 45%, rgba(0,0,0,.32) 100%);
 }
-.hero-torii {
+/* photo replaces the decorative motif */
+.hero-torii { display: none; }
+.hero-torii-hidden {
   position: absolute; right: 26px; bottom: 0; width: 120px; height: 150px;
   opacity: .9;
 }
