@@ -63,9 +63,26 @@ export function bindRevealDemoSlides(Reveal) {
     // scroll their own document on purpose, so they're left alone.)
     if ((iframe.getAttribute('src') || '').includes('/tachibana/')) {
       try {
+        const w = iframe.contentWindow;
         const s = doc.createElement('style');
-        s.textContent = 'html,body{overflow:hidden!important;overscroll-behavior:none;}';
+        s.textContent = 'html,body,#root{overflow:hidden!important;overscroll-behavior:none;}';
         doc.head.appendChild(s);
+        // The transient "scroll-up then snap" on transitions (home→advisor,
+        // products reveal, checkout modal) comes from the React app scrolling an
+        // element into view / focusing it. Content fits the frame, so: make
+        // scrollIntoView a no-op, force focus() to not scroll, and clamp any
+        // residual page scroll back to the top. (Tachibana iframe only.)
+        if (w.Element && w.Element.prototype) {
+          w.Element.prototype.scrollIntoView = function () {};
+        }
+        if (w.HTMLElement && w.HTMLElement.prototype) {
+          const _focus = w.HTMLElement.prototype.focus;
+          w.HTMLElement.prototype.focus = function (opts) {
+            try { return _focus.call(this, Object.assign({ preventScroll: true }, opts || {})); }
+            catch (_e) { return _focus.call(this); }
+          };
+        }
+        w.addEventListener('scroll', () => { if (w.scrollY || w.scrollX) w.scrollTo(0, 0); }, true);
       } catch (_) { /* cross-origin or not ready — ignore */ }
     }
     doc.addEventListener('click', () => navigate('fwd'));
