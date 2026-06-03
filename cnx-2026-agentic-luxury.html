@@ -569,38 +569,108 @@
     <!-- ========================================================
          7 · HANDOFF + DEMO BREAK (combined)
          ======================================================== -->
+    <!-- 7a · DEMO SETUP — the three things we'll show (stacked, animated in) -->
     <section class="demo-break slide-vcenter" data-background-image="assets/cnx-2026/img-boutique.jpg" data-background-size="cover" data-background-color="#000814" data-background-opacity="0.20">
-      <span class="demo-break__chip" style="margin-bottom:26px">Live Demo · Tony</span>
-      <h2 class="demo-break__title" style="font-size:60px;letter-spacing:-1.5px;margin-bottom:16px;text-shadow:0 2px 24px rgba(0,0,0,0.7)">The boutique advisor, <em>online.</em></h2>
-      <p class="demo-break__sub" style="font-size:26px;margin:0 0 16px;text-shadow:0 2px 16px rgba(0,0,0,0.6)">One customer. Three surfaces. <span style="color:var(--sf-gold)">Captured once — reused everywhere.</span></p>
-      <p style="position:relative;z-index:1;max-width:1000px;margin:0 auto 38px;font-size:17px;line-height:1.55;color:rgba(255,255,255,0.74);text-shadow:0 2px 12px rgba(0,0,0,0.6)">Our customer: <strong style="color:#fff;font-weight:600">Sarah Chen</strong> — a walk-in the maison has never met, <strong style="color:#fff;font-weight:600">recognized on arrival by Merkury</strong>, quietly planning for a wedding in Kyoto.</p>
+      <span class="demo-break__chip" style="margin-bottom:22px">Live Demo · Tony</span>
+      <h2 class="demo-break__title" style="font-size:58px;letter-spacing:-1.5px;margin-bottom:12px;text-shadow:0 2px 24px rgba(0,0,0,0.7)">The boutique advisor, <em>online.</em></h2>
+      <p class="demo-break__sub" style="font-size:24px;margin:0 0 34px;text-shadow:0 2px 16px rgba(0,0,0,0.6)">One customer — <strong style="color:#fff;font-weight:600;font-style:normal">Sarah Chen</strong> — across three surfaces. <span style="color:var(--sf-gold)">Captured once, reused everywhere.</span></p>
 
-      <!-- Three modes — no thumbnails; the real full-screen scenes follow -->
-      <div style="position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);max-width:1180px;margin:0 auto 34px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.16);border-radius:14px;overflow:hidden">
-        <div style="padding:24px 26px;border-right:1px solid rgba(255,255,255,0.12)">
-          <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px"><span style="font-family:var(--font-serif);font-style:italic;font-size:38px;color:var(--sf-gold);line-height:0.8">I.</span><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.6);font-weight:700">Agentic Clienteling</span></div>
-          <div style="font-family:var(--font-serif);font-style:italic;font-size:23px;color:#fff;line-height:1.15">Where it's captured.</div>
-          <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:6px">In the boutique — the Bantō logs the moment.</div>
+      <!-- three stacked rows; each animates in on advance -->
+      <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:18px;width:100%;max-width:1300px;margin:0 auto;text-align:left">
+        <div class="fragment fade-up" style="display:flex;align-items:center;gap:32px;background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-left:6px solid var(--sf-gold);border-radius:16px;padding:30px 40px;backdrop-filter:blur(2px)">
+          <span style="font-family:var(--font-serif);font-style:italic;font-size:66px;color:var(--sf-gold);line-height:0.7;flex-shrink:0;width:78px">I.</span>
+          <div style="flex:1">
+            <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.62);font-weight:700;margin-bottom:7px">Agentic Clienteling · <span style="color:var(--sf-gold)">in the boutique</span></div>
+            <div style="font-family:var(--font-serif);font-style:italic;font-size:36px;color:#fff;line-height:1.08">Where it's captured.</div>
+          </div>
+          <div style="font-size:17px;color:rgba(255,255,255,0.74);line-height:1.45;width:380px;flex-shrink:0">The Bantō meets Sarah, recognizes her, and logs the moment — a wedding in Kyoto.</div>
         </div>
-        <div style="padding:24px 26px;border-right:1px solid rgba(255,255,255,0.12)">
-          <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px"><span style="font-family:var(--font-serif);font-style:italic;font-size:38px;color:var(--sf-gold);line-height:0.8">II.</span><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.6);font-weight:700">Agentic Commerce</span></div>
-          <div style="font-family:var(--font-serif);font-style:italic;font-size:23px;color:#fff;line-height:1.15">The page is the agent.</div>
-          <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:6px">On-site — it already knows, and never re-asks.</div>
+        <div class="fragment fade-up" style="display:flex;align-items:center;gap:32px;background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-left:6px solid var(--sf-gold);border-radius:16px;padding:30px 40px;backdrop-filter:blur(2px)">
+          <span style="font-family:var(--font-serif);font-style:italic;font-size:66px;color:var(--sf-gold);line-height:0.7;flex-shrink:0;width:78px">II.</span>
+          <div style="flex:1">
+            <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.62);font-weight:700;margin-bottom:7px">Agentic Commerce · <span style="color:var(--sf-gold)">on-site</span></div>
+            <div style="font-family:var(--font-serif);font-style:italic;font-size:36px;color:#fff;line-height:1.08">The page is the agent.</div>
+          </div>
+          <div style="font-size:17px;color:rgba(255,255,255,0.74);line-height:1.45;width:380px;flex-shrink:0">She returns online — the storefront already knows her, and never re-asks.</div>
         </div>
-        <div style="padding:24px 26px">
-          <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px"><span style="font-family:var(--font-serif);font-style:italic;font-size:38px;color:var(--sf-gold);line-height:0.8">III.</span><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.6);font-weight:700">Agentic Marketing</span></div>
-          <div style="font-family:var(--font-serif);font-style:italic;font-size:23px;color:#fff;line-height:1.15">The journey composes itself.</div>
-          <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:6px">Across channels — composed for one, not a segment.</div>
+        <div class="fragment fade-up" style="display:flex;align-items:center;gap:32px;background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-left:6px solid var(--sf-gold);border-radius:16px;padding:30px 40px;backdrop-filter:blur(2px)">
+          <span style="font-family:var(--font-serif);font-style:italic;font-size:66px;color:var(--sf-gold);line-height:0.7;flex-shrink:0;width:78px">III.</span>
+          <div style="flex:1">
+            <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.62);font-weight:700;margin-bottom:7px">Agentic Marketing · <span style="color:var(--sf-gold)">across channels</span></div>
+            <div style="font-family:var(--font-serif);font-style:italic;font-size:36px;color:#fff;line-height:1.08">The journey composes itself.</div>
+          </div>
+          <div style="font-size:17px;color:rgba(255,255,255,0.74);line-height:1.45;width:380px;flex-shrink:0">A follow-up email composed for one — not a segment, not a blast.</div>
         </div>
       </div>
 
-      <div style="position:relative;z-index:1;display:inline-flex;align-items:baseline;gap:14px">
-        <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sf-gold);font-weight:700">Grounded in one profile</span>
-        <span style="font-family:var(--font-serif);font-style:italic;font-size:16px;color:rgba(255,255,255,0.72)">Salesforce Data Cloud + Merkle's Merkury identity graph</span>
-      </div>
-      <p style="position:relative;z-index:1;max-width:1000px;margin:14px auto 0;font-size:14px;line-height:1.5;color:rgba(255,255,255,0.6)"><strong style="color:rgba(255,255,255,0.82);font-weight:600">Merkury</strong> resolves a single signal — an email, or even an anonymous visit — into one persistent, privacy-safe profile across <strong style="color:rgba(255,255,255,0.82);font-weight:600">290M+ U.S. consumers</strong>. It's how the maison recognizes Sarah at the door <em style="font-family:var(--font-serif)">and</em> on the site — no login required — and how Data Cloud keeps that one profile in sync across every surface.</p>
+      <aside class="notes">Tony picks up (~7:00). Set the frame: Maison Tachibana, a Kyoto house of leather and lacquer. We'll follow ONE customer — Sarah Chen — across three surfaces, all live, scripted, and offline. Advance to reveal each: (I) captured in the boutique, (II) reused on-site, (III) orchestrated in marketing. Next two slides: who Sarah is + how Merkury knows her, then the Bantō. Arrow / click advances each beat.</aside>
+    </section>
 
-      <aside class="notes">Tony picks up (~7:00). Frame: Maison Tachibana; Sarah is a walk-in, not in CRM, recognized by Merkury, planning a Kyoto wedding. Three surfaces, one profile — captured in the boutique (Clienteling) → reused on-site (Commerce) → orchestrated (Marketing). Then advance into the three live, scripted, offline scenes; arrow / click / scroll steps each beat.</aside>
+    <!-- 7b · DEMO SETUP — one profile, resolved by Merkury -->
+    <section class="demo-break slide-vcenter">
+      <span class="demo-break__chip" style="margin-bottom:22px">Grounded in one profile</span>
+      <h2 class="demo-break__title" style="font-size:52px;letter-spacing:-1.2px;margin-bottom:10px">How the maison <em>already knows</em> Sarah.</h2>
+      <p class="demo-break__sub" style="font-size:22px;margin:0 0 32px">Salesforce Data Cloud, resolved by <strong style="color:#fff;font-weight:600;font-style:normal">Merkle's Merkury</strong> identity graph.</p>
+
+      <div style="position:relative;z-index:1;display:grid;grid-template-columns:0.82fr 1.18fr;gap:36px;width:100%;max-width:1360px;margin:0 auto;text-align:left;align-items:start">
+        <!-- Sarah profile card -->
+        <div style="background:#fff;border-radius:18px;border-top:6px solid var(--sf-gold);box-shadow:0 24px 60px rgba(0,0,0,0.45);padding:30px 32px">
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px">
+            <div style="width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#2a2320,#6b4f43);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size:25px;flex-shrink:0">SC</div>
+            <div>
+              <div style="font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--lux-ink,#1a1a1a);line-height:1.05">Sarah Chen</div>
+              <div style="font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--lux-bronze,#8a6a3c);margin-top:4px">Walk-in · not in CRM · ID'd by Merkury</div>
+            </div>
+          </div>
+          <p style="font-size:16px;line-height:1.5;color:#444;margin:0 0 18px">A walk-in the maison has never met — recognized on arrival from a single email, quietly planning for a <strong style="color:#222">wedding in Kyoto</strong> this fall.</p>
+          <div style="font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:#9a9a9a;margin-bottom:9px;border-top:1px solid #eee;padding-top:14px">Merkury-appended profile</div>
+          <ul style="list-style:none;padding:0;margin:0;font-size:15px;line-height:1.45;color:#333">
+            <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;color:var(--sf-gold);font-weight:700">→</span>Identity resolved from one email — no login</li>
+            <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;color:var(--sf-gold);font-weight:700">→</span>Interests: luxury goods · antiquities · fragrance · fine art</li>
+            <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;color:var(--sf-gold);font-weight:700">→</span>Life moment: attending a Kyoto wedding (fall)</li>
+            <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;color:var(--sf-gold);font-weight:700">→</span>High affluence · gifting &amp; travel signals</li>
+          </ul>
+        </div>
+        <!-- Merkury value + stats -->
+        <div>
+          <p style="font-size:18px;line-height:1.55;color:rgba(255,255,255,0.82);margin:0 0 20px">One signal — an email, or even an anonymous visit — resolves to a single <strong style="color:#fff">persistent, privacy-safe profile</strong>, then stays in sync across every surface.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-radius:14px;padding:20px 24px"><div style="font-family:var(--font-display);font-size:42px;font-weight:700;color:var(--sf-gold);line-height:1">290M+</div><div style="font-size:14px;color:rgba(255,255,255,0.74);line-height:1.4;margin-top:6px">U.S. consumers with a persistent, privacy-safe profile</div></div>
+            <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-radius:14px;padding:20px 24px"><div style="font-family:var(--font-display);font-size:42px;font-weight:700;color:var(--sf-gold);line-height:1">~95%</div><div style="font-size:14px;color:rgba(255,255,255,0.74);line-height:1.4;margin-top:6px">coverage of the U.S. adult population</div></div>
+            <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-radius:14px;padding:20px 24px"><div style="font-family:var(--font-display);font-size:42px;font-weight:700;color:var(--sf-gold);line-height:1">60%+</div><div style="font-size:14px;color:rgba(255,255,255,0.74);line-height:1.4;margin-top:6px">of anonymous site visitors recognized — no login</div></div>
+            <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-radius:14px;padding:20px 24px"><div style="font-family:var(--font-display);font-size:42px;font-weight:700;color:var(--sf-gold);line-height:1">1,000s</div><div style="font-size:14px;color:rgba(255,255,255,0.74);line-height:1.4;margin-top:6px">of 3rd-party attributes appended per profile</div></div>
+          </div>
+          <div class="fragment fade-up" style="margin-top:18px;background:rgba(255,182,27,0.10);border-left:4px solid var(--sf-gold);border-radius:12px;padding:18px 24px;font-size:16px;line-height:1.5;color:rgba(255,255,255,0.85)">One persistent ID across <strong style="color:#fff">known + anonymous, online + offline</strong> — it's how the maison recognizes Sarah at the door <em style="font-family:var(--font-serif);color:var(--sf-gold)">and</em> on the site.</div>
+        </div>
+      </div>
+
+      <aside class="notes">Who Sarah is, and how we already know her. She's never shopped here — a walk-in, not in the CRM. Merkury resolves a single signal (her email, or even an anonymous visit) into one persistent, privacy-safe profile and appends the third-party context on the card. Stats animate in: ~290M+ profiles, ~95% US adult coverage, 60%+ anonymous-visitor recognition, thousands of appended attributes. Punchline: one ID across known+anonymous, online+offline — Data Cloud keeps it in sync. (Confirm exact Merkury figures before delivery.)</aside>
+    </section>
+
+    <!-- 7c · DEMO SETUP — the Bantō, our advisor -->
+    <section class="demo-break slide-vcenter">
+      <span class="demo-break__chip" style="margin-bottom:22px">The Advisor</span>
+      <h2 class="demo-break__title" style="font-size:58px;letter-spacing:-1.5px;margin-bottom:14px">Meet the <em>Bantō.</em> <span style="font-family:var(--font-serif);font-weight:400;font-size:0.42em;color:rgba(255,255,255,0.38);letter-spacing:2px;vertical-align:middle">番頭</span></h2>
+      <p class="demo-break__sub" style="font-size:21px;line-height:1.5;max-width:1080px;margin:0 auto 34px">In a traditional Japanese merchant house, the <strong style="color:#fff;font-weight:600;font-style:normal">bantō</strong> was the head clerk — the most trusted person on the floor. Knew every customer by name, knew the whole inventory, and acted with judgment on the house's behalf.</p>
+
+      <div style="position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;width:100%;max-width:1300px;margin:0 auto;text-align:left">
+        <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-top:5px solid var(--sf-gold);border-radius:16px;padding:28px 30px">
+          <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--sf-gold);font-weight:700;margin-bottom:12px">Knows the customer</div>
+          <div style="font-size:18px;line-height:1.5;color:rgba(255,255,255,0.86)">Every past visit, preference, and the moment she's planning for — carried with her, surface to surface.</div>
+        </div>
+        <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-top:5px solid var(--sf-gold);border-radius:16px;padding:28px 30px">
+          <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--sf-gold);font-weight:700;margin-bottom:12px">Knows the maison</div>
+          <div style="font-size:18px;line-height:1.5;color:rgba(255,255,255,0.86)">Every piece and its story, what pairs with what, what's in stock — the whole atelier at hand.</div>
+        </div>
+        <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-top:5px solid var(--sf-gold);border-radius:16px;padding:28px 30px">
+          <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--sf-gold);font-weight:700;margin-bottom:12px">Acts with judgment</div>
+          <div style="font-size:18px;line-height:1.5;color:rgba(255,255,255,0.86)">Recommends, never pushes — discreet, present, and consistent across the boutique, the site, and the inbox.</div>
+        </div>
+      </div>
+
+      <p class="fragment fade-up" style="position:relative;z-index:1;max-width:1000px;margin:32px auto 0;font-size:22px;line-height:1.45;color:#fff;font-family:var(--font-serif);font-style:italic">That's the role our agent plays — <span style="color:var(--sf-gold)">the bantō, online</span> — the same advisor across all three surfaces you're about to see.</p>
+
+      <aside class="notes">Introduce the advisor before the demo. The bantō (番頭) was the head clerk of a traditional Japanese merchant house — trusted, knew every customer and every product, exercised real judgment. That's exactly the role our AI agent plays here: knows the customer, knows the maison, acts with judgment — and it's the SAME advisor across all three surfaces. Three pillars animate in, then the closing line. Next: advance into Scene I (Agentic Clienteling).</aside>
     </section>
 
 
