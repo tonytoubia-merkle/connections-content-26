@@ -23,6 +23,18 @@
   .sfx-tabs a{font-size:13px;color:#080707;text-decoration:none;white-space:nowrap;display:flex;align-items:center;border-bottom:3px solid transparent;}
   .sfx-tabs a.active{color:#0176d3;border-bottom-color:#0176d3;font-weight:600;}
   .sfx-edit{color:#0176d3;flex-shrink:0;margin-left:14px;}
+  .status-completed{background:#eceff1;color:#546e7a;}
+  /* Consultation-review cards (beats 0-1) */
+  .consult-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px 20px;}
+  .consult-grid .cg-k{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.6px;}
+  .consult-grid .cg-v{font-size:13px;color:#333;}
+  .consult-chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px;}
+  .consult-chip{font-size:11px;color:#555;background:#f5f5f5;border:1px solid #e5e5e5;border-radius:10px;padding:1px 8px;}
+  .nextstep{margin-top:10px;background:#fff8e1;border:1px solid #ffe082;border-left:3px solid #ffb300;border-radius:6px;padding:8px 10px;}
+  .nextstep-lbl{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#a06d00;display:flex;align-items:center;gap:5px;margin-bottom:3px;}
+  .nextstep-txt{font-size:12.5px;color:#5d4b16;line-height:1.4;}
+  .consult-context{margin-top:10px;font-size:12.5px;color:#444;line-height:1.45;background:#fafafa;border:1px solid #eee;border-radius:6px;padding:8px 10px;}
+  .consult-context strong{color:#222;}
 </style>
 </head>
 <body>
@@ -80,8 +92,8 @@
     </div>
 
     <div class="header-center">
-      <!-- active-customer pill: beat >= 2 -->
-      <span id="activeCustomer" class="active-customer" data-min="2">
+      <!-- active-customer pill: beat >= 4 -->
+      <span id="activeCustomer" class="active-customer" data-min="4">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
           <circle cx="12" cy="7" r="4"/>
@@ -110,20 +122,20 @@
         <p class="sidebar-sub">Maison Tachibana · Ginza Flagship</p>
       </div>
       <div class="appt-list">
-        <div class="appt-card" data-min="0">
+        <div id="apptMei" class="appt-card" data-min="0">
           <div class="ac-time">10:30 AM</div>
           <div class="ac-name">Mei Watanabe</div>
           <div class="ac-type">Bespoke Fitting</div>
-          <span class="appt-status status-confirmed">Confirmed</span>
+          <span class="appt-status status-completed">Completed</span>
         </div>
-        <!-- Sarah only appears once her email is entered and Merkury recognizes her (beat >= 2) -->
-        <div id="apptSarah" class="appt-card" data-min="2">
+        <!-- Sarah only appears once her email is entered and Merkury recognizes her (beat >= 4) -->
+        <div id="apptSarah" class="appt-card" data-min="4">
           <div class="ac-time">Now</div>
           <div class="ac-name">Sarah Chen</div>
           <div class="ac-type">Walk-In · unscheduled</div>
           <span class="appt-status status-checkedin">Checked In</span>
         </div>
-        <div class="appt-card" data-min="0">
+        <div id="apptOlivia" class="appt-card" data-min="0">
           <div class="ac-time">1:15 PM</div>
           <div class="ac-name">Olivia Laurent</div>
           <div class="ac-type">Personal Styling</div>
@@ -135,13 +147,13 @@
     <!-- Center: Customer profile panel -->
     <div class="panel panel-center">
 
-      <!-- Default panel title: beats 0..1 -->
-      <div id="panelTitleDefault" class="panel-header" data-min="0" data-max="1">
-        <h2 class="panel-title">Customer Profile</h2>
+      <!-- Default panel title: beats 0..3 (text set per beat in renderBeat) -->
+      <div id="panelTitleDefault" class="panel-header" data-min="0" data-max="3">
+        <h2 id="panelTitleText" class="panel-title">Consultation Summary</h2>
       </div>
 
-      <!-- Compact header (selected customer): beat >= 2 -->
-      <div id="panelHeaderCompact" class="panel-header-compact" data-min="2">
+      <!-- Compact header (selected customer): beat >= 4 -->
+      <div id="panelHeaderCompact" class="panel-header-compact" data-min="4">
         <h3 class="customer-name-compact">Sarah Chen</h3>
         <span class="identity-badge" style="background:#fff3e0;color:#e65100;border:1px solid #ffcc80;">Recognized · Merkury 3P</span>
         <span id="clientTier" class="clientelling-tier" style="background:#f5f5f5;color:#888;">No CRM record</span>
@@ -156,8 +168,78 @@
       <!-- Center scroll content -->
       <div class="profile-content">
 
-        <!-- Walk-in widget: beats 0..1 -->
-        <div id="walkinHost" class="walkin-host" data-min="0" data-max="1">
+        <!-- Completed consultation summary (Mei Watanabe) — beat 0 -->
+        <div id="completedConsult" class="section-card" data-min="0" data-max="0">
+          <div class="section-header">
+            <span class="section-title">Mei Watanabe · Consultation Summary</span>
+            <span class="badge" style="background:#eceff1;color:#546e7a;border:1px solid #cfd8dc;font-size:10px;font-weight:600;padding:2px 8px;border-radius:12px;letter-spacing:.3px;">Completed · 10:30 AM</span>
+            <span class="expand-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+            </span>
+          </div>
+          <div class="section-body">
+            <div class="consult-grid">
+              <div><div class="cg-k">Appointment</div><div class="cg-v">Bespoke Fitting · 45 min</div></div>
+              <div><div class="cg-k">Client tier</div><div class="cg-v">Maison Circle · established</div></div>
+              <div><div class="cg-k">Sentiment</div><div class="cg-v">Positive — strong interest, deferred</div></div>
+              <div><div class="cg-k">Outcome</div><div class="cg-v" style="color:#b26a00;font-weight:600;">No purchase today</div></div>
+            </div>
+            <div style="margin-top:10px;">
+              <div class="cg-k" style="margin-bottom:4px;">Discussed</div>
+              <div class="consult-chips">
+                <span class="consult-chip">Aijiro Haori — autumn palette</span>
+                <span class="consult-chip">Hand-finished leather</span>
+                <span class="consult-chip">Monogram options</span>
+              </div>
+            </div>
+            <div class="nextstep">
+              <div class="nextstep-lbl">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+                Recommended next step
+              </div>
+              <div class="nextstep-txt">Send the hand-finished lookbook and hold the Aijiro Haori in her size. Follow up in <strong>2 weeks</strong>, ahead of the autumn collection.</div>
+            </div>
+            <div class="prov-row" style="margin-top:10px;">
+              <span class="badge badge-observed">observed · in-store</span>
+              <span class="badge badge-agent">agent · follow-up drafted</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upcoming consultation (Olivia Laurent) — beat 1 -->
+        <div id="upcomingConsult" class="section-card" data-min="1" data-max="1">
+          <div class="section-header">
+            <span class="section-title">Olivia Laurent · Upcoming Consultation</span>
+            <span class="badge" style="background:#e3f2fd;color:#1565c0;border:1px solid #90caf9;font-size:10px;font-weight:600;padding:2px 8px;border-radius:12px;letter-spacing:.3px;">Booked · 1:15 PM today</span>
+            <span class="expand-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+            </span>
+          </div>
+          <div class="section-body">
+            <div class="consult-grid">
+              <div><div class="cg-k">Appointment</div><div class="cg-v">Personal Styling · 60 min</div></div>
+              <div><div class="cg-k">Scheduled</div><div class="cg-v">Today 1:15 PM · booked 3 days ago</div></div>
+            </div>
+            <div class="consult-context">
+              <strong>Background:</strong> Olivia mentioned she's looking for an <strong>anniversary gift</strong> for her husband — their 10th, next month. Open to leather goods; values understatement and craft over logo.
+            </div>
+            <div style="margin-top:10px;">
+              <div class="cg-k" style="margin-bottom:4px;">Quick plan</div>
+              <div class="consult-chips">
+                <span class="consult-chip">Pull anniversary-worthy leather</span>
+                <span class="consult-chip">Engraving / monogram options</span>
+                <span class="consult-chip">Prep 3 gift tiers</span>
+              </div>
+            </div>
+            <div class="prov-row" style="margin-top:10px;">
+              <span class="badge badge-stated">stated · anniversary gift</span>
+              <span class="badge badge-inferred">3rd-party · high gifting propensity</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Walk-in widget: beats 2..3 -->
+        <div id="walkinHost" class="walkin-host" data-min="2" data-max="3">
           <div class="walkin-container">
             <h3 class="walkin-title">Walk-In Customer</h3>
             <label class="field-label-sm" for="walkinEmail">Email</label>
@@ -177,8 +259,8 @@
           </div>
         </div>
 
-        <!-- profileSection360: Merkury 3rd-party match (primary recognition; she's not in CRM) — beat >= 2 -->
-        <div id="merkurySection" class="section-card" data-min="2">
+        <!-- profileSection360: Merkury 3rd-party match (primary recognition; she's not in CRM) — beat >= 4 -->
+        <div id="merkurySection" class="section-card" data-min="4">
           <div class="section-header">
             <span class="section-title">Merkury · 3rd-Party Match</span>
             <span class="badge" style="background:#fff3e0;color:#e65100;border:1px solid #ffcc80;font-size:10px;font-weight:600;padding:2px 8px;border-radius:12px;letter-spacing:.3px;">3rd-party · identity graph</span>
@@ -201,8 +283,8 @@
           </div>
         </div>
 
-        <!-- profileSection360: Consultation Notes — beat >= 4 -->
-        <div id="notesSection" class="section-card" data-min="4">
+        <!-- profileSection360: Consultation Notes — beat >= 6 -->
+        <div id="notesSection" class="section-card" data-min="6">
           <div class="section-header">
             <span class="section-title">Consultation Notes</span>
             <span class="section-count">1</span>
@@ -219,8 +301,8 @@
           </div>
         </div>
 
-        <!-- profileSection360: Meaningful Events — beat >= 5 -->
-        <div id="eventsSection" class="section-card" data-min="5">
+        <!-- profileSection360: Meaningful Events — beat >= 7 -->
+        <div id="eventsSection" class="section-card" data-min="7">
           <div class="section-header">
             <span class="section-title">Meaningful Events</span>
             <span class="section-count">1</span>
@@ -240,8 +322,8 @@
           </div>
         </div>
 
-        <!-- profileSection360: Staff Picks — beat >= 5 -->
-        <div id="staffPicksSection" class="section-card staff-picks" data-min="5">
+        <!-- profileSection360: Staff Picks — beat >= 7 -->
+        <div id="staffPicksSection" class="section-card staff-picks" data-min="7">
           <div class="section-header">
             <span class="section-title">Staff Picks</span>
             <span class="staff-label">recomposed</span>
@@ -258,8 +340,8 @@
           </div>
         </div>
 
-        <!-- profileSection360: Recent Orders — appears with the first purchase (beat >= 6) -->
-        <div id="ordersSection" class="section-card" data-min="6">
+        <!-- profileSection360: Recent Orders — appears with the first purchase (beat >= 8) -->
+        <div id="ordersSection" class="section-card" data-min="8">
           <div class="section-header">
             <span class="section-title">Recent Orders</span>
             <span class="section-count">1</span>
@@ -278,8 +360,8 @@
 
       </div>
 
-      <!-- Quick Note widget: beat >= 4 -->
-      <div id="quickNoteWidget" class="note-capture-section" data-min="4">
+      <!-- Quick Note widget: beat >= 6 -->
+      <div id="quickNoteWidget" class="note-capture-section" data-min="6">
         <h3 class="capture-title">Quick Note</h3>
         <div class="capture-form">
           <div class="type-trigger">
@@ -306,11 +388,11 @@
             </svg>
           </span>
           <h2 class="copilot-title">AI Co-pilot</h2>
-          <span id="copilotActivePill" class="session-active" data-min="3">Active</span>
+          <span id="copilotActivePill" class="session-active" data-min="5">Active</span>
         </div>
 
-        <!-- Quick action chips: beat >= 3 -->
-        <div id="copilotQuickActions" class="quick-actions" data-min="3">
+        <!-- Quick action chips: beat >= 5 -->
+        <div id="copilotQuickActions" class="quick-actions" data-min="5">
           <button class="action-chip" type="button">Gift ideas</button>
           <button class="action-chip" type="button">Travel essentials</button>
           <button class="action-chip" type="button">Occasion edit</button>
@@ -320,20 +402,20 @@
         <!-- Message thread -->
         <div id="copilotThread" class="message-thread">
 
-          <!-- Start prompt: beats 0..2 -->
-          <div id="copilotStartPrompt" class="start-prompt" data-min="0" data-max="2">
+          <!-- Start prompt: beats 0..4 -->
+          <div id="copilotStartPrompt" class="start-prompt" data-min="0" data-max="4">
             <p class="no-customer-msg">Select a customer to start the co-pilot</p>
           </div>
 
-          <!-- Briefing agent bubble (employee-facing): beat >= 3 -->
-          <div id="greetingMsg" class="msg-container msg-agent" data-min="3">
+          <!-- Briefing agent bubble (employee-facing): beat >= 5 -->
+          <div id="greetingMsg" class="msg-container msg-agent" data-min="5">
             <div class="msg-bubble bubble-agent">
               <p class="msg-text">Heads up — a walk-in just checked in. She's <strong>not in our CRM</strong> — but this is <strong>Sarah Chen</strong>: high-net-worth, a frequent international traveler, with an eye for luxury, antiquities and fragrance. Treat it as a high-potential first visit; greet her warmly, let her lead, and I'll flag anything worth capturing.</p>
             </div>
           </div>
 
-          <!-- Recompose agent bubble (employee-facing): beat >= 5 -->
-          <div id="recomposeMsg" class="msg-container msg-agent" data-min="5">
+          <!-- Recompose agent bubble (employee-facing): beat >= 7 -->
+          <div id="recomposeMsg" class="msg-container msg-agent" data-min="7">
             <div class="msg-bubble bubble-agent">
               <p class="msg-text">I saw your note — Sarah's attending a wedding in Kyoto this fall. I've captured it and set a follow-up. Here are a few pieces to put in front of her:</p>
               <div class="capture-notifications">
@@ -372,8 +454,8 @@
             </div>
           </div>
 
-          <!-- Purchase agent bubble (separate step, after the recommendation): beat >= 6 -->
-          <div id="purchaseMsg" class="msg-container msg-agent" data-min="6">
+          <!-- Purchase agent bubble (separate step, after the recommendation): beat >= 8 -->
+          <div id="purchaseMsg" class="msg-container msg-agent" data-min="8">
             <div class="msg-bubble bubble-agent">
               <p class="msg-text">She's taking the <strong>Kinari Wrap</strong> — her first with the maison. I've started her client profile and captured her contact consent.</p>
               <div class="capture-notifications">
@@ -394,8 +476,8 @@
           </div>
         </div>
 
-        <!-- Co-pilot input: beat >= 3 -->
-        <div id="copilotInput" class="input-area" data-min="3">
+        <!-- Co-pilot input: beat >= 5 -->
+        <div id="copilotInput" class="input-area" data-min="5">
           <div class="chat-input">Ask the co-pilot…</div>
           <button class="send-btn" type="button" aria-label="Send">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg>
@@ -406,8 +488,8 @@
 
   </div>
 
-  <!-- ===================== Bottom action bar (beat >= 2) ===================== -->
-  <div id="actionBar" class="action-bar" data-min="2">
+  <!-- ===================== Bottom action bar (beat >= 4) ===================== -->
+  <div id="actionBar" class="action-bar" data-min="4">
     <button class="abtn" type="button">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
       Lookup Order
@@ -442,7 +524,7 @@ const searchBtn = $('searchCrmBtn');
 // Elements that stream-fade when first revealed (agent bubbles).
 const STREAM_IDS = ['greetingMsg', 'recomposeMsg', 'purchaseMsg'];
 
-// ── Animated note capture (beat 4): type into the Quick Note, "submit",
+// ── Animated note capture (beat 6): type into the Quick Note, "submit",
 //    then the note appears on the profile and the input clears. ──────────
 const NOTE_TEXT = "Sarah mentioned she's got a wedding in Kyoto this fall — she's attending as a guest, not the bride.";
 let captureTimers = [];
@@ -473,7 +555,7 @@ function playCapture(direction) {
     };
     captureTimers.push(setTimeout(step, 250));
   } else {
-    // jump/reverse onto beat 4 — show the end state, no animation.
+    // jump/reverse onto the capture beat — show the end state, no animation.
     ta.value = '';
     notes.style.display = '';
     notes.style.opacity = '1';
@@ -483,7 +565,7 @@ function playCapture(direction) {
 /**
  * Cumulative visibility: every element carrying data-min is shown when
  * index >= data-min, and (optionally) hidden again when index > data-max.
- * This makes renderBeat fully reversible for any 0..5 target in any order.
+ * This makes renderBeat fully reversible for any 0..8 target in any order.
  */
 function applyVisibility(index) {
   document.querySelectorAll('[data-min]').forEach((el) => {
@@ -498,19 +580,29 @@ function applyVisibility(index) {
 function renderBeat(index, direction) {
   applyVisibility(index);
 
-  // Beat 3+: co-pilot session becomes active (gradient header).
-  $('copilotHeader').classList.toggle('is-active', index >= 3);
+  // Center panel title for the review/walk-in beats (0..3).
+  const titleText = $('panelTitleText');
+  if (titleText) {
+    titleText.textContent = index === 0 ? 'Consultation Summary'
+                          : index === 1 ? 'Upcoming Consultation'
+                          : 'Customer Profile';
+  }
 
-  // Beat 2+: highlight Sarah's appointment in the sidebar (identity resolved).
-  $('apptSarah').classList.toggle('is-active', index >= 2);
+  // Beat 5+: co-pilot session becomes active (gradient header).
+  $('copilotHeader').classList.toggle('is-active', index >= 5);
 
-  // Beat 6+: first purchase makes her a CRM client (was "No CRM record").
+  // Highlight the appointment being reviewed / the recognized walk-in.
+  $('apptMei').classList.toggle('is-active', index === 0);
+  $('apptOlivia').classList.toggle('is-active', index === 1);
+  $('apptSarah').classList.toggle('is-active', index >= 4);
+
+  // Beat 8+: first purchase makes her a CRM client (was "No CRM record").
   const tierPill = $('clientTier');
-  if (tierPill) tierPill.textContent = index >= 6 ? 'New client · today' : 'No CRM record';
+  if (tierPill) tierPill.textContent = index >= 8 ? 'New client · today' : 'No CRM record';
 
-  // Beat 1+: email filled and Search CRM in loading/pressed state.
-  // Beat 0: empty email, idle button.
-  if (index >= 1) {
+  // Beat 3+: email filled and Search CRM in loading/pressed state.
+  // Beat 2: empty email, idle button (Sarah just walked in).
+  if (index >= 3) {
     emailEl.value = 'sarah.chen@email.com';
     btnIdle.style.display = 'none';
     btnLoad.style.display = 'inline-flex';
@@ -536,10 +628,10 @@ function renderBeat(index, direction) {
     }
   });
 
-  // Beat 4: animate the note capture (type → submit → lands on profile + clears).
+  // Beat 6: animate the note capture (type → submit → lands on profile + clears).
   // Any other beat: cancel a running animation and keep the input clear.
   clearCaptureTimers();
-  if (index === 4) {
+  if (index === 6) {
     playCapture(direction);
   } else {
     const ta = $('noteTextarea');
@@ -560,22 +652,24 @@ function scrollWithin(container, target) {
 }
 function focusBeat(index) {
   requestAnimationFrame(() => setTimeout(() => {
-    // Beat 4's center scroll is handled by playCapture (after the note submits).
-    if (index !== 4) {
-      const centerTarget = index >= 6 ? $('ordersSection')
-                         : index >= 5 ? $('staffPicksSection')
-                         : index >= 2 ? $('merkurySection')
+    // Beat 6's center scroll is handled by playCapture (after the note submits).
+    if (index !== 6) {
+      const centerTarget = index >= 8 ? $('ordersSection')
+                         : index >= 7 ? $('staffPicksSection')
+                         : index >= 4 ? $('merkurySection')
+                         : index === 1 ? $('upcomingConsult')
+                         : index === 0 ? $('completedConsult')
                          : null;
       if (centerTarget) scrollWithin(profileScroll, centerTarget);
       else if (profileScroll) profileScroll.scrollTo({ top: 0, behavior: 'smooth' });
     }
     // Co-pilot thread: keep the latest message in view.
     const thread = $('copilotThread');
-    if (index >= 3 && thread) thread.scrollTo({ top: thread.scrollHeight, behavior: 'smooth' });
+    if (index >= 5 && thread) thread.scrollTo({ top: thread.scrollHeight, behavior: 'smooth' });
   }, 90));
 }
 
-startSceneRuntime({ total: 6, renderBeat });
+startSceneRuntime({ total: 8, renderBeat });
 </script>
 </body>
 </html>
