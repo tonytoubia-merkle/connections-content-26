@@ -367,6 +367,7 @@ html, body {
   display: flex; align-items: center; justify-content: center;
 }
 .product-card-image-inline svg { width: 44px; height: 44px; }
+.product-card-image-inline img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; display: block; background: #f0ece4; }
 .pc-tote  { background: linear-gradient(135deg, #c9b79c 0%, #9c7f5e 100%); }
 .pc-fragrance { background: linear-gradient(135deg, #e7c9d4 0%, #b07c92 100%); }
 .pc-wrap  { background: linear-gradient(135deg, #b9c7d6 0%, #7d93ab 100%); }
