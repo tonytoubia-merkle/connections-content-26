@@ -257,6 +257,8 @@
 .hl-grid.fragment.visible .hl-card:nth-child(5){animation-delay:.24s}
 .hl-grid.fragment.visible .hl-card:nth-child(6){animation-delay:.30s}
 .hl-grid.fragment.visible .hl-card:nth-child(7){animation-delay:.36s}
+.hl-grid.fragment.visible .hl-card:nth-child(8){animation-delay:.42s}
+.hl-grid.fragment.visible .hl-card:nth-child(9){animation-delay:.48s}
 @keyframes hlPop { from { opacity:0; transform: translateY(18px) scale(.985); } to { opacity:1; transform:none; } }
 .demo-break__handoff { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 28px; padding: 26px 42px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.18); border-radius: 100px; }
 .demo-break__handoff img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--sf-gold); }
@@ -676,7 +678,7 @@
         </div>
         <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-top:6px solid var(--sf-gold);border-radius:18px;padding:38px 36px">
           <div style="font-family:var(--font-mono);font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--sf-gold);font-weight:700;margin-bottom:16px">Knows the house</div>
-          <div style="font-size:23px;line-height:1.5;color:rgba(255,255,255,0.88)">Every piece and its story, what pairs with what, what's in stock – the whole atelier at hand.</div>
+          <div style="font-size:23px;line-height:1.5;color:rgba(255,255,255,0.88)">Every piece and its story, what pairs with what, what's in stock – the whole collection at hand.</div>
         </div>
         <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-top:6px solid var(--sf-gold);border-radius:18px;padding:38px 36px">
           <div style="font-family:var(--font-mono);font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--sf-gold);font-weight:700;margin-bottom:16px">Acts with judgment</div>
@@ -753,46 +755,54 @@
     <!-- ========================================================
          8.5 · DEMO → BUILD bridge (Headless 360) · Tony
          ======================================================== -->
-    <section class="slide--dark slide-vcenter" data-background="linear-gradient(140deg, #0a0a16 0%, #0a1838 55%, #001A70 100%)" style="text-align:center">
+    <section class="slide--dark slide-vcenter" data-background="linear-gradient(135deg, #0047D4, #001A70)" style="text-align:center">
       <div class="label" style="justify-content:center">Built on Salesforce Headless 360</div>
       <h2 class="title" style="font-size:62px;line-height:1.1;max-width:1500px;margin:12px auto 18px">Most of what you just saw, we built <em>conversationally</em> – through the CLI and APIs.</h2>
       <p style="font-size:23px;line-height:1.5;color:rgba(255,255,255,0.78);max-width:1180px;margin:0 auto 46px">Headless 360 exposes the entire platform as an <strong style="color:#fff;font-weight:600">API, MCP tool, or CLI command</strong> – so people and agents compose Customer 360 directly, no browser required.</p>
 
       <!-- the surfaces we assembled – all reveal on one advance (gently staggered) -->
-      <div class="hl-grid fragment" style="display:flex;flex-wrap:wrap;gap:18px;justify-content:center;max-width:1500px;margin:0 auto 46px">
-        <div class="hl-card" style="flex:0 0 332px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-top:4px solid var(--sf-gold);border-radius:14px;padding:22px 26px;text-align:left">
+      <div class="hl-grid fragment" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1160px;margin:0 auto 34px">
+        <div class="hl-card" style="flex:0 0 348px;box-sizing:border-box;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);border-top:4px solid var(--sf-gold);border-radius:14px;padding:20px 24px;text-align:left">
           <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;line-height:1.12;margin-bottom:10px">B2C Commerce</div>
-          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.74)">Storefronts · Cart &amp; Checkout · Order Management · Catalog &amp; Pricing</div>
+          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.85)">Storefronts · Cart &amp; Checkout · Order Management · Catalog &amp; Pricing</div>
         </div>
-        <div class="hl-card" style="flex:0 0 332px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-top:4px solid var(--sf-gold);border-radius:14px;padding:22px 26px;text-align:left">
+        <div class="hl-card" style="flex:0 0 348px;box-sizing:border-box;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);border-top:4px solid var(--sf-gold);border-radius:14px;padding:20px 24px;text-align:left">
           <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;line-height:1.12;margin-bottom:10px">Storefront Next</div>
-          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.74)">Composable PWA · Headless APIs · Page Designer · Agentic-first</div>
+          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.85)">Composable PWA · Headless APIs · Page Designer · Agentic-first</div>
         </div>
-        <div class="hl-card" style="flex:0 0 332px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-top:4px solid var(--sf-gold);border-radius:14px;padding:22px 26px;text-align:left">
+        <div class="hl-card" style="flex:0 0 348px;box-sizing:border-box;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);border-top:4px solid var(--sf-gold);border-radius:14px;padding:20px 24px;text-align:left">
+          <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;line-height:1.12;margin-bottom:10px">Agentforce</div>
+          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.85)">Agent Builder · Reasoning engine · MCP tool-calling · Trust Layer</div>
+        </div>
+        <div class="hl-card" style="flex:0 0 348px;box-sizing:border-box;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);border-top:4px solid var(--sf-gold);border-radius:14px;padding:20px 24px;text-align:left">
           <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;line-height:1.12;margin-bottom:10px">Marketing Cloud Advanced</div>
-          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.74)">Journeys · Clienteling App · Custom Journey Advisor · Segments</div>
+          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.85)">Journeys · Clienteling App · Custom Journey Advisor · Segments</div>
         </div>
-        <div class="hl-card" style="flex:0 0 332px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-top:4px solid var(--sf-gold);border-radius:14px;padding:22px 26px;text-align:left">
+        <div class="hl-card" style="flex:0 0 348px;box-sizing:border-box;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);border-top:4px solid var(--sf-gold);border-radius:14px;padding:20px 24px;text-align:left">
           <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;line-height:1.12;margin-bottom:10px">Data 360</div>
-          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.74)">Unified profile · Identity resolution · Zero-copy federation · Calculated insights</div>
+          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.85)">Unified profile · Identity resolution · Zero-copy federation · Calculated insights</div>
         </div>
-        <div class="hl-card" style="flex:0 0 332px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-top:4px solid var(--sf-gold);border-radius:14px;padding:22px 26px;text-align:left">
+        <div class="hl-card" style="flex:0 0 348px;box-sizing:border-box;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);border-top:4px solid var(--sf-gold);border-radius:14px;padding:20px 24px;text-align:left">
+          <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;line-height:1.12;margin-bottom:10px">Personalization</div>
+          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.85)">Web &amp; email decisioning · Einstein recipes · Affinities · Real-time</div>
+        </div>
+        <div class="hl-card" style="flex:0 0 348px;box-sizing:border-box;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);border-top:4px solid var(--sf-gold);border-radius:14px;padding:20px 24px;text-align:left">
           <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;line-height:1.12;margin-bottom:10px">Service</div>
-          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.74)">Case Management · Knowledge · Agentforce Service Agent</div>
+          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.85)">Case Management · Knowledge · Agentforce Service Agent</div>
         </div>
-        <div class="hl-card" style="flex:0 0 332px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-top:4px solid var(--sf-gold);border-radius:14px;padding:22px 26px;text-align:left">
-          <div style="display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:10px"><span style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;line-height:1.12">Loyalty</span><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--sf-gold);font-weight:700;border:1px solid rgba(255,182,27,0.45);border-radius:5px;padding:1px 6px">much of</span></div>
-          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.74)">Promotion Tiers · Ledgers · Vouchers · Member Benefits</div>
+        <div class="hl-card" style="flex:0 0 348px;box-sizing:border-box;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);border-top:4px solid var(--sf-gold);border-radius:14px;padding:20px 24px;text-align:left">
+          <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;line-height:1.12;margin-bottom:10px">Loyalty</div>
+          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.85)">Promotion Tiers · Ledgers · Vouchers · Member Benefits</div>
         </div>
-        <div class="hl-card" style="flex:0 0 332px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-top:4px solid var(--sf-gold);border-radius:14px;padding:22px 26px;text-align:left">
-          <div style="display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:10px"><span style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;line-height:1.12">Personalization</span><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--sf-gold);font-weight:700;border:1px solid rgba(255,182,27,0.45);border-radius:5px;padding:1px 6px">much of</span></div>
-          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.74)">Web &amp; email decisioning · Einstein recipes · Affinities · Real-time</div>
+        <div class="hl-card" style="flex:0 0 348px;box-sizing:border-box;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.22);border-top:4px solid var(--sf-gold);border-radius:14px;padding:20px 24px;text-align:left">
+          <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;line-height:1.12;margin-bottom:10px">Merkury</div>
+          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.85)">Identity graph · 3rd-party append · Anonymous recognition · Privacy-safe ID</div>
         </div>
       </div>
 
       <p class="fragment fade-up" style="font-family:var(--font-serif);font-style:italic;font-size:44px;line-height:1.2;color:#fff;margin:0">In <span style="color:var(--sf-gold)">days</span> – not months or years.</p>
 
-      <aside class="notes">Tony – the build reveal, before we go under the hood. The point: the majority of what you just watched wasn't a one-off mockup – we assembled it CONVERSATIONALLY on Salesforce Headless 360, which exposes the whole platform as APIs, MCP tools, and CLI commands (announced at TDX '26, "no browser required"). One advance reveals all seven surface cards (gently staggered); name them as they land – commerce on B2C Commerce and Storefront Next, Marketing Cloud Advanced (Journeys, Clienteling App, Custom Journey Advisor), Data 360, Service, much of Loyalty (Promotion Tiers, Ledgers) and Personalization. Second advance lands the kicker: days, not months or years. Then into Architecture & Governance.</aside>
+      <aside class="notes">Tony – the build reveal, before we go under the hood. The point: the majority of what you just watched wasn't a one-off mockup – we assembled it CONVERSATIONALLY on Salesforce Headless 360, which exposes the whole platform as APIs, MCP tools, and CLI commands (announced at TDX '26, "no browser required"). One advance reveals all nine tiles (gently staggered); name them as they land – B2C Commerce, Storefront Next, Agentforce, Marketing Cloud Advanced (Journeys, Clienteling App, Custom Journey Advisor), Data 360, Personalization, Service, Loyalty (Promotion Tiers, Ledgers), and Merkury (the identity thread). Second advance lands the kicker: days, not months or years. Then into Architecture & Governance.</aside>
     </section>
 
     <!-- ========================================================
@@ -1118,7 +1128,7 @@
       </div>
 
       <!-- Single line -->
-      <h2 style="position:relative;z-index:1;font-family:var(--font-display);font-size:88px;font-weight:700;color:white;line-height:1.05;letter-spacing:-1.5px;max-width:1500px;margin:0 auto">Find us at <em style="color:var(--sf-gold);font-style:italic;font-family:var(--font-serif)">Room 270.</em></h2>
+      <h2 style="position:relative;z-index:1;font-family:var(--font-display);font-size:88px;font-weight:700;color:white;line-height:1.05;letter-spacing:-1.5px;max-width:1500px;margin:0 auto">Find us at <em style="color:var(--sf-gold);font-style:italic;font-family:var(--font-serif)">270 Space.</em></h2>
 
       <!-- Sub-tag -->
       <p style="position:relative;z-index:1;margin-top:44px;font-size:26px;color:rgba(255,255,255,0.78);letter-spacing:0.5px;max-width:1100px;margin-left:auto;margin-right:auto;line-height:1.4">Bring one luxury moment that breaks today. We'll show you what it looks like <em style="color:var(--sf-gold);font-style:italic">fixed.</em></p>
@@ -1126,7 +1136,7 @@
       <aside class="notes">
         Wrap · 38:00–40:00 · Both.
         "Two asks before you leave.
-        One – find us at Room 270. Tony and I will scope your stack in 20.
+        One – find us at 270 Space. Tony and I will scope your stack in 20.
         Two – bring one luxury moment that breaks today. Anniversary gift. Made-to-measure handoff. Post-purchase concierge. We'll show you what it looks like on the platform you already own.
         Thanks for the time."
       </aside>

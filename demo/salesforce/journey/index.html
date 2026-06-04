@@ -266,7 +266,7 @@
                   <div class="product-card-image-inline pc-tote">
                     <svg viewBox="0 0 24 24" aria-hidden="true" fill="#3a2c20"><path d="M6 7V6a6 6 0 0 1 12 0v1h3v13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7h3zm2 0h8V6a4 4 0 0 0-8 0v1z"/></svg>
                   </div>
-                  <p class="product-card-name-inline">Atelier Leather Tote</p>
+                  <p class="product-card-name-inline">Kiri Leather Tote</p>
                 </div>
                 <div class="product-card-inline">
                   <div class="product-card-image-inline pc-fragrance">
@@ -437,17 +437,18 @@ function show(el, on)   { el.classList.toggle('show', !!on); }
 function present(el, on) { el.classList.toggle('collapse', !on); }
 
 /**
- * renderBeat – cumulative, reversible. index 0..5.
+ * renderBeat – cumulative, reversible. index 0..6.
  *   0: header + event banner; empty (un-assembled) timeline track.
  *   1: 4 channel nodes assemble L→R w/ connectors + "+N days"; status Pending; audience pill.
- *   2: step 1 selected; full Maison Tachibana email beside the timeline.
- *   3: push widget + Merkury media panel appear.
- *   4: approval card / inbox row, progress 25%, footer buttons.
- *   5: all nodes green (approved); status Ready to Send; Send button; progress 100%; caption.
+ *   2: step 1 selected; full Maison Tachibana email beside the timeline (top of the email).
+ *   3: the email preview scrolls within its own pane to reveal the curated products under the fold.
+ *   4: push widget + Merkury media panel appear.
+ *   5: approval card / inbox row, progress 25%, footer buttons.
+ *   6: all nodes green (approved); status Ready to Send; Send button; progress 100%; caption.
  */
 function renderBeat(index, direction) {
   const assembled = index >= 1;   // nodes/connectors visible
-  const approved  = index >= 5;   // all nodes green
+  const approved  = index >= 6;   // all nodes green
 
   // – Timeline node assembly (beat 1+) –
   // Only animate the stagger when arriving at beat 1 going forward.
@@ -467,7 +468,7 @@ function renderBeat(index, direction) {
   show(audience, index >= 1);
 
   // – Step 1 selected (beat 2..4) but not once approved (beat 5 clears selection) –
-  steps[0].classList.toggle('is-selected', index >= 2 && index < 5);
+  steps[0].classList.toggle('is-selected', index >= 2 && index < 6);
 
   // – Approved (green) state (beat 5) –
   steps.forEach((s) => s.classList.toggle('status-approved', approved));
@@ -483,22 +484,26 @@ function renderBeat(index, direction) {
 
   // – Preview blocks (cumulative) –
   present(emailBlock,    index >= 2);
-  present(pushBlock,     index >= 3);
-  present(mediaBlock,    index >= 3);
-  present(approvalBlock, index >= 4);
+  present(pushBlock,     index >= 4);
+  present(mediaBlock,    index >= 4);
+  present(approvalBlock, index >= 5);
 
   show(emailBlock,    index >= 2);
-  show(pushBlock,     index >= 3);
-  show(mediaBlock,    index >= 3);
-  show(approvalBlock, index >= 4);
+  show(pushBlock,     index >= 4);
+  show(mediaBlock,    index >= 4);
+  show(approvalBlock, index >= 5);
 
-  // – Progress bar: 25% at beat 4, 100% at beat 5 –
-  progressBar.style.width = index >= 5 ? '100%' : (index >= 4 ? '25%' : '0%');
+  // – Email scroll (beat 3): scroll the email preview's own pane to reveal the
+  //   curated products that sit below the fold; reset to top below beat 3. –
+  scrollEmail(index >= 3, direction);
 
-  // – Send action bar + through-line caption (beat 5) –
-  present(journeyActions, index >= 5);
-  show(journeyActions, index >= 5);
-  show(throughLine, index >= 5);
+  // – Progress bar: 25% at beat 5, 100% at beat 6 –
+  progressBar.style.width = index >= 6 ? '100%' : (index >= 5 ? '25%' : '0%');
+
+  // – Send action bar + through-line caption (beat 6) –
+  present(journeyActions, index >= 6);
+  show(journeyActions, index >= 6);
+  show(throughLine, index >= 6);
 
   // – Auto-scroll so the content for this beat is in view (it lives below the fold) –
   focusBeat(index);
@@ -508,10 +513,28 @@ function renderBeat(index, direction) {
 // iframe's own window. (Avoid Element.scrollIntoView: it also scrolls ancestor
 // scroll containers across the frame boundary, which made the deck shift and
 // snap back.)
+// Scroll the email preview's OWN scroll pane (max-height 620px) to reveal the
+// curated products under the fold (beat 3), or back to the top (beats < 3).
+function scrollEmail(toProducts, direction) {
+  const ep = emailBlock.querySelector('.email-preview');
+  const pr = emailBlock.querySelector('.product-section-inline');
+  if (!ep) return;
+  const behavior = direction === 'reset' ? 'auto' : 'smooth';
+  requestAnimationFrame(() => setTimeout(() => {
+    if (toProducts && pr) {
+      const top = ep.scrollTop + (pr.getBoundingClientRect().top - ep.getBoundingClientRect().top) - 18;
+      ep.scrollTo({ top: Math.max(0, top), behavior });
+    } else {
+      ep.scrollTo({ top: 0, behavior });
+    }
+  }, 140));
+}
+
 function focusBeat(index) {
-  const target = index >= 5 ? throughLine
-               : index >= 4 ? approvalBlock
-               : index >= 3 ? pushBlock
+  // beats 2 & 3 keep the window on the email; beat 3 scrolls the email's own pane.
+  const target = index >= 6 ? throughLine
+               : index >= 5 ? approvalBlock
+               : index >= 4 ? pushBlock
                : index >= 2 ? emailBlock
                : null;
   // Wait for collapse/show transitions to settle before measuring.
@@ -527,7 +550,7 @@ function focusBeat(index) {
   }, 80));
 }
 
-startSceneRuntime({ total: 5, renderBeat });
+startSceneRuntime({ total: 6, renderBeat });
 </script>
 </body>
 </html>
