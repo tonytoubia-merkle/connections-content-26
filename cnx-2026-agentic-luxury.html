@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Agentic AI: Redefining the Retail Customer Experience — Salesforce Connections 2026 · Session 1787</title>
+<title>Agentic AI: Redefining the Retail Customer Experience – Salesforce Connections 2026 · Session 1787</title>
 
 <!-- Reveal.js core -->
 <link rel="stylesheet" href="vendor/reveal/reveal.css">
@@ -37,7 +37,7 @@
 }
 
 /* ================================================================
-   REVEAL OVERRIDES — match brand, kill default theme aesthetics
+   REVEAL OVERRIDES – match brand, kill default theme aesthetics
    ================================================================ */
 .reveal { font-family: var(--font-body); font-size: 22px; font-weight: 400; }
 .reveal .slides { text-align: left; }
@@ -48,7 +48,7 @@
 .reveal ul, .reveal ol { margin-left: 0; }
 .reveal section img { background: none; border: none; box-shadow: none; }
 
-/* LOGO LOCKUP — top-right of every slide */
+/* LOGO LOCKUP – top-right of every slide */
 .logo-lockup { position: absolute; top: 28px; right: 40px; display: flex; align-items: center; gap: 14px; z-index: 50; opacity: 0.85; }
 .logo-lockup__sf { height: 22px; width: auto; }
 .logo-lockup__sep { width: 1px; height: 18px; background: currentColor; opacity: 0.25; }
@@ -58,15 +58,15 @@
 .reveal .slide--dark .logo-lockup__sf { content: url('assets/cnx-2026/salesforce-horiz-white.svg'); }
 .reveal .slide--dark .logo-lockup__merkle { filter: none; }
 
-/* SLIDE BASE — each section is a 1920x1080 slide */
+/* SLIDE BASE – each section is a 1920x1080 slide */
 .reveal .slides > section { padding: 90px 100px 80px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
 .reveal .slides > section.slide-vcenter { justify-content: center; }
 .reveal .slides > section.slide-vstart { justify-content: flex-start; padding-top: 80px; }
 
-/* Logo lockup needs section to be positioning context — Reveal sets section via top/transform but doesn't conflict w/ nested absolute children */
+/* Logo lockup needs section to be positioning context – Reveal sets section via top/transform but doesn't conflict w/ nested absolute children */
 .logo-lockup { position: fixed; }
 
-/* THEME VARIANTS — !important required to override Reveal black-theme color */
+/* THEME VARIANTS – !important required to override Reveal black-theme color */
 .reveal .slide--cream { background: var(--lux-cream); color: var(--text-body); }
 .reveal .slide--cream h1, .reveal .slide--cream h2, .reveal .slide--cream h3 { color: var(--text-heading) !important; }
 .reveal .slide--cream em { color: var(--lux-bronze) !important; }
@@ -131,7 +131,7 @@
 .hero-meta__dot { width: 9px; height: 9px; background: var(--sf-gold); border-radius: 50%; box-shadow: 0 0 14px var(--sf-gold); animation: heroDotPulse 2.4s ease-in-out infinite; }
 @keyframes heroDotPulse { 0%, 100% { opacity: 1; box-shadow: 0 0 12px var(--sf-gold); } 50% { opacity: 0.6; box-shadow: 0 0 20px var(--sf-gold); } }
 
-/* HEADLINE STAT — 70M */
+/* HEADLINE STAT – 70M */
 .headline-stat { text-align: center; padding: 0; position: relative; }
 .headline-stat__big { font-family: var(--font-display); font-size: 280px; font-weight: 700; line-height: 1; color: var(--lux-bronze); letter-spacing: -10px; margin-bottom: 30px; position: relative; display: inline-block; }
 .headline-stat__big::before, .headline-stat__big::after { content: ''; position: absolute; top: 50%; width: 280px; height: 1px; background: linear-gradient(90deg, transparent, rgba(138,106,60,0.4), transparent); }
@@ -159,7 +159,7 @@
 .stat-grid--4 .stat-card__num { font-size: 60px; }
 .stat-grid--4 .stat-card__lbl { font-size: 16px; }
 
-/* MANDATE band — surfaces the prescription beneath stats */
+/* MANDATE band – surfaces the prescription beneath stats */
 .mandate { margin-top: 48px; padding: 36px 56px; background: linear-gradient(135deg, var(--sf-electric-20) 0%, var(--sf-electric-30) 100%); border-radius: var(--card-radius); position: relative; overflow: hidden; box-shadow: 0 18px 56px rgba(2,42,192,0.32); border: 1px solid rgba(255,182,27,0.45); }
 .mandate::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--sf-gold), var(--lux-bronze)); }
 .mandate::after { content: ''; position: absolute; top: -40%; right: -8%; width: 480px; height: 480px; background: radial-gradient(circle, rgba(255,182,27,0.18) 0%, transparent 65%); border-radius: 50%; pointer-events: none; }
@@ -246,7 +246,18 @@
 .demo-break__chip { position: relative; z-index: 1; display: inline-block; font-size: 14px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--sf-gold); background: rgba(255,182,27,0.16); border: 1px solid rgba(255,182,27,0.45); padding: 12px 24px; border-radius: 100px; margin-bottom: 56px; }
 .demo-break__title { position: relative; z-index: 1; font-family: var(--font-display); font-size: 130px; font-weight: 700; line-height: 0.95; letter-spacing: -3px; margin-bottom: 32px; color: white; }
 .demo-break__title em { font-family: var(--font-serif); color: var(--sf-gold); }
-.demo-break__sub { position: relative; z-index: 1; font-family: var(--font-serif); font-style: italic; font-size: 36px; color: rgba(255,255,255,0.8); line-height: 1.4; margin: 0 0 64px; text-align: center; }
+.demo-break__sub { position: relative; z-index: 1; font-family: var(--font-body); font-style: normal; font-weight: 300; font-size: 36px; color: rgba(255,255,255,0.85); line-height: 1.45; margin: 0 0 64px; text-align: center; }
+/* Headless 360 surface cards – one click reveals all, gently staggered */
+.hl-card { opacity: 0; }
+.hl-grid.fragment.visible .hl-card { animation: hlPop .42s cubic-bezier(.2,.7,.3,1) both; }
+.hl-grid.fragment.visible .hl-card:nth-child(1){animation-delay:0s}
+.hl-grid.fragment.visible .hl-card:nth-child(2){animation-delay:.06s}
+.hl-grid.fragment.visible .hl-card:nth-child(3){animation-delay:.12s}
+.hl-grid.fragment.visible .hl-card:nth-child(4){animation-delay:.18s}
+.hl-grid.fragment.visible .hl-card:nth-child(5){animation-delay:.24s}
+.hl-grid.fragment.visible .hl-card:nth-child(6){animation-delay:.30s}
+.hl-grid.fragment.visible .hl-card:nth-child(7){animation-delay:.36s}
+@keyframes hlPop { from { opacity:0; transform: translateY(18px) scale(.985); } to { opacity:1; transform:none; } }
 .demo-break__handoff { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 28px; padding: 26px 42px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.18); border-radius: 100px; }
 .demo-break__handoff img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--sf-gold); }
 .demo-break__handoff-text { text-align: left; }
@@ -264,7 +275,7 @@
 
 /* IMAGE-PANEL LAYOUTS */
 .slide-with-image { display: grid !important; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding: 90px 100px 80px !important; }
-/* Image-as-self: img element IS the framed media — no wrapper-vs-content mismatch. */
+/* Image-as-self: img element IS the framed media – no wrapper-vs-content mismatch. */
 .slide-with-image__media { display: flex; align-items: center; justify-content: center; max-height: 760px; }
 .slide-with-image__media img { display: block; width: 100%; height: auto; max-height: 760px; object-fit: cover; border-radius: 16px; box-shadow: 0 12px 48px rgba(0,0,0,0.18); }
 .slide-with-image__media--bordered img { border: 1px solid rgba(138,106,60,0.25); }
@@ -275,10 +286,10 @@
 .deco-quote-bg--tl { top: 40px; left: 60px; }
 .deco-quote-bg--br { bottom: 60px; right: 60px; transform: scaleX(-1); }
 
-/* CREAM SLIDE TEXTURE — subtle dot pattern */
+/* CREAM SLIDE TEXTURE – subtle dot pattern */
 .reveal .slide--cream::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(138,106,60,0.06) 1px, transparent 1px); background-size: 24px 24px; pointer-events: none; opacity: 0.5; }
 
-/* DARK SLIDE — gold accent line top edge */
+/* DARK SLIDE – gold accent line top edge */
 .reveal .slide--dark::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--sf-gold), transparent); opacity: 0.7; pointer-events: none; }
 
 /* CTA */
@@ -292,7 +303,7 @@
 .cta-partners { position: relative; z-index: 1; margin-top: 96px; padding-top: 48px; border-top: 1px solid rgba(255,255,255,0.18); display: flex; justify-content: center; gap: 120px; flex-wrap: wrap; font-size: 18px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; color: white; width: 90%; max-width: 1500px; }
 .cta-partners strong { color: var(--sf-gold); display: block; opacity: 1; font-weight: 700; font-size: 24px; margin-bottom: 8px; letter-spacing: 1px; text-transform: none; font-family: var(--font-display); }
 
-/* COMMERCE CLOUD foundation — 3-card editorial */
+/* COMMERCE CLOUD foundation – 3-card editorial */
 .cc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 56px; }
 .cc-card { background: white; border-radius: 16px; padding: 44px 38px; box-shadow: var(--card-shadow); position: relative; overflow: hidden; }
 .cc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--lux-bronze), var(--sf-gold)); }
@@ -304,7 +315,7 @@
 .cc-card__list strong { color: var(--lux-bronze); font-weight: 700; }
 .cc-card__list em { font-family: var(--font-serif); color: var(--lux-bronze); }
 
-/* RAIL — numbered ellipse list (3 moves Monday) */
+/* RAIL – numbered ellipse list (3 moves Monday) */
 .rail { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 32px; max-width: 1620px; }
 .rail li { display: flex; align-items: flex-start; gap: 44px; background: rgba(255,255,255,0.65); border-left: 4px solid var(--lux-bronze); border-radius: 16px; padding: 40px 48px; box-shadow: 0 8px 28px rgba(0,39,117,0.07); position: relative; }
 .rail li::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, transparent, rgba(255,182,27,0.35), transparent); border-radius: 0 16px 16px 0; }
@@ -315,22 +326,22 @@
 .rail__sub { font-size: 22px; line-height: 1.5; color: var(--text-muted); }
 .rail__sub strong { color: var(--lux-bronze); }
 
-/* WELCOME / CLOSING — slim brief-mandate slides */
+/* WELCOME / CLOSING – slim brief-mandate slides */
 .welcome-slide { background: linear-gradient(135deg, var(--bg-dark-start), var(--bg-dark-end)); text-align: center; }
 .welcome-slide__chip { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--sf-gold); margin-bottom: 28px; }
 .welcome-slide__title { font-family: var(--font-display); font-size: 78px; font-weight: 700; line-height: 1.05; margin: 0 0 28px; color: white; letter-spacing: -1px; text-align: center; }
 .welcome-slide__title em { font-family: var(--font-serif); color: var(--sf-gold); font-weight: 400; }
 .welcome-slide__sub { font-size: 26px; opacity: 0.85; margin: 0; line-height: 1.5; color: white; text-align: center; }
 
-/* PRINT (PDF EXPORT) — Reveal handles, but tweak our type sizes */
+/* PRINT (PDF EXPORT) – Reveal handles, but tweak our type sizes */
 @media print {
   .reveal .slides > section { padding: 60px 80px !important; }
 }
 
-/* CONTROLS POSITIONING — bottom right but smaller */
+/* CONTROLS POSITIONING – bottom right but smaller */
 .reveal .progress { color: var(--sf-gold); height: 4px; }
 
-/* HIDE REVEAL CONTROLS DURING RECORDING IF NEEDED — keep on by default */
+/* HIDE REVEAL CONTROLS DURING RECORDING IF NEEDED – keep on by default */
 </style>
 </head>
 <body>
@@ -348,7 +359,7 @@
         <div class="hero-left">
           <div class="hero-chip">The luxury opportunity</div>
           <h1 class="hero-title">Agentic AI:<br>Redefining the<br>Retail <em>Customer Experience.</em></h1>
-          <p class="hero-sub">How leading brands deploy <span class="hero-brand"><strong>AI Retail Advisor</strong><span class="hero-brand__tm">™</span></span> — an agentic solution that autonomously engages shoppers, drives conversion, and delivers 1:1 experiences at scale.</p>
+          <p class="hero-sub">How leading brands deploy <span class="hero-brand"><strong>AI Retail Advisor</strong><span class="hero-brand__tm">™</span></span> – an agentic solution that autonomously engages shoppers, drives conversion, and delivers 1:1 experiences at scale.</p>
           <div class="speakers">
             <div class="speaker">
               <img class="speaker-photo" src="assets/cnx-2026/chris-serger.jpg" alt="Chris Serger">
@@ -377,12 +388,12 @@
       <aside class="notes">
         Welcome &amp; Intro · 0:00–2:00 · Both speakers.
         Chris hello → Tony hello → Salesforce + Merkle partnership setup.
-        Lock who-does-what for the audience: Chris frames the strategic luxury opportunity, Tony shows AI Retail Advisor in action, Chris closes with architecture and governance. Keep loose — talking points, not script.
+        Lock who-does-what for the audience: Chris frames the strategic luxury opportunity, Tony shows AI Retail Advisor in action, Chris closes with architecture and governance. Keep loose – talking points, not script.
       </aside>
     </section>
 
     <!-- ========================================================
-         2 · THE NUMBER — 70M
+         2 · THE NUMBER – 70M
          ======================================================== -->
     <section class="slide--cream slide-vcenter" data-background="#f7f3ec">
       <div style="text-align:center">
@@ -397,14 +408,14 @@
       </div>
       <aside class="notes">
         Block 1 · 2:00–7:00 · Chris.
-        "Good afternoon. I'm Chris Serger. I lead Solutions Engineering for Salesforce's digital portfolio — Production, Auto, Consumer, Energy. Tony and I are going to spend the next 30 minutes on a question the luxury industry got handed in the last 90 days, whether it wanted it or not.
+        "Good afternoon. I'm Chris Serger. I lead Solutions Engineering for Salesforce's digital portfolio – Production, Auto, Consumer, Energy. Tony and I are going to spend the next 30 minutes on a question the luxury industry got handed in the last 90 days, whether it wanted it or not.
         This is the number that changes the conversation.
         70 million. That is how many luxury customers have walked away from the category in the last 2 years. Bain and Altagamma flagged it last month. More than 20% of the entire luxury customer base. Gone."
       </aside>
     </section>
 
     <!-- ========================================================
-         3 · THE MATH — < 1% / 37% / 35%
+         3 · THE MATH – < 1% / 37% / 35%
          ======================================================== -->
     <section class="slide--cream slide-vcenter" data-background="#f7f3ec">
       <div class="label">The math has changed</div>
@@ -417,12 +428,12 @@
         </div>
         <div class="stat-card stat-card--bronze">
           <div class="stat-card__num">330M</div>
-          <div class="stat-card__lbl">active luxury clients globally — <strong>back to 2013 levels</strong></div>
+          <div class="stat-card__lbl">active luxury clients globally – <strong>back to 2013 levels</strong></div>
           <div class="stat-card__src">Bain &amp; Altagamma 2026</div>
         </div>
         <div class="stat-card stat-card--bronze">
           <div class="stat-card__num stat-card__num--label">Gen Z</div>
-          <div class="stat-card__lbl">aspirational + younger shoppers <strong>walked away</strong> — price escalation, fading brand advocacy</div>
+          <div class="stat-card__lbl">aspirational + younger shoppers <strong>walked away</strong> – price escalation, fading brand advocacy</div>
           <div class="stat-card__src">Bain &amp; Altagamma 2026</div>
         </div>
       </div>
@@ -430,13 +441,13 @@
         <div class="mandate__lbl">The mandate this requires</div>
         <div class="mandate__line">
           <span class="mandate__verb">White-glove concierge</span>
-          <span class="mandate__sep">—</span>
+          <span class="mandate__sep">–</span>
           <span class="mandate__obj">at <em>software</em> scale.</span>
         </div>
         <div class="mandate__sub">Engaging every shopper as an individual · at the moment of intent · without adding headcount.</div>
       </div>
       <aside class="notes">
-        "While that contraction was happening at the front door, something else was happening inside the store. The top 2% — what Bain calls Very Important Customers — now drives 45 to 47% of all luxury purchases. Half the category, from a sliver of the base. The active luxury client base went from 400M at peak to 330M today — back to 2013 levels. And Gen Z is sitting out at twice the rate of millennials at the same age.
+        "While that contraction was happening at the front door, something else was happening inside the store. The top 2% – what Bain calls Very Important Customers – now drives 45 to 47% of all luxury purchases. Half the category, from a sliver of the base. The active luxury client base went from 400M at peak to 330M today – back to 2013 levels. And Gen Z is sitting out at twice the rate of millennials at the same age.
         BEAT.
         The math has changed. The question is no longer 'how do we acquire more shoppers.' It is 'how do we make every interaction count, at the scale only software can deliver.'
         That is what agentic AI is actually for."
@@ -474,19 +485,19 @@
           <div class="force__num">03</div>
           <div class="force__title">Salesforce put real chips down.</div>
           <ul class="force__list">
-            <li><strong>Headless 360</strong> — MCP-native</li>
-            <li><strong>Storefront Next</strong> — GA June</li>
-            <li><strong>Cimulate</strong> — closed Q1</li>
+            <li><strong>Headless 360</strong> – MCP-native</li>
+            <li><strong>Storefront Next</strong> – GA June</li>
+            <li><strong>Cimulate</strong> – closed Q1</li>
             <li>Agentforce maturing fast</li>
           </ul>
         </div>
       </div>
       <aside class="notes">
         "Three forces are converging at the same time, and they are why this session is happening this week and not a year from now.
-        Customer behavior flipped. 20% of all retail sales over the 2025 holidays were AI- and agent-driven. $262 billion in revenue. Not a projection — the post-recap actual from January.
-        GenAI traffic to retail sites was up 693% year-over-year over the holidays. Your customer is already shopping by conversation. The only question is whether they are doing it on your storefront — or somebody else's.
+        Customer behavior flipped. 20% of all retail sales over the 2025 holidays were AI- and agent-driven. $262 billion in revenue. Not a projection – the post-recap actual from January.
+        GenAI traffic to retail sites was up 693% year-over-year over the holidays. Your customer is already shopping by conversation. The only question is whether they are doing it on your storefront – or somebody else's.
         The platform stack matured. Tony will show one of those productions in about four minutes.
-        And Salesforce put real chips down. Cimulate acquisition closed earlier this year — now part of the Commerce Cloud roadmap. One signal among several that we're investing hard in agentic commerce."
+        And Salesforce put real chips down. Cimulate acquisition closed earlier this year – now part of the Commerce Cloud roadmap. One signal among several that we're investing hard in agentic commerce."
       </aside>
     </section>
 
@@ -509,14 +520,14 @@
       </div>
       <aside class="notes">
         "Earlier this month Amazon retired Rufus. Folded it into Alexa for Shopping. Andy Jassy's reason was the cleanest argument I have heard for where the agent has to live.
-        QUOTE BEAT — let it breathe.
+        QUOTE BEAT – let it breathe.
         'Shopping is not something you do as a side quest.'
         In luxury, that line lands twice as hard. Your customer does not toggle between an AI tab and your brand. The agent has to live where the brand lives. Voiced like the brand. Accountable to the brand."
       </aside>
     </section>
 
     <!-- ========================================================
-         6 · LUXURY PROOFS — Cucinelli, Chalhoub, Zegna
+         6 · LUXURY PROOFS – Cucinelli, Chalhoub, Zegna
          ======================================================== -->
     <section class="slide--cream slide-vcenter" data-background="#f7f3ec">
       <div class="label">The bar is higher in luxury</div>
@@ -530,8 +541,8 @@
             <li><strong>70%</strong> of boutique visitors browse online first</li>
             <li><strong>4 named agents</strong> · multi-agent architecture</li>
           </ul>
-          <p class="cust-card__quote">"AI must remain profoundly human — a handmaid of humanity."</p>
-          <p class="cust-card__attrib">— Brunello Cucinelli, Executive Chairman</p>
+          <p class="cust-card__quote">"AI must remain profoundly human – a handmaid of humanity."</p>
+          <p class="cust-card__attrib">– Brunello Cucinelli, Executive Chairman</p>
         </div>
         <div class="cust-card">
           <div class="cust-card__logo"><span class="cust-card__logo--text">CHALHOUB GROUP</span></div>
@@ -542,7 +553,7 @@
             <li><strong>20K+</strong> products · 3 languages</li>
           </ul>
           <p class="cust-card__quote">"Conversational commerce is the future of commerce."</p>
-          <p class="cust-card__attrib">— Jeremy Denisty, Director of AI</p>
+          <p class="cust-card__attrib">– Jeremy Denisty, Director of AI</p>
         </div>
         <div class="cust-card">
           <div class="cust-card__logo"><img src="assets/cnx-2026/zegna-logo.svg" alt="Zegna" style="max-height:36px"></div>
@@ -552,16 +563,16 @@
             <li>AI-led on WhatsApp / WeChat → <strong>human tailor closes</strong></li>
             <li><strong>+75%</strong> spend on 1:1 clienteling</li>
           </ul>
-          <p class="cust-card__quote">"The tailor is still there. Now we can treat the customer better — and do a more complete job."</p>
-          <p class="cust-card__attrib">— Edoardo Zegna, Co-CEO</p>
+          <p class="cust-card__quote">"The tailor is still there. Now we can treat the customer better – and do a more complete job."</p>
+          <p class="cust-card__attrib">– Edoardo Zegna, Co-CEO</p>
         </div>
       </div>
       <p style="margin-top:24px;font-size:14px;color:var(--text-muted);text-align:center;font-style:italic">Sources: WWD · Glossy · brand press (2024-2026). <strong style="color:var(--lux-bronze);font-style:normal">3 brands · 1 pattern: agentic AI in production, governed by the brand.</strong></p>
       <aside class="notes">
         "The brands actually shipping prove it works.
-        Brunello Cucinelli — the most humanist brand in luxury — launched Callimacus in January. Multi-agent site. 10,000+ daily queries. 70% of boutique visitors browse it before they walk in. Cucinelli's framing — 'AI must remain profoundly human. A handmaid of humanity.'
-        What he proved is that the humanist luxury thesis and agentic AI are not in tension. Provided three things hold. Brand voice every time. Authoritative product context — provenance, materials, history, availability — the agent cannot make it up. And connected to clienteling — the agent knows what the human advisor knows, hands off cleanly.
-        Chalhoub's Layla — 2.2x session time, 2.6x conversion. Zegna routes 45% of boutique revenue through their connected commerce stack today.
+        Brunello Cucinelli – the most humanist brand in luxury – launched Callimacus in January. Multi-agent site. 10,000+ daily queries. 70% of boutique visitors browse it before they walk in. Cucinelli's framing – 'AI must remain profoundly human. A handmaid of humanity.'
+        What he proved is that the humanist luxury thesis and agentic AI are not in tension. Provided three things hold. Brand voice every time. Authoritative product context – provenance, materials, history, availability – the agent cannot make it up. And connected to clienteling – the agent knows what the human advisor knows, hands off cleanly.
+        Chalhoub's Layla – 2.2x session time, 2.6x conversion. Zegna routes 45% of boutique revenue through their connected commerce stack today.
         Three brands. Three different stacks. One pattern."
       </aside>
     </section>
@@ -569,11 +580,11 @@
     <!-- ========================================================
          7 · HANDOFF + DEMO BREAK (combined)
          ======================================================== -->
-    <!-- 7a · DEMO SETUP — the three things we'll show (stacked, animated in) -->
+    <!-- 7a · DEMO SETUP – the three things we'll show (stacked, animated in) -->
     <section class="demo-break slide-vcenter" data-background-image="assets/cnx-2026/img-boutique.jpg" data-background-size="cover" data-background-color="#000814" data-background-opacity="0.20">
       <span class="demo-break__chip" style="margin-bottom:22px">Live Demo · Tony</span>
       <h2 class="demo-break__title" style="font-size:58px;letter-spacing:-1.5px;margin-bottom:12px;text-shadow:0 2px 24px rgba(0,0,0,0.7)">The boutique advisor, <em>online.</em></h2>
-      <p class="demo-break__sub" style="font-size:24px;margin:0 0 34px;text-shadow:0 2px 16px rgba(0,0,0,0.6)">One customer — <strong style="color:#fff;font-weight:600;font-style:normal">Sarah Chen</strong> — across three surfaces. <span style="color:var(--sf-gold)">Captured once, reused everywhere.</span></p>
+      <p class="demo-break__sub" style="font-size:24px;margin:0 0 34px;text-shadow:0 2px 16px rgba(0,0,0,0.6)">One customer – <strong style="color:#fff;font-weight:600;font-style:normal">Sarah Chen</strong> – across three surfaces. <span style="color:var(--sf-gold)">Captured once, reused everywhere.</span></p>
 
       <!-- three stacked rows; each animates in on advance -->
       <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:18px;width:100%;max-width:1300px;margin:0 auto;text-align:left">
@@ -583,7 +594,7 @@
             <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.62);font-weight:700;margin-bottom:7px">Agentic Clienteling · <span style="color:var(--sf-gold)">in the boutique</span></div>
             <div style="font-family:var(--font-serif);font-style:italic;font-size:36px;color:#fff;line-height:1.08">Where it's captured.</div>
           </div>
-          <div style="font-size:17px;color:rgba(255,255,255,0.74);line-height:1.45;width:380px;flex-shrink:0">The Bantō meets Sarah, recognizes her, and logs the moment — a wedding in Kyoto.</div>
+          <div style="font-size:18.5px;color:rgba(255,255,255,0.78);line-height:1.45;width:400px;flex-shrink:0">The Bantō meets Sarah, recognizes her, and logs the moment – a wedding in Kyoto.</div>
         </div>
         <div class="fragment fade-up" style="display:flex;align-items:center;gap:32px;background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-left:6px solid var(--sf-gold);border-radius:16px;padding:30px 40px;backdrop-filter:blur(2px)">
           <span style="font-family:var(--font-serif);font-style:italic;font-size:66px;color:var(--sf-gold);line-height:0.7;flex-shrink:0;width:78px">II.</span>
@@ -591,7 +602,7 @@
             <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.62);font-weight:700;margin-bottom:7px">Agentic Commerce · <span style="color:var(--sf-gold)">on-site</span></div>
             <div style="font-family:var(--font-serif);font-style:italic;font-size:36px;color:#fff;line-height:1.08">The page is the agent.</div>
           </div>
-          <div style="font-size:17px;color:rgba(255,255,255,0.74);line-height:1.45;width:380px;flex-shrink:0">She returns online — the storefront already knows her, and never re-asks.</div>
+          <div style="font-size:18.5px;color:rgba(255,255,255,0.78);line-height:1.45;width:400px;flex-shrink:0">She returns online – the storefront already knows her, and never re-asks.</div>
         </div>
         <div class="fragment fade-up" style="display:flex;align-items:center;gap:32px;background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-left:6px solid var(--sf-gold);border-radius:16px;padding:30px 40px;backdrop-filter:blur(2px)">
           <span style="font-family:var(--font-serif);font-style:italic;font-size:66px;color:var(--sf-gold);line-height:0.7;flex-shrink:0;width:78px">III.</span>
@@ -599,17 +610,17 @@
             <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.62);font-weight:700;margin-bottom:7px">Agentic Marketing · <span style="color:var(--sf-gold)">across channels</span></div>
             <div style="font-family:var(--font-serif);font-style:italic;font-size:36px;color:#fff;line-height:1.08">The journey composes itself.</div>
           </div>
-          <div style="font-size:17px;color:rgba(255,255,255,0.74);line-height:1.45;width:380px;flex-shrink:0">A follow-up email composed for one — not a segment, not a blast.</div>
+          <div style="font-size:18.5px;color:rgba(255,255,255,0.78);line-height:1.45;width:400px;flex-shrink:0">A follow-up email composed for one – not a segment, not a blast.</div>
         </div>
       </div>
 
-      <aside class="notes">Tony picks up (~7:00). Set the frame: Maison Tachibana, a Kyoto house of leather and lacquer. We'll follow ONE customer — Sarah Chen — across three surfaces, all live, scripted, and offline. Advance to reveal each: (I) captured in the boutique, (II) reused on-site, (III) orchestrated in marketing. Next two slides: who Sarah is + how Merkury knows her, then the Bantō. Arrow / click advances each beat.</aside>
+      <aside class="notes">Tony picks up (~7:00). Set the frame: Maison Tachibana, a Kyoto house of leather and lacquer. We'll follow ONE customer – Sarah Chen – across three surfaces, all live, scripted, and offline. Advance to reveal each: (I) captured in the boutique, (II) reused on-site, (III) orchestrated in marketing. Next two slides: who Sarah is + how Merkury knows her, then the Bantō. Arrow / click advances each beat.</aside>
     </section>
 
-    <!-- 7b · DEMO SETUP — one profile, resolved by Merkury -->
+    <!-- 7b · DEMO SETUP – one profile, resolved by Merkury -->
     <section class="demo-break slide-vcenter">
       <span class="demo-break__chip" style="margin-bottom:22px">Grounded in one profile</span>
-      <h2 class="demo-break__title" style="font-size:52px;letter-spacing:-1.2px;margin-bottom:10px">How the maison <em>already knows</em> Sarah.</h2>
+      <h2 class="demo-break__title" style="font-size:52px;letter-spacing:-1.2px;margin-bottom:10px">How the house <em>already knows</em> Sarah.</h2>
       <p class="demo-break__sub" style="font-size:22px;margin:0 0 32px">Salesforce Data Cloud, resolved by <strong style="color:#fff;font-weight:600;font-style:normal">Merkle's Merkury</strong> identity graph.</p>
 
       <div style="position:relative;z-index:1;display:grid;grid-template-columns:0.82fr 1.18fr;gap:36px;width:100%;max-width:1360px;margin:0 auto;text-align:left;align-items:start">
@@ -622,10 +633,10 @@
               <div style="font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--lux-bronze,#8a6a3c);margin-top:4px">Walk-in · not in CRM · ID'd by Merkury</div>
             </div>
           </div>
-          <p style="font-size:16px;line-height:1.5;color:#444;margin:0 0 18px">A walk-in the maison has never met — recognized on arrival from a single email, quietly planning for a <strong style="color:#222">wedding in Kyoto</strong> this fall.</p>
-          <div style="font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:#9a9a9a;margin-bottom:9px;border-top:1px solid #eee;padding-top:14px">Merkury-appended profile</div>
-          <ul style="list-style:none;padding:0;margin:0;font-size:15px;line-height:1.45;color:#333">
-            <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;color:var(--sf-gold);font-weight:700">→</span>Identity resolved from one email — no login</li>
+          <p style="font-size:17px;line-height:1.55;color:#444;margin:0 0 18px">A walk-in the house has never met – recognized on arrival from a single email, quietly planning for a <strong style="color:#222">wedding in Kyoto</strong> this fall.</p>
+          <div style="font-size:11.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:#9a9a9a;margin-bottom:9px;border-top:1px solid #eee;padding-top:14px">Merkury-appended profile</div>
+          <ul style="list-style:none;padding:0;margin:0;font-size:16px;line-height:1.5;color:#333">
+            <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;color:var(--sf-gold);font-weight:700">→</span>Identity resolved from one email – no login</li>
             <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;color:var(--sf-gold);font-weight:700">→</span>Interests: luxury goods · antiquities · fragrance · fine art</li>
             <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;color:var(--sf-gold);font-weight:700">→</span>Life moment: attending a Kyoto wedding (fall)</li>
             <li style="padding:5px 0 5px 22px;position:relative"><span style="position:absolute;left:0;color:var(--sf-gold);font-weight:700">→</span>High affluence · gifting &amp; travel signals</li>
@@ -633,49 +644,49 @@
         </div>
         <!-- Merkury value + stats -->
         <div>
-          <p style="font-size:18px;line-height:1.55;color:rgba(255,255,255,0.82);margin:0 0 20px">One signal — an email, or even an anonymous visit — resolves to a single <strong style="color:#fff">persistent, privacy-safe profile</strong>, then stays in sync across every surface.</p>
+          <p style="font-size:21px;line-height:1.55;color:rgba(255,255,255,0.84);margin:0 0 24px">One signal – an email, or even an anonymous visit – resolves to a single <strong style="color:#fff">persistent, privacy-safe profile</strong>, then stays in sync across every surface.</p>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-            <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-radius:14px;padding:20px 24px"><div style="font-family:var(--font-display);font-size:42px;font-weight:700;color:var(--sf-gold);line-height:1">290M+</div><div style="font-size:14px;color:rgba(255,255,255,0.74);line-height:1.4;margin-top:6px">U.S. consumers with a persistent, privacy-safe profile</div></div>
-            <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-radius:14px;padding:20px 24px"><div style="font-family:var(--font-display);font-size:42px;font-weight:700;color:var(--sf-gold);line-height:1">~95%</div><div style="font-size:14px;color:rgba(255,255,255,0.74);line-height:1.4;margin-top:6px">coverage of the U.S. adult population</div></div>
-            <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-radius:14px;padding:20px 24px"><div style="font-family:var(--font-display);font-size:42px;font-weight:700;color:var(--sf-gold);line-height:1">60%+</div><div style="font-size:14px;color:rgba(255,255,255,0.74);line-height:1.4;margin-top:6px">of anonymous site visitors recognized — no login</div></div>
-            <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-radius:14px;padding:20px 24px"><div style="font-family:var(--font-display);font-size:42px;font-weight:700;color:var(--sf-gold);line-height:1">1,000s</div><div style="font-size:14px;color:rgba(255,255,255,0.74);line-height:1.4;margin-top:6px">of 3rd-party attributes appended per profile</div></div>
+            <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-radius:14px;padding:20px 24px"><div style="font-family:var(--font-display);font-size:50px;font-weight:700;color:var(--sf-gold);line-height:1">290M+</div><div style="font-size:15.5px;color:rgba(255,255,255,0.76);line-height:1.45;margin-top:8px">U.S. consumers with a persistent, privacy-safe profile</div></div>
+            <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-radius:14px;padding:20px 24px"><div style="font-family:var(--font-display);font-size:50px;font-weight:700;color:var(--sf-gold);line-height:1">~95%</div><div style="font-size:15.5px;color:rgba(255,255,255,0.76);line-height:1.45;margin-top:8px">coverage of the U.S. adult population</div></div>
+            <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-radius:14px;padding:20px 24px"><div style="font-family:var(--font-display);font-size:50px;font-weight:700;color:var(--sf-gold);line-height:1">60%+</div><div style="font-size:15.5px;color:rgba(255,255,255,0.76);line-height:1.45;margin-top:8px">of anonymous site visitors recognized – no login</div></div>
+            <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-radius:14px;padding:20px 24px"><div style="font-family:var(--font-display);font-size:50px;font-weight:700;color:var(--sf-gold);line-height:1">1,000s</div><div style="font-size:15.5px;color:rgba(255,255,255,0.76);line-height:1.45;margin-top:8px">of 3rd-party attributes appended per profile</div></div>
           </div>
-          <div class="fragment fade-up" style="margin-top:18px;background:rgba(255,182,27,0.10);border-left:4px solid var(--sf-gold);border-radius:12px;padding:18px 24px;font-size:16px;line-height:1.5;color:rgba(255,255,255,0.85)">One persistent ID across <strong style="color:#fff">known + anonymous, online + offline</strong> — it's how the maison recognizes Sarah at the door <em style="font-family:var(--font-serif);color:var(--sf-gold)">and</em> on the site.</div>
+          <div class="fragment fade-up" style="margin-top:20px;background:rgba(255,182,27,0.10);border-left:4px solid var(--sf-gold);border-radius:12px;padding:20px 26px;font-size:18px;line-height:1.5;color:rgba(255,255,255,0.86)">One persistent ID across <strong style="color:#fff">known + anonymous, online + offline</strong> – it's how the house recognizes Sarah at the door <span style="color:var(--sf-gold);font-weight:600">and</span> on the site.</div>
         </div>
       </div>
 
-      <aside class="notes">Who Sarah is, and how we already know her. She's never shopped here — a walk-in, not in the CRM. Merkury resolves a single signal (her email, or even an anonymous visit) into one persistent, privacy-safe profile and appends the third-party context on the card. Stats animate in: ~290M+ profiles, ~95% US adult coverage, 60%+ anonymous-visitor recognition, thousands of appended attributes. Punchline: one ID across known+anonymous, online+offline — Data Cloud keeps it in sync. (Confirm exact Merkury figures before delivery.)</aside>
+      <aside class="notes">Who Sarah is, and how we already know her. She's never shopped here – a walk-in, not in the CRM. Merkury resolves a single signal (her email, or even an anonymous visit) into one persistent, privacy-safe profile and appends the third-party context on the card. Stats animate in: ~290M+ profiles, ~95% US adult coverage, 60%+ anonymous-visitor recognition, thousands of appended attributes. Punchline: one ID across known+anonymous, online+offline – Data Cloud keeps it in sync. (Confirm exact Merkury figures before delivery.)</aside>
     </section>
 
-    <!-- 7c · DEMO SETUP — the Bantō, our advisor -->
+    <!-- 7c · DEMO SETUP – the Bantō, our advisor -->
     <section class="demo-break slide-vcenter">
       <span class="demo-break__chip" style="margin-bottom:22px">The Advisor</span>
       <h2 class="demo-break__title" style="font-size:58px;letter-spacing:-1.5px;margin-bottom:14px">Meet the <em>Bantō.</em> <span style="font-family:var(--font-serif);font-weight:400;font-size:0.42em;color:rgba(255,255,255,0.38);letter-spacing:2px;vertical-align:middle">番頭</span></h2>
-      <p class="demo-break__sub" style="font-size:21px;line-height:1.5;max-width:1080px;margin:0 auto 34px">In a traditional Japanese merchant house, the <strong style="color:#fff;font-weight:600;font-style:normal">bantō</strong> was the head clerk — the most trusted person on the floor. Knew every customer by name, knew the whole inventory, and acted with judgment on the house's behalf.</p>
+      <p class="demo-break__sub" style="font-size:26px;line-height:1.5;max-width:1180px;margin:0 auto 48px">In a traditional Japanese merchant house, the <strong style="color:#fff;font-weight:600">bantō</strong> was the head clerk – the most trusted person on the floor. Knew every customer by name, knew the whole inventory, and acted with judgment on the house's behalf.</p>
 
-      <div style="position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;width:100%;max-width:1300px;margin:0 auto;text-align:left">
-        <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-top:5px solid var(--sf-gold);border-radius:16px;padding:28px 30px">
-          <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--sf-gold);font-weight:700;margin-bottom:12px">Knows the customer</div>
-          <div style="font-size:18px;line-height:1.5;color:rgba(255,255,255,0.86)">Every past visit, preference, and the moment she's planning for — carried with her, surface to surface.</div>
+      <div style="position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:30px;width:100%;max-width:1480px;margin:0 auto;text-align:left">
+        <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-top:6px solid var(--sf-gold);border-radius:18px;padding:38px 36px">
+          <div style="font-family:var(--font-mono);font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--sf-gold);font-weight:700;margin-bottom:16px">Knows the customer</div>
+          <div style="font-size:23px;line-height:1.5;color:rgba(255,255,255,0.88)">Every past visit, preference, and the moment she's planning for – carried with her, surface to surface.</div>
         </div>
-        <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-top:5px solid var(--sf-gold);border-radius:16px;padding:28px 30px">
-          <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--sf-gold);font-weight:700;margin-bottom:12px">Knows the maison</div>
-          <div style="font-size:18px;line-height:1.5;color:rgba(255,255,255,0.86)">Every piece and its story, what pairs with what, what's in stock — the whole atelier at hand.</div>
+        <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-top:6px solid var(--sf-gold);border-radius:18px;padding:38px 36px">
+          <div style="font-family:var(--font-mono);font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--sf-gold);font-weight:700;margin-bottom:16px">Knows the house</div>
+          <div style="font-size:23px;line-height:1.5;color:rgba(255,255,255,0.88)">Every piece and its story, what pairs with what, what's in stock – the whole atelier at hand.</div>
         </div>
-        <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-top:5px solid var(--sf-gold);border-radius:16px;padding:28px 30px">
-          <div style="font-family:var(--font-mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--sf-gold);font-weight:700;margin-bottom:12px">Acts with judgment</div>
-          <div style="font-size:18px;line-height:1.5;color:rgba(255,255,255,0.86)">Recommends, never pushes — discreet, present, and consistent across the boutique, the site, and the inbox.</div>
+        <div class="fragment fade-up" style="background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.16);border-top:6px solid var(--sf-gold);border-radius:18px;padding:38px 36px">
+          <div style="font-family:var(--font-mono);font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--sf-gold);font-weight:700;margin-bottom:16px">Acts with judgment</div>
+          <div style="font-size:23px;line-height:1.5;color:rgba(255,255,255,0.88)">Recommends, never pushes – discreet, present, and consistent across the boutique, the site, and the inbox.</div>
         </div>
       </div>
 
-      <p class="fragment fade-up" style="position:relative;z-index:1;max-width:1000px;margin:32px auto 0;font-size:22px;line-height:1.45;color:#fff;font-family:var(--font-serif);font-style:italic">That's the role our agent plays — <span style="color:var(--sf-gold)">the bantō, online</span> — the same advisor across all three surfaces you're about to see.</p>
+      <p class="fragment fade-up" style="position:relative;z-index:1;max-width:1180px;margin:44px auto 0;font-size:28px;line-height:1.4;color:#fff;font-family:var(--font-serif)">That's the role our agent plays – <span style="color:var(--sf-gold)">the bantō, online</span> – the same advisor across all three surfaces you're about to see.</p>
 
-      <aside class="notes">Introduce the advisor before the demo. The bantō (番頭) was the head clerk of a traditional Japanese merchant house — trusted, knew every customer and every product, exercised real judgment. That's exactly the role our AI agent plays here: knows the customer, knows the maison, acts with judgment — and it's the SAME advisor across all three surfaces. Three pillars animate in, then the closing line. Next: advance into Scene I (Agentic Clienteling).</aside>
+      <aside class="notes">Introduce the advisor before the demo. The bantō (番頭) was the head clerk of a traditional Japanese merchant house – trusted, knew every customer and every product, exercised real judgment. That's exactly the role our AI agent plays here: knows the customer, knows the house, acts with judgment – and it's the SAME advisor across all three surfaces. Three pillars animate in, then the closing line. Next: advance into Scene I (Agentic Clienteling).</aside>
     </section>
 
 
     <!-- ========================================================
-         DEMO SCENE 1 · Agentic Clienteling — the capture (Salesforce)
+         DEMO SCENE 1 · Agentic Clienteling – the capture (Salesforce)
          ======================================================== -->
     <section class="slide--dark slide-vcenter" data-demo-scene="clienteling">
       <div class="demo-window">
@@ -688,14 +699,14 @@
           <div class="demo-window__url">tachibana.lightning.force.com &nbsp;·&nbsp; Clienteling Console</div>
         </div>
         <div class="demo-window__body">
-          <iframe class="demo-frame" src="demo/salesforce/clienteling/index.html" title="Agentic Clienteling — the capture"></iframe>
+          <iframe class="demo-frame" src="demo/salesforce/clienteling/index.html" title="Agentic Clienteling – the capture"></iframe>
         </div>
       </div>
-      <aside class="notes">Scene 1 — the capture. First, two clicks through the Bantō's book to show the clienteling tool day-to-day: (1) a COMPLETED consultation (Mei Watanabe) — engagement detail, no purchase, an AI-drafted recommended next step; (2) an UPCOMING consultation (Olivia Laurent) — scheduled time + background (an anniversary gift) + a quick plan. THEN Sarah arrives: walk-in (email) → Merkury recognition → Bantō briefs the advisor → logs "wedding in Kyoto this fall, attending as a guest" → profile recomposes + white-glove task → first purchase (Kinari Wrap) creates the CRM client. Arrow-right steps each beat; the last advance moves to the on-site scene.</aside>
+      <aside class="notes">Scene 1 – the capture. First, two clicks through the Bantō's book to show the clienteling tool day-to-day: (1) a COMPLETED consultation (Mei Watanabe) – engagement detail, no purchase, an AI-drafted recommended next step; (2) an UPCOMING consultation (Olivia Laurent) – scheduled time + background (an anniversary gift) + a quick plan. THEN Sarah arrives: walk-in (email) → Merkury recognition → Bantō briefs the advisor → logs "wedding in Kyoto this fall, attending as a guest" → profile recomposes + white-glove task → first purchase (Kinari Wrap) creates the CRM client. Arrow-right steps each beat; the last advance moves to the on-site scene.</aside>
     </section>
 
     <!-- ========================================================
-         DEMO SCENE 2 · Agentic Commerce — the page is the agent (Tachibana)
+         DEMO SCENE 2 · Agentic Commerce – the page is the agent (Tachibana)
          ======================================================== -->
     <section class="slide--dark slide-vcenter" data-demo-scene="commerce">
       <div class="demo-window">
@@ -708,14 +719,14 @@
           <div class="demo-window__url">tachibana.for-demo-purposes.com</div>
         </div>
         <div class="demo-window__body">
-          <iframe class="demo-frame" src="demo/tachibana/index.html#/advisor" title="Agentic Commerce — Maison Tachibana storefront + Bantō"></iframe>
+          <iframe class="demo-frame" src="demo/tachibana/index.html#/advisor" title="Agentic Commerce – Maison Tachibana storefront + Bantō"></iframe>
         </div>
       </div>
-      <aside class="notes">Scene 2 — on-site. The storefront already knows about Kyoto (captured in Scene 1). Arrow-right replays the scripted Bantō turns: welcome → curated pieces → frictionless add-to-bag. Fully offline.</aside>
+      <aside class="notes">Scene 2 – on-site. The storefront already knows about Kyoto (captured in Scene 1). Arrow-right replays the scripted Bantō turns: welcome → curated pieces → frictionless add-to-bag. Fully offline.</aside>
     </section>
 
     <!-- ========================================================
-         DEMO SCENE 3 · Agentic Marketing — the journey composes itself (Salesforce)
+         DEMO SCENE 3 · Agentic Marketing – the journey composes itself (Salesforce)
          ======================================================== -->
     <section class="slide--dark slide-vcenter" data-demo-scene="marketing">
       <div class="demo-window">
@@ -728,10 +739,10 @@
           <div class="demo-window__url">tachibana.lightning.force.com &nbsp;·&nbsp; Marketing Cloud</div>
         </div>
         <div class="demo-window__body">
-          <iframe class="demo-frame" src="demo/salesforce/journey/index.html" title="Agentic Marketing — the journey composes itself"></iframe>
+          <iframe class="demo-frame" src="demo/salesforce/journey/index.html" title="Agentic Marketing – the journey composes itself"></iframe>
         </div>
       </div>
-      <aside class="notes">Scene 3 — the journey. Off the same captured event, the journey assembles itself across channels, composes Sarah's personalized email, and goes to approval. Arrow-right steps each beat; the last advance leaves the demo into the "how we built it" slide.</aside>
+      <aside class="notes">Scene 3 – the journey. Off the same captured event, the journey assembles itself across channels, composes Sarah's personalized email, and goes to approval. Arrow-right steps each beat; the last advance leaves the demo into the "how we built it" slide.</aside>
     </section>
 
     <!-- ========================================================
@@ -739,35 +750,56 @@
          ======================================================== -->
     <section class="slide--dark slide-vcenter" data-background="linear-gradient(140deg, #0a0a16 0%, #0a1838 55%, #001A70 100%)" style="text-align:center">
       <div class="label" style="justify-content:center">Built on Salesforce Headless 360</div>
-      <h2 class="title" style="font-size:54px;line-height:1.12;max-width:1400px;margin:10px auto 14px">Most of what you just saw, we built <em>conversationally</em> — through the CLI and APIs.</h2>
-      <p style="font-size:20px;line-height:1.5;color:rgba(255,255,255,0.74);max-width:1040px;margin:0 auto 40px">Headless 360 exposes the entire platform as an <strong style="color:#fff;font-weight:600">API, MCP tool, or CLI command</strong> — so people and agents compose Customer 360 directly, no browser required.</p>
+      <h2 class="title" style="font-size:62px;line-height:1.1;max-width:1500px;margin:12px auto 18px">Most of what you just saw, we built <em>conversationally</em> – through the CLI and APIs.</h2>
+      <p style="font-size:23px;line-height:1.5;color:rgba(255,255,255,0.78);max-width:1180px;margin:0 auto 46px">Headless 360 exposes the entire platform as an <strong style="color:#fff;font-weight:600">API, MCP tool, or CLI command</strong> – so people and agents compose Customer 360 directly, no browser required.</p>
 
-      <!-- the surfaces we assembled — animate in one at a time -->
-      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center;max-width:1180px;margin:0 auto 44px">
-        <span class="fragment fade-up" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#fff;font-family:var(--font-display);font-weight:600;font-size:17px;padding:9px 18px;border-radius:9px">B2C Commerce</span>
-        <span class="fragment fade-up" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#fff;font-family:var(--font-display);font-weight:600;font-size:17px;padding:9px 18px;border-radius:9px">Storefront Next</span>
-        <span class="fragment fade-up" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#fff;font-family:var(--font-display);font-weight:600;font-size:17px;padding:9px 18px;border-radius:9px">Marketing Cloud Advanced</span>
-        <span class="fragment fade-up" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#fff;font-family:var(--font-display);font-weight:600;font-size:17px;padding:9px 18px;border-radius:9px">Data 360</span>
-        <span class="fragment fade-up" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#fff;font-family:var(--font-display);font-weight:600;font-size:17px;padding:9px 18px;border-radius:9px">Service</span>
-        <span class="fragment fade-up" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#fff;font-family:var(--font-display);font-weight:600;font-size:17px;padding:9px 18px;border-radius:9px">Loyalty <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--sf-gold);font-weight:700;margin-left:5px">much of</span></span>
-        <span class="fragment fade-up" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#fff;font-family:var(--font-display);font-weight:600;font-size:17px;padding:9px 18px;border-radius:9px">Personalization <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--sf-gold);font-weight:700;margin-left:5px">much of</span></span>
+      <!-- the surfaces we assembled – all reveal on one advance (gently staggered) -->
+      <div class="hl-grid fragment" style="display:flex;flex-wrap:wrap;gap:18px;justify-content:center;max-width:1500px;margin:0 auto 46px">
+        <div class="hl-card" style="flex:0 0 332px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-top:4px solid var(--sf-gold);border-radius:14px;padding:22px 26px;text-align:left">
+          <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;line-height:1.12;margin-bottom:10px">B2C Commerce</div>
+          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.74)">Storefronts · Cart &amp; Checkout · Order Management · Catalog &amp; Pricing</div>
+        </div>
+        <div class="hl-card" style="flex:0 0 332px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-top:4px solid var(--sf-gold);border-radius:14px;padding:22px 26px;text-align:left">
+          <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;line-height:1.12;margin-bottom:10px">Storefront Next</div>
+          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.74)">Composable PWA · Headless APIs · Page Designer · Agentic-first</div>
+        </div>
+        <div class="hl-card" style="flex:0 0 332px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-top:4px solid var(--sf-gold);border-radius:14px;padding:22px 26px;text-align:left">
+          <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;line-height:1.12;margin-bottom:10px">Marketing Cloud Advanced</div>
+          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.74)">Journeys · Clienteling App · Custom Journey Advisor · Segments</div>
+        </div>
+        <div class="hl-card" style="flex:0 0 332px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-top:4px solid var(--sf-gold);border-radius:14px;padding:22px 26px;text-align:left">
+          <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;line-height:1.12;margin-bottom:10px">Data 360</div>
+          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.74)">Unified profile · Identity resolution · Zero-copy federation · Calculated insights</div>
+        </div>
+        <div class="hl-card" style="flex:0 0 332px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-top:4px solid var(--sf-gold);border-radius:14px;padding:22px 26px;text-align:left">
+          <div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;line-height:1.12;margin-bottom:10px">Service</div>
+          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.74)">Case Management · Knowledge · Agentforce Service Agent</div>
+        </div>
+        <div class="hl-card" style="flex:0 0 332px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-top:4px solid var(--sf-gold);border-radius:14px;padding:22px 26px;text-align:left">
+          <div style="display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:10px"><span style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;line-height:1.12">Loyalty</span><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--sf-gold);font-weight:700;border:1px solid rgba(255,182,27,0.45);border-radius:5px;padding:1px 6px">much of</span></div>
+          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.74)">Promotion Tiers · Ledgers · Vouchers · Member Benefits</div>
+        </div>
+        <div class="hl-card" style="flex:0 0 332px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-top:4px solid var(--sf-gold);border-radius:14px;padding:22px 26px;text-align:left">
+          <div style="display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:10px"><span style="font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;line-height:1.12">Personalization</span><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--sf-gold);font-weight:700;border:1px solid rgba(255,182,27,0.45);border-radius:5px;padding:1px 6px">much of</span></div>
+          <div style="font-size:15px;line-height:1.6;color:rgba(255,255,255,0.74)">Web &amp; email decisioning · Einstein recipes · Affinities · Real-time</div>
+        </div>
       </div>
 
-      <p class="fragment fade-up" style="font-family:var(--font-serif);font-style:italic;font-size:40px;line-height:1.2;color:#fff;margin:0">In <span style="color:var(--sf-gold)">days</span> — not months or years.</p>
+      <p class="fragment fade-up" style="font-family:var(--font-serif);font-style:italic;font-size:44px;line-height:1.2;color:#fff;margin:0">In <span style="color:var(--sf-gold)">days</span> – not months or years.</p>
 
-      <aside class="notes">Tony — the build reveal, before we go under the hood. The point: the majority of what you just watched wasn't a one-off mockup — we assembled it CONVERSATIONALLY on Salesforce Headless 360, which exposes the whole platform as APIs, MCP tools, and CLI commands (announced at TDX '26 — "no browser required"). Surfaces animate in as you name them: commerce on both B2C Commerce and Storefront Next, Marketing Cloud Advanced, Data 360, Service, much of Loyalty, much of Personalization — all through the CLI and APIs. Land the kicker: days, not months or years. Then advance into Architecture & Governance — because shipping it in production is what we cover next.</aside>
+      <aside class="notes">Tony – the build reveal, before we go under the hood. The point: the majority of what you just watched wasn't a one-off mockup – we assembled it CONVERSATIONALLY on Salesforce Headless 360, which exposes the whole platform as APIs, MCP tools, and CLI commands (announced at TDX '26, "no browser required"). One advance reveals all seven surface cards (gently staggered); name them as they land – commerce on B2C Commerce and Storefront Next, Marketing Cloud Advanced (Journeys, Clienteling App, Custom Journey Advisor), Data 360, Service, much of Loyalty (Promotion Tiers, Ledgers) and Personalization. Second advance lands the kicker: days, not months or years. Then into Architecture & Governance.</aside>
     </section>
 
     <!-- ========================================================
-         9 · BLOCK 2 OPEN — ARCHITECTURE
+         9 · BLOCK 2 OPEN – ARCHITECTURE
          ======================================================== -->
     <section class="slide--dark slide-vcenter" data-background="linear-gradient(135deg, #0047D4, #001A70)">
       <div class="label">Architecture &amp; Governance</div>
-      <h2 class="title" style="font-size:56px;line-height:1.12;max-width:1500px">What you just saw runs in the browser. The part that decides whether it ships in <em>production</em> — lives underneath.</h2>
+      <h2 class="title" style="font-size:56px;line-height:1.12;max-width:1500px">What you just saw runs in the browser. The part that decides whether it ships in <em>production</em> – lives underneath.</h2>
 
       <div style="display:flex;flex-direction:column;gap:24px;margin-top:64px;max-width:1400px">
 
-        <!-- BAND 1 — the experience (shopper + advisor surfaces) -->
+        <!-- BAND 1 – the experience (shopper + advisor surfaces) -->
         <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);border-radius:14px;padding:26px 36px;display:flex;align-items:center;gap:36px">
           <div style="flex:0 0 280px">
             <div style="font-family:var(--font-mono);font-size:13px;letter-spacing:3px;color:var(--sf-gold);font-weight:700;margin-bottom:6px">01</div>
@@ -785,7 +817,7 @@
         <!-- arrow -->
         <div style="text-align:center;font-size:28px;color:var(--sf-gold);line-height:1;margin:-8px 0">↓</div>
 
-        <!-- BAND 2 — the brain (gold-highlighted) -->
+        <!-- BAND 2 – the brain (gold-highlighted) -->
         <div style="background:linear-gradient(90deg,rgba(255,182,27,0.18),rgba(255,182,27,0.08));border:2px solid rgba(255,182,27,0.55);border-radius:14px;padding:30px 36px;display:flex;align-items:center;gap:36px;box-shadow:0 12px 36px rgba(255,182,27,0.18)">
           <div style="flex:0 0 280px">
             <div style="font-family:var(--font-mono);font-size:13px;letter-spacing:3px;color:var(--sf-gold);font-weight:700;margin-bottom:6px">02 · TODAY'S FOCUS</div>
@@ -799,19 +831,19 @@
               <span style="font-family:var(--font-display);font-weight:600;color:rgba(255,255,255,0.85);font-size:14px;padding:0 4px">+</span>
               <span style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);color:#fff;font-family:var(--font-display);font-weight:600;font-size:16px;padding:8px 16px;border-radius:8px">Agentforce</span>
             </div>
-            <div style="font-size:14px;color:rgba(255,255,255,0.65);font-style:italic;line-height:1.4">All grounded in <strong style="color:rgba(255,255,255,0.9);font-style:normal">one unified shopper profile</strong> — federated to wherever your data lives today.</div>
+            <div style="font-size:14px;color:rgba(255,255,255,0.65);font-style:italic;line-height:1.4">All grounded in <strong style="color:rgba(255,255,255,0.9);font-style:normal">one unified shopper profile</strong> – federated to wherever your data lives today.</div>
           </div>
         </div>
 
         <!-- arrow -->
         <div style="text-align:center;font-size:28px;color:var(--sf-gold);line-height:1;margin:-8px 0">↓</div>
 
-        <!-- BAND 3 — guardrails -->
+        <!-- BAND 3 – guardrails -->
         <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);border-radius:14px;padding:26px 36px;display:flex;align-items:center;gap:36px">
           <div style="flex:0 0 280px">
             <div style="font-family:var(--font-mono);font-size:13px;letter-spacing:3px;color:var(--sf-gold);font-weight:700;margin-bottom:6px">03</div>
             <div style="font-family:var(--font-display);font-size:28px;font-weight:700;color:white;line-height:1.15">Guardrails</div>
-            <div style="font-size:15px;color:rgba(255,255,255,0.7);margin-top:6px">Trust Layer — non-negotiable in luxury.</div>
+            <div style="font-size:15px;color:rgba(255,255,255,0.7);margin-top:6px">Trust Layer – non-negotiable in luxury.</div>
           </div>
           <div style="flex:1;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
             <span style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;font-family:var(--font-display);font-weight:600;font-size:16px;padding:8px 16px;border-radius:8px">Brand voice</span>
@@ -826,7 +858,7 @@
       <aside class="notes">
         Block 2 · 22:00–28:00 · Chris.
         "Thanks Tony. What you just saw runs in the browser. The part that decides whether a luxury brand can put it in production lives underneath.
-        Three layers. The experience — where shopper and advisor meet: storefront, AI advisor, clienteling console, email. The brain — Commerce Cloud and Marketing Cloud, with agents acting on top, all grounded in one unified shopper profile. And the guardrails — the trust layer that makes the agent safe to put in front of a luxury customer.
+        Three layers. The experience – where shopper and advisor meet: storefront, AI advisor, clienteling console, email. The brain – Commerce Cloud and Marketing Cloud, with agents acting on top, all grounded in one unified shopper profile. And the guardrails – the trust layer that makes the agent safe to put in front of a luxury customer.
         Today we're focused on Commerce Cloud. Marketing Cloud is in this journey too."
       </aside>
     </section>
@@ -856,7 +888,7 @@
           <ul class="cc-card__list">
             <li><strong>LLM-native discovery</strong> layer</li>
             <li>Closed Q1 · coming into Commerce Cloud</li>
-            <li>One signal — we are <em>not</em> done investing</li>
+            <li>One signal – we are <em>not</em> done investing</li>
           </ul>
         </div>
 
@@ -864,26 +896,26 @@
           <div class="cc-card__chip">PRODUCTION-READY · B2C COMMERCE</div>
           <div class="cc-card__title">Pre-built agents</div>
           <ul class="cc-card__list">
-            <li><strong>Personal Shopper</strong> — 24/7 conversational discovery, embedded PDP/PLP, WISMO, order history</li>
-            <li><strong>Merchant Agent</strong> — agentic merchandising, catalog optimization, campaign &amp; promo management</li>
+            <li><strong>Personal Shopper</strong> – 24/7 conversational discovery, embedded PDP/PLP, WISMO, order history</li>
+            <li><strong>Merchant Agent</strong> – agentic merchandising, catalog optimization, campaign &amp; promo management</li>
             <li>AI Retail Advisor extends w/ clienteling, brand-voice, white-glove logistics</li>
           </ul>
         </div>
       </div>
 
-      <p style="margin-top:48px;font-size:22px;color:var(--text-muted);text-align:center">Native catalog · pricing · inventory · promotions · orders · payments — <em style="color:var(--lux-bronze);font-size:1.1em">everything the agent needs to actually transact.</em></p>
+      <p style="margin-top:48px;font-size:22px;color:var(--text-muted);text-align:center">Native catalog · pricing · inventory · promotions · orders · payments – <em style="color:var(--lux-bronze);font-size:1.1em">everything the agent needs to actually transact.</em></p>
       <aside class="notes">
         "The agent you just saw doesn't sit next to the storefront. It sits inside it. That is the architectural difference.
-        It runs on Commerce Cloud. Catalog, pricing, inventory, promotions, orders, payments — everything the agent needs to actually transact — native, not integrated. Most 'AI commerce agents' sit on top of the storefront. Ours runs inside it.
+        It runs on Commerce Cloud. Catalog, pricing, inventory, promotions, orders, payments – everything the agent needs to actually transact – native, not integrated. Most 'AI commerce agents' sit on top of the storefront. Ours runs inside it.
         The agent is the conversation. Commerce Cloud is the conviction the conversation actually closes.
-        Two things shipped recently that matter. Storefront Next — composable React storefront, in pilot now, GA this June. <30 minutes to stand a storefront up. PDPs load 66% faster than Google's recommended 2.5-second threshold. Ships with 40+ pre-built agent skills and an MCP server, so you can build with Claude Code or Cursor or Copilot. Skinning a luxury site is a sprint, not a quarter. And pre-built agents — Personal Shopper, Commerce Agent, Service Agent — production-ready out of the box. AI Retail Advisor extends them with luxury-specific journeys: clienteling handoff, brand-voice scoring, white-glove logistics.
-        And the Cimulate acquisition — closed earlier this year — is coming into Commerce Cloud as our LLM-native discovery layer. One signal among several that agentic commerce is where we're investing.
-        That's the test — no middleware, native pipe. Difference between commerce-as-platform and commerce-as-bolt-on."
+        Two things shipped recently that matter. Storefront Next – composable React storefront, in pilot now, GA this June. <30 minutes to stand a storefront up. PDPs load 66% faster than Google's recommended 2.5-second threshold. Ships with 40+ pre-built agent skills and an MCP server, so you can build with Claude Code or Cursor or Copilot. Skinning a luxury site is a sprint, not a quarter. And pre-built agents – Personal Shopper, Commerce Agent, Service Agent – production-ready out of the box. AI Retail Advisor extends them with luxury-specific journeys: clienteling handoff, brand-voice scoring, white-glove logistics.
+        And the Cimulate acquisition – closed earlier this year – is coming into Commerce Cloud as our LLM-native discovery layer. One signal among several that agentic commerce is where we're investing.
+        That's the test – no middleware, native pipe. Difference between commerce-as-platform and commerce-as-bolt-on."
       </aside>
     </section>
 
     <!-- ========================================================
-         11 · PANDORA — Clara + Gemma
+         11 · PANDORA – Clara + Gemma
          ======================================================== -->
     <section class="slide--cream slide-with-image" data-background="#f7f3ec" style="grid-template-columns:0.7fr 1.3fr;gap:60px;align-items:center">
       <div class="slide-with-image__media slide-with-image__media--bordered">
@@ -918,11 +950,11 @@
       </div>
 
       <aside class="notes">
-        "Pandora — accessible luxury at 100-country scale. World's largest jewelry brand. Running on Commerce Cloud, Agentforce, Data Cloud.
-        Two agents, two specific jobs. Clara handles order status, FAQs, post-purchase — the unglamorous work that has to be perfect. She solved Pandora's seasonal staff coverage gap. Holiday volume that always outran headcount — Clara absorbs it.
-        Gemma is the personal shopping agent. Replicates the in-store experience online — occasion-based recommendations for birthdays, anniversaries, milestones, gifting moments. She is not answering questions. She is staging the moment.
+        "Pandora – accessible luxury at 100-country scale. World's largest jewelry brand. Running on Commerce Cloud, Agentforce, Data Cloud.
+        Two agents, two specific jobs. Clara handles order status, FAQs, post-purchase – the unglamorous work that has to be perfect. She solved Pandora's seasonal staff coverage gap. Holiday volume that always outran headcount – Clara absorbs it.
+        Gemma is the personal shopping agent. Replicates the in-store experience online – occasion-based recommendations for birthdays, anniversaries, milestones, gifting moments. She is not answering questions. She is staging the moment.
         60% case deflection at scale. +10pt NPS lift. 22% of total Pandora sales runs through Commerce Cloud today.
-        Walmsley, Pandora's CDTO — 'the richness of conversation is the heart of the Pandora experience.'"
+        Walmsley, Pandora's CDTO – 'the richness of conversation is the heart of the Pandora experience.'"
       </aside>
     </section>
 
@@ -933,7 +965,7 @@
       <div class="slide-with-image__content">
         <div class="label">The occasion-based analog</div>
         <h2 class="title" style="font-size:54px">Williams-Sonoma's <em>Olive.</em></h2>
-        <p class="subtitle" style="font-size:22px;margin-bottom:28px;color:var(--text-muted)">Not luxury. The closest production occasion-based pattern — <strong style="color:var(--lux-bronze)">scales 1:1 to your category.</strong></p>
+        <p class="subtitle" style="font-size:22px;margin-bottom:28px;color:var(--text-muted)">Not luxury. The closest production occasion-based pattern – <strong style="color:var(--lux-bronze)">scales 1:1 to your category.</strong></p>
 
         <div class="stat-grid stat-grid--2" style="margin-top:0;gap:20px">
           <div class="stat-card" style="padding:30px 22px">
@@ -961,9 +993,9 @@
       </div>
 
       <aside class="notes">
-        "Olive isn't luxury — and I'll say that on the record. Williams-Sonoma is mid-market home. But it's the closest production occasion-based pattern shipping today, and the architecture scales 1:1 to your category.
+        "Olive isn't luxury – and I'll say that on the record. Williams-Sonoma is mid-market home. But it's the closest production occasion-based pattern shipping today, and the architecture scales 1:1 to your category.
         Built in 60 days. 10,000 conversations a day. 65% autonomous resolution. Growing 25% month over month.
-        Olive recommends by intent — gifting, hosting, skill-building. Plans the occasion end-to-end. Surfaces the brand's expertise — grounded in the catalog, not improvised, not hallucinated. When a moment needs a human, the rep gets a warm handoff with full context.
+        Olive recommends by intent – gifting, hosting, skill-building. Plans the occasion end-to-end. Surfaces the brand's expertise – grounded in the catalog, not improvised, not hallucinated. When a moment needs a human, the rep gets a warm handoff with full context.
         Replace 'plan my dinner party' with 'plan my anniversary trip.' With 'dress me for the gala.' With 'choose the right piece for the milestone.' Same architectural pattern. The agent surfaces the right product. Data Cloud grounds the relationship. The human closes."
       </aside>
     </section>
@@ -975,7 +1007,7 @@
       <div class="slide-with-image__content">
         <div class="label">The luxury differentiator</div>
         <h2 class="title" style="font-size:60px">Governance is the <em>whole game</em> in luxury.</h2>
-        <p class="subtitle" style="font-size:24px;margin-top:24px">Every interaction reflects on a brand that's spent decades — sometimes centuries — building equity. The brand can't be talked over by a model that hallucinated a material, mispriced a piece, or said something off-tone.</p>
+        <p class="subtitle" style="font-size:24px;margin-top:24px">Every interaction reflects on a brand that's spent decades – sometimes centuries – building equity. The brand can't be talked over by a model that hallucinated a material, mispriced a piece, or said something off-tone.</p>
         <div class="callout" style="margin-top:40px">
           <div class="callout__lbl">Federal court · March 2026 · agentic-commerce precedent</div>
           <h3 class="callout__title" style="font-size:22px">Amazon won an injunction against Perplexity's shopping agent for <em>impersonating human shoppers.</em></h3>
@@ -986,18 +1018,18 @@
         </div>
       </div>
       <div class="slide-with-image__media" style="max-height:680px;display:flex;align-items:center;justify-content:center;background:transparent">
-        <img src="assets/cnx-2026/img-perplexity-ruling.png" alt="Reuters · Litigation · March 10, 2026 — Amazon wins order blocking access for Perplexity's AI shopping 'agent' (N.D. Cal. preliminary injunction)" style="object-fit:contain;background:transparent;border-radius:12px;max-height:680px;width:auto;box-shadow:0 12px 48px rgba(0,0,0,0.35)">
+        <img src="assets/cnx-2026/img-perplexity-ruling.png" alt="Reuters · Litigation · March 10, 2026 – Amazon wins order blocking access for Perplexity's AI shopping 'agent' (N.D. Cal. preliminary injunction)" style="object-fit:contain;background:transparent;border-radius:12px;max-height:680px;width:auto;box-shadow:0 12px 48px rgba(0,0,0,0.35)">
       </div>
       <aside class="notes">
         "And now the part that for luxury, in my opinion, is the whole game. Governance.
-        Six weeks ago, a federal court ordered Perplexity's shopping agent to stop transacting on Amazon — the agent was disguising itself as a human shopper to make purchases. First major agentic-commerce ruling. The legal question the court answered: when an AI agent acts, who owns the action?
-        That is the new exposure. In luxury, the price of an ungoverned agent is not a refund — it's a lost VIP client, a flagship's reputation, a brand book you've spent decades protecting. Brands have to govern the brand AND the AI powering the brand.
-        The agent has access to everything about your customer. Governance decides what it actually does. That's the difference between a brand that put AI in production safely — and one in court."
+        Six weeks ago, a federal court ordered Perplexity's shopping agent to stop transacting on Amazon – the agent was disguising itself as a human shopper to make purchases. First major agentic-commerce ruling. The legal question the court answered: when an AI agent acts, who owns the action?
+        That is the new exposure. In luxury, the price of an ungoverned agent is not a refund – it's a lost VIP client, a flagship's reputation, a brand book you've spent decades protecting. Brands have to govern the brand AND the AI powering the brand.
+        The agent has access to everything about your customer. Governance decides what it actually does. That's the difference between a brand that put AI in production safely – and one in court."
       </aside>
     </section>
 
     <!-- ========================================================
-         15 · TRUST LAYER — 4 things
+         15 · TRUST LAYER – 4 things
          ======================================================== -->
     <section class="slide--dark slide-vcenter" data-background="linear-gradient(135deg, #0047D4, #001A70)">
       <div style="text-align:center">
@@ -1008,7 +1040,7 @@
         <div class="stack__layer">
           <div class="stack__num">01</div>
           <div class="stack__title">Action attribution</div>
-          <div class="stack__body">Every agent action ties to the human user who deployed it. When compliance asks <em>"who did this?"</em> — name on your team.</div>
+          <div class="stack__body">Every agent action ties to the human user who deployed it. When compliance asks <em>"who did this?"</em> – name on your team.</div>
         </div>
         <div class="stack__layer">
           <div class="stack__num">02</div>
@@ -1018,7 +1050,7 @@
         <div class="stack__layer">
           <div class="stack__num">03</div>
           <div class="stack__title">Brand-voice · toxicity · injection defense</div>
-          <div class="stack__body">Pre-screened content libraries for high-stakes responses. Real-time toxicity detection. Prompt-injection defense — <em>before</em> the LLM call.</div>
+          <div class="stack__body">Pre-screened content libraries for high-stakes responses. Real-time toxicity detection. Prompt-injection defense – <em>before</em> the LLM call.</div>
         </div>
         <div class="stack__layer">
           <div class="stack__num">04</div>
@@ -1031,15 +1063,15 @@
         "Four things the Salesforce Trust Layer does that other platforms don't.
         One. Action attribution. Every agent action ties to the human user who deployed it. When compliance asks 'who did this,' the answer is a name on your team.
         Two. Dynamic grounding with sharing rules. Agents only see what the user is authorized to see. The CRM permission model extends to AI. No leakage across regions, brands, or VIP segments.
-        Three. Brand-voice control, toxicity detection, prompt-injection defense — before the LLM call.
+        Three. Brand-voice control, toxicity detection, prompt-injection defense – before the LLM call.
         Four. Zero data retention with LLM partners. Your customer data does not train a third-party model. Ever.
-        Critically — guardrails are configurable by business users, not engineers. Your brand team and compliance team shape agent behavior in natural language. No IT tickets.
-        The audit trails, the trust handshakes, the brand-voice scoring — none of it is something you bolt on later. That is the rail that makes the agent safe to put in front of a luxury customer."
+        Critically – guardrails are configurable by business users, not engineers. Your brand team and compliance team shape agent behavior in natural language. No IT tickets.
+        The audit trails, the trust handshakes, the brand-voice scoring – none of it is something you bolt on later. That is the rail that makes the agent safe to put in front of a luxury customer."
       </aside>
     </section>
 
     <!-- ========================================================
-         16 · 3 MOVES MONDAY (Implementation rail — replaces stats)
+         16 · 3 MOVES MONDAY (Implementation rail – replaces stats)
          ======================================================== -->
     <section class="slide--cream slide-vcenter" data-background="#f7f3ec">
       <div class="label" style="text-align:left">Implementation · what to do Monday</div>
@@ -1050,7 +1082,7 @@
           <span class="rail__num">1</span>
           <div class="rail__body">
             <div class="rail__title">Audit your luxury journey.</div>
-            <div class="rail__sub">Pick the moments that break today — anniversary gift, made-to-measure handoff, clienteling memory, post-purchase concierge. Name the gap before you name the platform.</div>
+            <div class="rail__sub">Pick the moments that break today – anniversary gift, made-to-measure handoff, clienteling memory, post-purchase concierge. Name the gap before you name the platform.</div>
           </div>
         </li>
         <li>
@@ -1064,7 +1096,7 @@
       <aside class="notes">
         Implementation segment · 28:00–34:00 · Joint (Chris ~30-45 sec, Tony covers most).
         "One last frame. This is an activation. Not a rip-and-replace.
-        Two moves to make Monday. One — audit your luxury journey. Pick the moments that break today. Two — stand up ONE agent against ONE moment. Not seven agents. Not a multi-quarter program. Olive shipped in 60 days. Clara in six weeks. The agent layer is the activation.
+        Two moves to make Monday. One – audit your luxury journey. Pick the moments that break today. Two – stand up ONE agent against ONE moment. Not seven agents. Not a multi-quarter program. Olive shipped in 60 days. Clara in six weeks. The agent layer is the activation.
         [Tony covers Merkle methodology, responsible-AI framework, end-to-end strategy → implementation → ongoing optimization]"
       </aside>
     </section>
@@ -1089,8 +1121,8 @@
       <aside class="notes">
         Wrap · 38:00–40:00 · Both.
         "Two asks before you leave.
-        One — find us at Room 270. Tony and I will scope your stack in 20.
-        Two — bring one luxury moment that breaks today. Anniversary gift. Made-to-measure handoff. Post-purchase concierge. We'll show you what it looks like on the platform you already own.
+        One – find us at Room 270. Tony and I will scope your stack in 20.
+        Two – bring one luxury moment that breaks today. Anniversary gift. Made-to-measure handoff. Post-purchase concierge. We'll show you what it looks like on the platform you already own.
         Thanks for the time."
       </aside>
     </section>
@@ -1105,7 +1137,7 @@
   import { bindRevealDemoSlides } from './demo/bridge.js';
   // `Reveal` is a global set by the classic vendor/reveal/reveal.js script above,
   // which runs before this deferred module. Fail loudly if that ever changes.
-  if (typeof Reveal === 'undefined') throw new Error('Reveal.js global not found — check script load order');
+  if (typeof Reveal === 'undefined') throw new Error('Reveal.js global not found – check script load order');
   Reveal.initialize({
     width: 1920,
     height: 1080,
@@ -1129,7 +1161,7 @@
 
   bindRevealDemoSlides(Reveal);
 
-  // Inject logo lockup top-right of every slide (skip cta-slide — it has its own big lockup)
+  // Inject logo lockup top-right of every slide (skip cta-slide – it has its own big lockup)
   document.querySelectorAll('.reveal .slides > section').forEach(s => {
     if (s.classList.contains('cta-slide')) return;
     const isDark = s.classList.contains('slide--dark')
